@@ -1,0 +1,131 @@
+
+
+
+
+genesis 5:28 chronology:
+
+MT: 187, 182
+yr   ba  rem total
+0    187 782 969  methuselah
+187  182 595 777  lamech
+369               noah
+969               flood 
+here, methuselah died the year of the flood
+
+LXX BRETONS: 167, 188
+yr   ba  rem total
+0    167 802 969  methuselah
+167  188 565 753  lamech
+355               noah
+955               flood 
+here, methuselah lives 14 yrs after flood
+
+VATICANUS: 187, 188
+yr   ba  rem total
+0    187 782 969  methuselah
+187  188          lamech
+375               noah
+975               flood 
+here, methuselah died 6 years before the flood
+
+BIBLE.CA (VATICANUS 187 + ? 182)
+yr   ba  rem total
+0    167 802 969  methuselah
+187  182 565 747  lamech
+369               noah
+969               flood 
+here, methuselah died the year of the flood
+
+
+
+
+
+
+# ----------------------------------------------------------
+# design goals
+
+
+# ANY VERSION
+# don't add to scripture!
+#   no "plan of salvation" other than scripture itself!
+#   no subject headings, in-text or otherwise
+#   no book introductions, commentary, etc.
+# no starting all verses on a new line
+
+# UNDECIDED
+# original language in parallel or interlinear
+# no unnecessary preface, strictly business. postface instead of preface.
+
+# READERS VERSION (by far the main goal of this project)
+# no verse or chapter numbers in the text
+# no see-through paper
+# no two-columns
+
+# REFERENCE VERSION (a slight possibility)
+# footnotes
+# chapter numbers (in, or on the side)
+# verse numbers (in, or on the side)
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------
+
+
+# Postface
+# (include WEBP preface?)
+# The textual base of this version is the WEBP 2023-02-20
+# The WEBP is based on the ASV of 1901.
+# The ASV is based on the ... (kjv?)
+
+# Only those NT books which are reliable in accordance with
+# qualifications from Torah are allowed. It has come to
+# light that Paul is a false apostle.
+
+# edit index.htm so it says "based on WEBP version"?
+#
+# i.e.:
+# index.htm should have (with whatever date appears):
+# <div class="fine">Jesus Words Bible is based on World
+# English Bible source files dated 9/28/2022<br/></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------
+
+
+# ----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+----- not really an issue -----
+
+daniel 4 double indent dropping back to no indent for a moment
+
+
+----- code only -----
+
+extra spaces like after "the psalms  "
+
+mixed " and ' in html

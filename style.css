@@ -1,0 +1,163 @@
+* {margin:0;padding:0}
+html,body {height:100%;font-size:1.2em;line-height:1.4em;color:black}
+
+@font-face {
+    font-family: 'caslon';
+    src: url('caslon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+html,body	{font-family: 'caslon','Times','serif';}
+
+
+
+/* ---------- INDEX PAGE ---------- */
+
+/* title for index page */
+h1 {font-weight: normal;margin-top:2em}
+
+/* index uses li for the list of books */
+li {list-style:disc inside}
+
+
+/* index uses ul.vnav */
+ul.vnav {list-style-type:none;padding:5;margin-left:0;text-align:center}
+.vnav li {list-style-type:none}
+.vnav a {display:block;padding:3px;background-color:#08f;border-bottom:1px solid #eee;text-decoration:none;width:12em}
+
+/* index book button background colors */
+/*
+a.torah     {background-color:#08f !important}
+a.neviim    {background-color:#73f !important}
+a.ketuvim   {background-color:#73f !important}
+a.messianic {background-color:#b22 !important}
+*/
+
+.vnav a:visited {color:#ffffff}
+.vnav a:link {color: #ffffff}
+.vnav a:hover {background-color:#777 !important;color:#ffffff}
+
+
+/* index uses div.bookList */
+div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em;padding:3px;width:12.25em}
+
+
+
+ /* ---------- BOOK PAGES ---------- */
+
+/* ALL BOOK TEXT */
+
+/* books are nested in a "main" class */
+.main {min-height:100%;margin-bottom:-4em;padding:0.5em}
+.main:after {content:"";display:block}
+
+
+
+/* TITLES */
+
+/* major title, and extra words like "the first book, commonly called" */
+h1,.mt,.mt2,.mt3 {font-weight:bold;font-size:1.2em;text-align:center;margin-top:1em;margin-bottom:1em}
+.mt {font-size:1.4em}
+.mt2 {font-size:1.2em}
+
+
+
+/* TEXT FORMATTING */
+
+/* paragraph. most specific div for much of text */
+.p {text-indent:2em;margin-top:0.5em}
+.p,.nb {display:block;font-size:1em}
+
+/* non breaking. only 1sa 4, gen 50, jer 33, john 8 */
+/* making margin-top 0 doesn't work well when removing chapter numbers */
+.nb {text-indent: 0em; margin-top: 0.5em}
+
+/* html has line break (nbsp), 1ch, psa, etc. */
+.b {display:block;margin-left:12em;text-indent:-2em}
+
+/* bk for Num21:14 The Book of the Wars of Yahweh */
+/* don't add bold and italic. */
+/* it's peculiar enough that "The", "Book", and "Wars" are capitalized. */
+/*
+.bk {font-weight:bold;font-style:italic}
+*/
+
+/* psalms heading */
+.d {font-weight:bold;display:block;margin-top:0pt}
+
+/* li: ezra 8, 10, neh7. an indented list */
+.li {display:list-item;list-style-type:none;text-indent:2em}
+
+/* various, especially Joshua 12. basically a non-indented list */
+.m {margin-top:0}
+
+/* ezra 7, etc. for indented letters, decrees, etc. */
+.mi {text-indent:2em;margin-top:0}
+
+/* hab and psalms. selah on right */
+.qs {text-align:right}
+
+/* sp: song of song, for titles lover, beloved, friends */
+.sp {font-style:italic}
+
+/* words of yahushua in red */
+.wj {color:rgb(128,0,0)}
+
+/* pi: only dan, ezr, jer. double-indented. awkward in dan 4 */
+.pi {text-indent:2em}
+.pi {margin:.5em 0 0 2em}
+
+/* q q2: psalms, songofsol, etc. */
+.q,.q2 {margin-top:0pt}
+html[dir=ltr] .q {text-indent:-2em;margin-left:2em}
+html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
+
+
+
+/* CHAPTER AND VERSE NUMBERS */
+
+/* chapter numbers */
+.chapterlabel {text-align:center;margin-top:1em;font-size:1.1em}
+.psalmlabel {text-align:center;margin-top:1em;font-size:1.1em}
+
+/* verse numbers */
+.verse {white-space:nowrap;vertical-align:super;font-size:.6em;line-height:0}
+
+
+
+/* IN-TEXT NOTES */
+
+/* in-text notes */
+.popup {position:absolute;bottom:0;display:none;background-color:#ffffd0;border:.1em solid #333;width:15em;height:auto;padding:1em;line-height:1em;text-indent:0em;margin 0.5em 0.5em 0.5em 0.5em}
+.notemark:hover .popup {display:block}
+
+/* notemark for in-text notes */
+.notemark {vertical-align:super;margin-left:.16em;line-height:0;position: relative;text-decoration:none;color:rgb(0,0,128)}
+
+/* notemark for in-text notes */
+.notemark {color:blue;font-size:14pt}
+
+
+
+
+
+
+/* DO NOT ADD KETUVIM (PSALMS, PROVERBS, ETC.) */
+.ketuvim,
+
+/* DO NOT ADD APOSTOLIC BOOKS */
+.apostles,
+
+/* DO NOT ADD CHAPTER NUMBERS */
+.chapterlabel,
+
+/* DO NOT ADD VERSE MUMBERS */
+.verse,
+
+/* DO NOT ADD NOTES */
+.mt2, .mt3, .ms, .notemark, .footnote, .mainindex {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+
