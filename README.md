@@ -1,5 +1,4 @@
-# jesusbible.github.io
-Jesus Bible
+# [jesusbible.github.io](https://jesusbible.github.io)
 
 The goal of this site is to present scriptures for reading.
 
