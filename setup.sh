@@ -585,6 +585,15 @@ sed -i 's/I AM/I will be/' exodus.htm
 
 
 
+# restore matt 3:17 which apparently originally said "today i have begotten thee", which was removed because it disproves the trinity doctrine.
+# see jesus' words only videos and/or site for supporting references,
+# eslecially https://www.youtube.com/watch?v=cfRzYqpXchM
+# psalms 2:7
+# I will tell of the decree: Yahweh said to me, “You are my son. Today I have become your father.
+
+# work toward restoring matthew 3:17. use "his" not "you" to match sentence
+sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.htm
+
 
 # "I was" also supported by Lamsa Bible and Anderson New Testament
 # https://www.biblehub.com/parallel/john/8-58.htm
@@ -601,19 +610,26 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 # ----------------------------------------------------------
 # virgin birth
 
-# after the bible was written,
-# the text was corrupted to create a virgin birth story.
-# see youtube.com/@jesuswordsonly and search videos for "virgin"
+# it seems most likely that after text such as matthew was written,
+# the text was corrupted to create a virgin birth story, possibly by theodotian
+# in cooperation with marcion.
 
-# jesus must be a real descendant of david if he is to fulfill 2sam7:15,
-# not just a symbolic descendant.
+# it has also been said that the ebionites had scripture that didn't have a
+# geneology.
 
-# what is the point of the geneology in matthew if there is no real connection?
-# this indicates in favor of there being a real connection.
+# see youtube.com/@jesuswordsonly and search videos for "virgin",
+# especially this video:
+# https://www.youtube.com/watch?v=cfRzYqpXchM
 
-# also, matthew 1:1 testifies that jesus is the son of david, and son of
-# abraham. without using strange doctrine, this plainly indicates that jesus
-# was a natural descendant of david and abraham.
+# relevant verses:
+
+# 2 samuel 7:12-14
+# When your days are fulfilled and you sleep with your fathers, I will set up your offspring after you, who will proceed out of your body, and I will establish his kingdom.  He will build a house for my name, and I will establish the throne of his kingdom forever.  I will be his father, and he will be my son. If he commits iniquity, I will chasten him with the rod of men and with the stripes of the children of men;
+# note that it says bith 'out of your body' (i.e., not by holy spirit), and 'i will be his father' (at the baptism this is fulfilled, see psalm 2:7 and matthew 3:17 as it is restored)
+
+# jeremiah 22:30
+# Yahweh says, “Record this man as childless, a man who will not prosper in his days; for no more will a man of his offspring prosper, sitting on David’s throne and ruling in Judah.”
+# note that the passage is apparently talking about jechoniah, and that this same jechoniah appears in the matthew chapter 1 geneology.
 
 
 
@@ -628,49 +644,13 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 
 
 
-# jechoniah problem. see jeremiah 22:30
+# remove matthew 1 completely, as it seems to be an addition to the original
+sed -i 's/<div class='"'"'chapterlabel'"'"' id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
 
-# the ebionites had scripture that didn't have a geneology.
-# without a geneology, the jechoniah problem would effectively not exist.
-# perhaps yahweh reversed the curse with zerubbabel
-
-# jechoniah problem 1 of 2
-# matthew 1:11
-# Josiah became the father of Jechoniah and his brothers at the time of the exile to Babylon.  
-# ...
-
-# jechoniah problem 2 of 2
-# matthew 1:12
-# After the exile to Babylon, Jechoniah became the father of Shealtiel. Shealtiel became the father of Zerubbabel.  
-# ...
-
-
-
-
-# matthew 1:16
-
-# could use verification on manner of restoration. see jwo videos on "virgin"
-
-# without the phrase "who is called christ", the next passage that refers to christ seems awkward. however, i am going by the indication that there is a statement very plain that, when translated, reads "joseph begat jesus." period.
-
-# editing this is a bit tricky because there is a footnote in the middle of the verse, and there are 3 places with the text "who is called Christ". only 1 ends in a period, so that will be used to identify this instance.
-sed -i 's/Jacob became the father of Joseph, the husband of Mary, from whom was born Jesus,.* who is called Christ\./Jacob became the father of Joseph\. Joseph became the father of Jesus\./' matthew.htm
-
-
-
-
-# matthew 1:18-24
-# this virgin birth story needs to be removed entirely, including verse numbers.
-# the combination '"'"' represents a single quote. alternatively, use \x27
-sed -i 's/<div class='"'"'p'"'"'> <span class="verse" id="V18">.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
-
-
-
-
-
-
-
-
+# starting with "Now" is awkward. prefer translation that starts with "When",
+# as in the CEV, Geneva Bible of 1587, etc.
+# remove word "Now"
+sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Herod/When Jesus was born in Bethlehem of Judea in the days of King Herod/' matthew.htm
 
 
 
@@ -680,10 +660,16 @@ sed -i 's/<div class='"'"'p'"'"'> <span class="verse" id="V18">.*until she had g
 # ----------------------------------------------------------
 # do not swear
 
-# not sure this makes sense to edit
+# it has been said that in matthew 5, the messiah did not say "do not swear",
+# but rather "do not swear in vain".
+
+# there is an article at jesuswordsonly.github.io that talks about this
+
+# also see hebrew gospel of matthew, george howard, in footnotes
+
+# not sure this makes sense to edit, no change for now.
 
 # matthew 5:34 edit "do not swear" to "do not swear in vain"
-# see hebrew gospel of matthew, george howard
 # ...
 
 
