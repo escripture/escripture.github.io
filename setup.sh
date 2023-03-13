@@ -751,10 +751,19 @@ printf .
 # since there seems to be no equivalent english word for translation, then
 # transliterate from hebrew: "elohim"
 
+# 19 instances
+sed -i 's/ a God/ an Elohim/g' *.htm
+
+# 11 instances
+sed -i 's/ a god/ an elohim/g' *.htm
+
+# 703 instances (722 instances of 'God' minus 19 already replaced above = 703)
 sed -i 's/God/Elohim/g' *.htm
+
+# 153 instances (164 instances of 'god' minus 11 already replaced above = 153)
 sed -i 's/god/elohim/g' *.htm
 
-# no instances of "GOD" all-uppercase were found on last check
+# 0 instances of "GOD" all-uppercase were found in 2023-02-20 edition of WEBP
 
 printf .
 
@@ -767,7 +776,7 @@ printf .
 # the term "holy" does not seem to convey the meaning of קדש
 
 # edit "holy", a word associated with the sun, and sun worship,
-# to "set-apart", which is the meaning of קדש
+# to "set-apart", which is a more straightforward meaning of קדש
 
 sed -i 's/holy/set-apart/g' *.htm
 
