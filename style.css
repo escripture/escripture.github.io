@@ -23,15 +23,7 @@ li {list-style:disc inside}
 /* index uses ul.vnav */
 ul.vnav {list-style-type:none;padding:5;margin-left:0;text-align:center}
 .vnav li {list-style-type:none}
-.vnav a {display:block;padding:3px;background-color:#08f;border-bottom:1px solid #eee;text-decoration:none;width:12em}
-
-/* index book button background colors */
-/*
-a.torah     {background-color:#08f !important}
-a.neviim    {background-color:#73f !important}
-a.ketuvim   {background-color:#73f !important}
-a.messianic {background-color:#b22 !important}
-*/
+.vnav a {display:block;padding:3px;background-color:#0080ff;border-bottom:1px solid #eee;text-decoration:none;width:12em}
 
 .vnav a:visited {color:#ffffff}
 .vnav a:link {color: #ffffff}
