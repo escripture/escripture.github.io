@@ -579,8 +579,8 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # whole series of edits needs more references
 # https://www.youtube.com/watch?v=KqPagPOlU7M
 
+# exodus 3:14
 sed -i 's/I AM WHO I AM/I will be what I will be/' exodus.htm
-
 sed -i 's/I AM/I will be/' exodus.htm
 
 
@@ -591,13 +591,27 @@ sed -i 's/I AM/I will be/' exodus.htm
 # psalms 2:7
 # I will tell of the decree: Yahweh said to me, “You are my son. Today I have become your father.
 
-# work toward restoring matthew 3:17. use "his" not "you" to match sentence
+# work toward restoring. use "his" not "you" to match sentence
+# matthew 3:17
 sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.htm
+
+
+# restore "the father" to matthew 19:17
+
+# Still further also He plainly says, "None is good, but My Father, who is in heaven."
+# http://earlychristianwritings.com/text/clement-instructor-book1.html
+
+# There still remains to them, however, that saying of the Lord in the Gospel, which they think is given them in a special manner as a shield, viz., "There is none good but one, God the Father."
+# http://earlychristianwritings.com/text/origen123.html
+
+# also note that the words "that is" were inserted by translators, and do not reflect the greek.
+
+# matthew 19:17
+sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
 
 
 # "I was" also supported by Lamsa Bible and Anderson New Testament
 # https://www.biblehub.com/parallel/john/8-58.htm
-
 # john 8:58
 sed -i 's/before Abraham came into existence, I AM/before Abraham came into existence, I was/' john.htm
 
