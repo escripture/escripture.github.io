@@ -570,6 +570,297 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 
 
 
+# ----------------------------------------------------------
+# marry vs take
+
+# marry is a modern word
+
+# Genesis 19:14
+#sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.htm
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------
+# restore husband(s) to owner(s) when root is baal (בעל)
+# and to lord(s) when root is adonai (אדני)
+
+# sources where the word בעל means MASTER
+#   web: hosea 2:16 husband (איש) vs master (בעל)
+#   https://www.mechanical-translation.org/mtt/D22.html
+#   https://en.wiktionary.org/wiki/%D7%91%D7%A2%D7%9C
+#   https://www.biblehub.com/jeremiah/3-14.htm
+
+# sources where the word בעל means OWNER
+#   https://www.biblehub.com/hebrew/1167.htm
+#   https://en.wikipedia.org/wiki/Baal
+#   https://dictionary.reverso.net/hebrew-english/%D7%91%D7%A2%D7%9C
+
+
+
+
+
+# HUSBANDS PLURAL
+# cases where "husbands" is not "men" but "lords" or "owners"
+
+# webp
+# adonaim, lords
+# Amos 4:1
+sed -i 's/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their husbands, “Bring us drinks!”/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their lords, “Bring us drinks!”/' amos.htm
+
+# baal, owners
+# Esther 1:17
+sed -i 's/causing them to show contempt for their husbands when it is reported/causing them to show contempt for their owners when it is reported/' esther.htm
+
+# baal, owners
+# Esther 1:20
+sed -i 's/all the wives will give their husbands honor/all the wives will give their owners honor/' esther.htm
+
+
+
+
+# HUSBAND SINGULAR
+# (one occurrance per verse unless noted)
+
+# "man"
+# gen 3:6 3:16 16:3 29:32 29:34 30:15 30:18 30:20
+
+# "brother-in-law"
+# gen 38:8
+sed -i 's/husband’s brother/brother-in-law/' genesis.htm
+
+# Exodus 21:22
+sed -i 's/he shall be surely fined as much as the woman’s husband demands and the judges allow/he shall be surely fined as much as the woman’s owner demands and the judges allow/' exodus.htm
+
+# "man"
+# lev 21:3 21:7
+# num 5:13 5:19 5:20 5:27 5:29 30:6 30:7 30:8 30:10 30:11 30:12x2 30:13x2 30:14
+
+# Deuteronomy 21:13
+sed -i 's/After that you shall go in to her and be her husband, and she shall be your/After that you shall go in to her and be her owner, and she shall be your/' deuteronomy.htm
+
+# owned by an owner
+# בעלב-בעל
+# baal-baal
+# Deuteronomy 22:22
+sed -i 's/If a man is found lying with a woman married to a husband, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/If a man is found lying with a woman owned by an owner, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/' deuteronomy.htm
+
+# "man"
+# deu 22:23 24:3x2
+
+# Deuteronomy 24:4
+sed -i 's/her former husband, who sent her away, may not take her again to be his wife after she is defiled/her former owner, who sent her away, may not take her again to be his wife after she is defiled/' deuteronomy.htm
+
+# "brother-in-law"
+# deu 25:5x2 25:7x2
+sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.htm
+
+# "man" from איש and in proverbs 6:34 גבר
+# deu 25:11 28:56
+# jud 13:6 13:9 13:10 14:15 19:3 20:4
+# rut 1:3 1:5 1:9 1:12x2 2:1 2:11
+# 1sa 1:8 1:22 1:23 2:19 4:19 4:21 25:19
+# 2sa 3:15 3:16 11:26 14:5 14:7
+# 2ki 4:1 4:9 4:14 4:22 4:26
+# pro 6:34 7:19
+
+# Proverbs 12:4
+sed -i 's/A worthy woman is the crown of her husband/A worthy woman is the crown of her owner/' proverbs.htm
+
+# Proverbs 31:11
+sed -i 's/The heart of her husband trusts in her/The heart of her owner trusts in her/' proverbs.htm
+
+# Proverbs 31:23
+sed -i 's/Her husband is respected in the gates/Her owner is respected in the gates/' proverbs.htm
+
+# Proverbs 31:28
+sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.htm
+
+# Isaiah 54:5
+sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.htm
+
+# Jeremiah 3:14
+sed -i 's/Return, backsliding children,” says Yahweh, “for I am a husband to you/Return, backsliding children,” says Yahweh, “for I am an owner to you/' jeremiah.htm
+
+# friend not owner
+# (wife in this verse should be be woman)
+# Jeremiah 3:20
+sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.htm
+
+# "man"
+# jer 6:11
+
+# Jeremiah 31:32
+sed -i 's/although I was a husband to them/although I was an owner to them/' jeremiah.htm
+
+# "man"
+# eze 16:32 16:45 44:25
+# hos 2:2 2:7 2:16
+
+# Joel 1:8
+sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
+
+
+
+
+
+# ----------------------------------------------------------------------
+# restore many instances of baal meaning owner (i.e. not just a name)
+# restore man to owner when root is baal
+# searched hebModern bible in "and" bible for בעל, and here are matches:
+
+# owned by an owner
+# בעלב-בעל
+# baal-baal
+# Genesis 20:3
+#sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is an owner’s wife/' genesis.htm
+sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is owned by an owner/' genesis.htm
+
+# baal
+# gen 36:38 36:39
+
+# Genesis 37:19
+sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.htm
+
+# baal
+# exo 14:2 14:9
+
+# Exodus 21:3
+sed -i 's/If he comes in by himself, he shall go out by himself\. If he is married, then his wife shall go out with him/If he comes in by himself, he shall go out by himself\. If he is the owner of a woman, then his wife shall go out with him/' exodus.htm
+
+# husband (will have already been changed to man)
+# exo 21:22
+
+# already owner
+# Exodus 21:34
+#sed -i 's/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/' exodus.htm
+
+# Exodus 22:8
+sed -i 's/then the master of the house shall come near to God/then the owner of the house shall come near to God/' exodus.htm
+
+# mechanical translation says:
+#   'The phrase “master of words” apparently means “one with a dispute.”'
+#   but there is no explanation why, and no further reference
+#   smith's literal translation at least has 'words'
+# Exodus 24:14
+sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.htm
+
+# Leviticus 21:4
+sed -i 's/He shall not defile himself, being a chief man among his people, to profane himself/He shall not defile himself, being an owner among his people, to profane himself/' leviticus.htm
+
+# baal
+# num 22:41 32:38 33:7
+# deu 4:3
+
+# Deuteronomy 15:2
+sed -i s'/This is the way it shall be done: every creditor shall release that which he has lent to his neighbor/This is the way it shall be done: every owner of a loan shall release that which he has lent to his neighbor/' deuteronomy.htm
+
+# yoke
+# deu 21:3
+
+# husband
+# deu 22:22
+
+# baal
+# jos 11:17 13:17 15:60 18:14
+# jud 3:3 8:33 9:4
+
+# Judges 19:22
+sed -i 's/and they spoke to the master of the house, the old man/and they spoke to the owner of the house, the old man/' judges.htm
+
+# Judges 19:23
+sed -i 's/The man, the master of the house, went out to them, and said to them/The man, the owner of the house, went out to them, and said to them/' judges.htm
+
+# baal
+# 2sa 5:20
+
+# Smith's Literal Translation
+#   And they will say to him, A man possessing hair
+# 2 Kings 1:8
+sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt around his waist/They answered him, “He was a man, an owner of hair, and wearing a leather belt around his waist/' 2kings.htm
+
+# baal
+# 1ch 1:49 1:50 4:33 5:5 5:23 8:34 9:40 14:11 27:28
+# 2ch 26:7
+
+# ezra 4:8 4:9 and 4:17
+sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.htm
+
+# bird (owner of wings)
+# Proverbs 1:17
+sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.htm
+
+# Proverbs 22:24
+sed -i 's/Don’t befriend a hot-tempered man/Don’t befriend a hot-tempered owner/' proverbs.htm
+
+# Proverbs 23:2
+sed -i 's/put a knife to your throat if you are a man given to appetite/put a knife to your throat if you are an owner given to appetite/' proverbs.htm
+
+# Proverbs 24:8
+sed -i 's/One who plots to do evil will be called a schemer/One who plots to do evil will be called an owner of wicked thoughts/' proverbs.htm
+
+# with teeth (owner of teeth)
+# Isaiah 41:15
+#Behold, I have made you into a new sharp threshing instrument with teeth.  You will thresh the mountains,  and beat them small,  and will make the hills like chaff.  
+
+# my
+# Isaiah 50:8
+#He who justifies me is near.  Who will bring charges against me?  Let us stand up together.  Who is my adversary?  Let him come near to me.  
+
+# yoke בְּעֹל
+#Jeremiah 27:8
+#“‘“‘It will happen that I will punish the nation and the kingdom which will not serve the same Nebuchadnezzar king of Babylon, and that will not put their neck under the yoke of the king of Babylon,’ says Yahweh, ‘with the sword, with famine, and with pestilence, until I have consumed them by his hand.
+
+# yoke
+# Jeremiah 27:11
+#But the nation that brings their neck under the yoke of the king of Babylon and serves him, that nation I will let remain in their own land,’ says Yahweh; ‘and they will till it and dwell in it.’”’”  
+
+# yoke
+# Jeremiah 27:12
+#I spoke to Zedekiah king of Judah according to all these words, saying, “Bring your necks under the yoke of the king of Babylon, and serve him and his people, and live.
+
+# captain
+# Jeremiah 37:13
+#When he was in Benjamin’s gate, a captain of the guard was there, whose name was Irijah, the son of Shelemiah, the son of Hananiah; and he seized Jeremiah the prophet, saying, “You are defecting to the Chaldeans!”  
+
+# baal
+# eze 25:9
+
+# had
+# Daniel 8:6
+#He came to the ram that had the two horns, which I saw standing before the river, and ran on him in the fury of his power.  
+
+# had
+# dan 8:20
+
+# baal
+# his 9:10
+
+# husband
+# joe 1:8
+
+# if hebModern is used, occurrances are found in NT. not addressing those.
+
+
+
+
+# ---------------------------------
+# word בעלי is owners
+# Joshua 24:11
+#sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.htm
+
+# Judges 9:2
+#sed -i 's/Please speak in the ears of all the men of Shechem/Please speak in the ears of all the owners of Shechem/' judges.htm
+
+
+
+
+
+
 
 # ----------------------------------------------------------
 # trinity
@@ -614,6 +905,13 @@ sed -i 's/No one is good but one, that is, God/No one is good but one, God the F
 # https://www.biblehub.com/parallel/john/8-58.htm
 # john 8:58
 sed -i 's/before Abraham came into existence, I AM/before Abraham came into existence, I was/' john.htm
+
+
+
+
+
+
+
 
 
 
@@ -672,6 +970,25 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 
 
 # ----------------------------------------------------------
+# put away vs divorce
+
+# there is a difference.
+# the webp version seems accurate in matthew 5, not matthew 19.
+# the kjv seems to be more accurate than other popular translations.
+# the kjv seems accurate in mattew 19, but not all of matthew 5.
+# the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
+
+# Matthew 19:8
+sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
+
+# Matthew 19:9
+sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.htm
+
+
+
+
+
+# ----------------------------------------------------------
 # do not swear
 
 # it has been said that in matthew 5, the messiah did not say "do not swear",
@@ -704,7 +1021,7 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 # according to their reforms and their precedents do not do,
 # because they talk, but they do not do.
 # - translation from "the hebrew yeshua vs the greek jesus"
-# by nehemiah gordon, pg 48.
+# by nehemia gordon, pg 48.
 #
 # Perhaps instead of "Therefore", "Now" or "And now".
 # but just do the minimal change necessary
@@ -771,6 +1088,18 @@ printf .
 
 
 # ----------------------------------------------------------
+# yhwh vowels: sheva cholem qamats
+
+# see book(s) by nehemia gordon
+
+sed -i 's/Yahweh/Yehovah/g' *.htm
+sed -i 's/YAHWEH/YEHOVAH/g' *.htm
+
+
+
+
+
+# ----------------------------------------------------------
 # set-apart
 
 # the term "holy" does not seem to convey the meaning of קדש
@@ -795,7 +1124,7 @@ printf .
 # ----------------------------------------------------------
 # husband and wife
 
-# there is no "wife" or "husband" in hebrew or greek, just man and woman
+# there is no "wife" or "husband" in hebrew or greek, just man and woman, etc.
 sed -i 's/husbands/men/g' *.htm
 sed -i 's/husband/man/g' *.htm
 
@@ -829,12 +1158,12 @@ printf .
 # the names joshua, jacob, and joseph, for example, could also use fresh
 # transliteration, so then where should a line be drawn, if anywhere?
 
-# in light of all this, this is an english language translation, so for the
-# purposes of this edition, the familiar form is retained.
+# see "the hebrew yeshua vs the greek jesus"
+# by nehemia gordon, pg 48.
 
-# edit "jesus" to "yahshua"
-#sed -i 's/Jesus/Yahshua/g' *.htm
-#sed -i 's/JESUS/YAHSHUA/g' *.htm
+# edit "jesus" to "yeshua"
+sed -i 's/Jesus/Yeshua/g' *.htm
+sed -i 's/JESUS/YESHUA/g' *.htm
 
 # no instances of "jesus" all-lowercase were found on last check
 
