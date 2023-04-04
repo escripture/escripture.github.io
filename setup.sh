@@ -1146,6 +1146,7 @@ printf .
 # yahshua, yahushua, yeshua, iesou, iesous, iesus, jesus
 
 # a history of the name can be found here:
+# (THIS ANALYSIS IS QUESTIONABLE AND ITS VALUE HERE IS DEPRECATED)
 # yahshua to jesus: evolution of a name, by william finck, 2006
 # https://christogenea.org/essays/yahshua-jesus-evolution-name
 
@@ -1160,10 +1161,33 @@ printf .
 
 # see "the hebrew yeshua vs the greek jesus"
 # by nehemia gordon, pg 48.
+# WHY LOOK HERE? AND WHERE IS THE BOOK AVAILABLE FOR FREE?
+# or even where is that page available for free?
+# (this reference should possibly be omitted)
 
-# edit "jesus" to "yeshua"
-sed -i 's/Jesus/Yeshua/g' *.htm
-sed -i 's/JESUS/YESHUA/g' *.htm
+# the hebrew gospel of matthew (george howard) has יש״ו in place
+# of the messiah's name. that is actually a curse meaning "may his name
+# be blotted out". it is eerily similar to the form of the messiah's name
+# written has "yeshua". in light of this, i checked the isr version of
+# the scriptures, and also the leningrad codex (tanach.us version 1.8)
+# and confirmed that there should be a "ho" sound, both in the vowel-less
+# matthew 2 place, and joshua 1:1, in the name of joshua son of nun.
+# the isr scriptures version transliterates joshua son of nun's name in
+# joshua 1:1 exactly this way: "Yehoshua". to the best of my knowledge,
+# his name is identical to the messiah's name.
+# furthermore, any form starting with "ya" does not seem to be right
+# because the vowel pointing indicates a sheva, not a qamats for example,
+# and there is no need to try to match the apparently pagan form "yahweh".
+# rather, it should be either without vowel, or with an e. however, if
+# without an e, then the y and ho of "yhoshua" would be combined in english,
+# and the form y'hoshua is novel (i don't recall having seen it elsewhere) and
+# is an awkward and difficult transliteration (that does not mean it isn't
+# best, but right now i am only trying to make a necessary correction to an
+# acceptable form, not intoduce un-vetted ideas)
+
+# edit "jesus" to "yehoshua"
+sed -i 's/Jesus/Yehoshua/g' *.htm
+sed -i 's/JESUS/YEHOSHUA/g' *.htm
 
 # no instances of "jesus" all-lowercase were found on last check
 
