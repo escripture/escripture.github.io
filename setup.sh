@@ -553,7 +553,7 @@ printf .
 # credit for righteousness
 
 # restore the meaning of the hebrew
-# moses credited yahweh, not the other way around
+# moses credited yehovah, not the other way around
 # see the video "#3 Dr. Anthony Buzzard Fighting Back Against Pauline Canon Overeach Ep 3 of JWO Canon Movements"
 # https://www.youtube.com/watch?v=EnkfoNGfrnE
 # at around 28:00
@@ -989,19 +989,30 @@ sed -i 's/I tell you that whoever divorces his wife, except for sexual immoralit
 
 
 # ----------------------------------------------------------
-# do not swear
+# do not swear falsely
 
-# it has been said that in matthew 5, the messiah did not say "do not swear",
-# but rather "do not swear in vain".
+# in torah it is written that you can, and should swear, and by yehovah's name.
+# deu 6:13, 10:20 say you "shall swear by his name"
+# however, in english bibles jesus seems to say don't swear, without exception.
+# mat 5:34
 
-# there is an article at jesuswordsonly.github.io that talks about this
+# this problem is resolved by the hebrew gospel of matthew (shem tov):
+# see hebrew gospel of matthew, george howard
+# matthew 5:34 "do not swear in vain"
 
-# also see hebrew gospel of matthew, george howard, in footnotes
+# there is also an article at jesuswordsonly.github.io that talks about this
 
-# not sure this makes sense to edit, no change for now.
+# edit "do not swear" to "do not swear in vain"
 
-# matthew 5:34 edit "do not swear" to "do not swear in vain"
-# ...
+# Matthew 5:33
+sed -i 's/You shall not make false vows, but shall perform/You shall not make false vows by my name, but shall perform/' matthew.htm
+
+# Matthew 5:34
+sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you, don’t swear falsely at all: neither by heaven/' matthew.htm
+
+
+
+
 
 
 
@@ -1052,7 +1063,7 @@ printf .
 
 
 # ----------------------------------------------------------
-# yahweh's title
+# yehovah's title
 
 # in nt edit "god" to "theos" or "theon" or "theou"?
 # it would require extra work to use each type,
