@@ -338,11 +338,13 @@ printf .
 # ----------------------------------------------------------
 # USE LXX DATES FOR GENESIS 5 and 11 CHRONOLOGY
 
-# edit ages from masoretic to septuagint record
+# See: Henry B. Smith Jr., The case for the Septuagint's chronology in
+# Genesis 5 and Genesis 11, 2018.
 
-# the following site will be the basis for this genesis 5 & 11 chronology
-# revision, except cainan, son of arpachshad, will not be added.
+# edit ages from masoretic to septuagint record, in general, according
+# to Henry B. Smith Jr's proposal.
 
+# the following site has a similar method:
 # https://www.bible.ca/manuscripts/Bible-chronology-charts-age-of-earth-date-Genesis-5-11-Septuagint-text-LXX-original-autograph-corrupted-Masoretic-MT-primeval-5554BC.htm
 
 
@@ -411,7 +413,8 @@ sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred ye
 # https://archive.org/details/InterlinearGreekEnglishSeptuagintOldTestamentPrint/mode/1up
 
 # 167 is attributed to scribal error.
-# also, if it were 167, then methuselah survived 14 years after the flood.
+# also(?), if it were 167, then methuselah survived 14 years after the flood.
+# (or is this the sole reason they considered there to be a scribal error?)
 
 # no change
 # Methuselah lived one hundred eighty-seven years, then became the father of Lamech
@@ -421,8 +424,6 @@ sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred ye
 
 
 # genesis 5:28
-
-# 182 NEEDS VERIFICATION!
 
 # 182  mt
 # 188  lxx brenton 1851
@@ -440,31 +441,36 @@ sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred ye
 # no change
 # Lamech lived one hundred eighty-two years, then became the father of a son
 
-
-
-
-
+# henry smith's paper propses mt here, so no change
 # genesis 5:30
-sed -i 's/Lamech lived after he became the father of Noah five hundred ninety-five years/Lamech lived after he became the father of Noah five hundred sixty-five years/' genesis.htm
+# sed -i 's/Lamech lived after he became the father of Noah five hundred ninety-five years/Lamech lived after he became the father of Noah five hundred sixty-five years/' genesis.htm
 
 # genesis 5:31
-sed -i 's/All the days of Lamech were seven hundred seventy-seven years/All the days of Lamech were seven hundred fifty-three years/' genesis.htm
+# sed -i 's/All the days of Lamech were seven hundred seventy-seven years/All the days of Lamech were seven hundred fifty-three years/' genesis.htm
 
 printf .
 
 
 
 
+# restoring cainan
+
+# Genesis 10:24
+sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan\. Cainan became the father of Shelah/' genesis.htm
+
+
+
+
 # genesis 11:12
 
-# do not add cainan.
-
+# deprecated logic (henry smith's paper overrules):
 # according to the following answer, early lxx manuscripts don't have cainan, son of arpachshad. thus, perhaps cainan was added to conform to luke, which in turn may have been corrupted in order to have groups of 7 generations culminating in jesus being 77th from adam.
 # https://hermeneutics.stackexchange.com/questions/26768/are-there-any-manuscripts-that-confirm-genealogy-in-the-septuagints-genesis-5
-
 # also, the ages for cainan are not unique, which supports the above theory: cainan's ages are 130 and 330, identical to shelah's. it seems cainan was injected, and shelah's ages were copied.
+# (the ages are unique by henry smith's account)
 
-sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Shelah/' genesis.htm
+#sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Shelah/' genesis.htm
+sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Cainan/' genesis.htm
 
 
 
@@ -475,20 +481,31 @@ sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arp
 # masoretic/web uses "then he died", instead if "and he died" like in lxx.
 # but.. the list in chapter 11 never uses either phrase, so i will recreate based on that structure.
 
-#sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah, and became the father of more sons and daughters/Arpachshad lived four hundred thirty years after he became the father of Cainan, and became the father of more sons and daughters\. Cainan lived one hundred thirty years, and became the father of Shelah\. Cainan lived three hundred thirty years after he became the father of Shelah, and became the father of more sons and daughters/' genesis.htm
+# do add kainan/cainan son of arpachshad
+sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah, and became the father of more sons and daughters/Arpachshad lived four hundred thirty years after he became the father of Cainan, and became the father of more sons and daughters\. Cainan lived one hundred thirty years, and became the father of Shelah\. Cainan lived three hundred thirty years after he became the father of Shelah, and became the father of more sons and daughters/' genesis.htm
 
 # do not add cainan (do not recreate anything). easier, but not using this translation because it is easier.
+#sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah/Arpachshad lived four hundred thirty years after he became the father of Shelah/' genesis.htm
 
-sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah/Arpachshad lived four hundred thirty years after he became the father of Shelah/' genesis.htm
+
+# restore chronology in chronicles, adding cainan back in
+
+# 1 Chronicles 1:18
+sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan, and Cainan became the father of Shelah/' 1chronicles.htm
+
+# 1 Chronicles 1:24
+sed -i 's/Shem, Arpachshad, Shelah/Shem, Arpachshad, Cainan, Shelah/' 1chronicles.htm
+
+
 
 
 # genesis 11:14
 sed -i 's/Shelah lived thirty years, and became the father of Eber/Shelah lived one hundred thirty years, and became the father of Eber/' genesis.htm
 
 
-
+# do not change
 # genesis 11:15
-sed -i 's/Shelah lived four hundred three years after he became the father of Eber/Shelah lived three hundred thirty years after he became the father of Eber/' genesis.htm
+#sed -i 's/Shelah lived four hundred three years after he became the father of Eber/Shelah lived three hundred thirty years after he became the father of Eber/' genesis.htm
 
 
 
