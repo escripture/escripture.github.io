@@ -590,6 +590,8 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # ----------------------------------------------------------
 # marry vs take
 
+# TO DO: review all occurances and implement
+
 # marry is a modern word
 
 # Genesis 19:14
@@ -729,6 +731,7 @@ sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
 # restore many instances of baal meaning owner (i.e. not just a name)
 # restore man to owner when root is baal
 # searched hebModern bible in "and" bible for בעל, and here are matches:
+# TO DO: define exact process
 
 # owned by an owner
 # בעלב-בעל
@@ -867,6 +870,14 @@ sed -i 's/One who plots to do evil will be called a schemer/One who plots to do 
 
 # ---------------------------------
 # word בעלי is owners
+
+# this would be a natural progression of the work done to replace husband with
+# owner instead of man. but it's out of the scope of this project to keep
+# digging into every conjugation of ba'al and replacing it. so this section
+# will not be implemented, which may be inconsistent, but i believe it is still
+# helpful that i have done the work on this matter up to this point.
+
+
 # Joshua 24:11
 #sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.htm
 
@@ -880,7 +891,8 @@ sed -i 's/One who plots to do evil will be called a schemer/One who plots to do 
 
 
 # ----------------------------------------------------------
-# trinity
+# remove trinity bias
+# TO DO: review in hebrew
 
 # fix bad grammar and capitalization that attempts to prove trinity
 
@@ -937,7 +949,8 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 
 # ----------------------------------------------------------
-# virgin birth
+# isaiah 7:14 and matthew chapter 1
+# TO DO: formalize proof
 
 # it seems most likely that after text such as matthew was written,
 # the text was corrupted to create a virgin birth story, possibly by theodotian
@@ -988,12 +1001,14 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 
 # ----------------------------------------------------------
 # put away vs divorce
+# TO DO: study in hebrew matthew and greek
 
 # there is a difference.
 # the webp version seems accurate in matthew 5, not matthew 19.
 # the kjv seems to be more accurate than other popular translations.
 # the kjv seems accurate in mattew 19, but not all of matthew 5.
 # the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
+
 
 # Matthew 19:8
 sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
@@ -1116,7 +1131,7 @@ printf .
 
 
 # ----------------------------------------------------------
-# yhwh vowels: sheva cholem qamats
+# yehovah vowels: sheva cholem qamats
 
 # see book(s) by nehemia gordon
 
