@@ -1,5 +1,5 @@
 * {margin:0;padding:0}
-html,body {height:100%;font-size:1.2em;line-height:1.4em;color:black}
+html, body {line-height:1.4em}
 
 @font-face {
     font-family: 'caslon';
@@ -12,9 +12,6 @@ html,body	{font-family: 'caslon','Times','serif';}
 
 
 /* ---------- INDEX PAGE ---------- */
-
-/* title for index page */
-h1 {font-weight: normal;margin-top:2em}
 
 /* index uses li for the list of books */
 li {list-style:disc inside}
@@ -48,7 +45,7 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 /* TITLES */
 
 /* major title, and extra words like "the first book, commonly called" */
-h1,.mt,.mt2,.mt3 {font-weight:bold;font-size:1.2em;text-align:center;margin-top:1em;margin-bottom:1em}
+h1,.mt,.mt2,.mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:2em;margin-bottom:1em}
 .mt {font-size:1.4em}
 .mt2 {font-size:1.2em}
 
