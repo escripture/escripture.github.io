@@ -1,46 +1,6 @@
 
 
 
-
-genesis 5:28 chronology:
-
-MT: 187, 182
-yr   ba  rem total
-0    187 782 969  methuselah
-187  182 595 777  lamech
-369               noah
-969               flood 
-here, methuselah died the year of the flood
-
-LXX BRETONS: 167, 188
-yr   ba  rem total
-0    167 802 969  methuselah
-167  188 565 753  lamech
-355               noah
-955               flood 
-here, methuselah lives 14 yrs after flood
-
-VATICANUS: 187, 188
-yr   ba  rem total
-0    187 782 969  methuselah
-187  188          lamech
-375               noah
-975               flood 
-here, methuselah died 6 years before the flood
-
-BIBLE.CA (VATICANUS 187 + ? 182)
-yr   ba  rem total
-0    167 802 969  methuselah
-187  182 565 747  lamech
-369               noah
-969               flood 
-here, methuselah died the year of the flood
-
-
-
-
-
-
 # ----------------------------------------------------------
 # design goals
 
@@ -53,7 +13,7 @@ here, methuselah died the year of the flood
 # no starting all verses on a new line
 
 # UNDECIDED
-# original language in parallel or interlinear
+# source language in parallel or interlinear
 # no unnecessary preface, strictly business. postface instead of preface.
 
 # READERS VERSION (by far the main goal of this project)
@@ -75,31 +35,28 @@ here, methuselah died the year of the flood
 
 
 # ----------------------------------------------------------
+# preface/postface
 
 
-# Postface
+# Postface ideas
 # (include WEBP preface?)
 # The textual base of this version is the WEBP 2023-02-20
 # The WEBP is based on the ASV of 1901.
-# The ASV is based on the ... (kjv?)
+# The ASV is based on the KJV (of what exact issue?)
 
 # Only those NT books which are reliable in accordance with
-# qualifications from Torah are allowed. It has come to
-# light that Paul is a false apostle.
+# qualifications from Torah are presented.
+
+# Psalms and all ketuvim seem valuable, and books like James seem valuable. should they be presented, and if so, how?
+
+# should the prophets be in the same category as torah and messiah?
 
 # edit index.htm so it says "based on WEBP version"?
 #
 # i.e.:
 # index.htm should have (with whatever date appears):
 # <div class="fine">Jesus Words Bible is based on World
-# English Bible source files dated 9/28/2022<br/></div>
-
-
-
-
-
-
-
+# English Bible source files dated 2/20/2023<br/></div>
 
 
 
@@ -107,25 +64,17 @@ here, methuselah died the year of the flood
 
 
 # ----------------------------------------------------------
-
-
-# ----------------------------------------------------------
-
+# code
 
 
 
+# ----- not really an issue -----
+
+# daniel 4 double indent dropping back to no indent for a moment
 
 
+# ----- code only -----
+
+# extra spaces like after book title, i.e. "Psalms  "
 
 
-
------ not really an issue -----
-
-daniel 4 double indent dropping back to no indent for a moment
-
-
------ code only -----
-
-extra spaces like after "the psalms  "
-
-mixed " and ' in html

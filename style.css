@@ -2,12 +2,12 @@
 html, body {line-height:1.4em}
 
 @font-face {
-    font-family: 'caslon';
-    src: url('caslon.ttf') format('truetype');
+    font-family: "caslon";
+    src: url("caslon.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
-html,body	{font-family: 'caslon','Times','serif';}
+html,body	{font-family: "caslon","Times","serif";}
 
 
 
