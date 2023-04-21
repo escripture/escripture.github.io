@@ -263,29 +263,42 @@ printf .
 
 
 
+
+# ----------------------------------------------------------
+# change single-quotes in code to double-quotes
+
+# this cleans up the upstream code received from the WEBP
+# authors. this should not change any quotes in the bible
+# text itself because those quotes are special tilted
+# quotes.
+# (the sequence '"'"' functions as a single quote)
+sed -i 's/'"'"'/"/g' *.htm
+
+
+
 # ----------------------------------------------------------
 # remove longform titles
 
 # remove any preceding "The "
-sed -i "s/<div class='mt'>The /<div class='mt'>/" *.htm
+sed -i 's/<div class="mt">The /<div class="mt">/' *.htm
 
 # after removing "The ", replace "First Book of" with "1", and for 2
-sed -i "s/<div class='mt'>First Book of/<div class='mt'>1/" *.htm
-sed -i "s/<div class='mt'>Second Book of/<div class='mt'>2/" *.htm
+sed -i 's/<div class="mt">First Book of/<div class="mt">1/' *.htm
+sed -i 's/<div class="mt">Second Book of/<div class="mt">2/' *.htm
 
 # after removing "The ", remove "Letter from" (James, Jude)
-sed -i "s/<div class='mt'>Letter from/<div class='mt'>/" *.htm
+sed -i 's/<div class="mt">Letter from/<div class="mt">/' *.htm
 
 # since 2 peter is out, use "peter" instead of "1 peter"
-sed -i "s/Peter’s First Letter/Peter/" peter.htm
+sed -i 's/Peter’s First Letter/Peter/' peter.htm
 
 # john 1 2 3
-sed -i "s/<div class='mt'>John’s First Letter/<div class='mt'>1 John/" 1john.htm
-sed -i "s/<div class='mt'>John’s Second Letter/<div class='mt'>2 John/" 2john.htm
-sed -i "s/<div class='mt'>John’s Third Letter/<div class='mt'>3 John/" 3john.htm
+sed -i 's/<div class="mt">John’s First Letter/<div class="mt">1 John/' 1john.htm
+sed -i 's/<div class="mt">John’s Second Letter/<div class="mt">2 John/' 2john.htm
+sed -i 's/<div class="mt">John’s Third Letter/<div class="mt">3 John/' 3john.htm
 
 # revelation
-sed -i "s/<div class='mt'>Revelation to John/<div class='mt'>Revelation/" revelation.htm
+sed -i 's/<div class="mt">Revelation to John/<div class="mt">Revelation/' revelation.htm
 printf .
 
 # ----------------------------------------------------------
@@ -299,7 +312,7 @@ printf .
 
 # ----------------------------------------------------------
 # give each page an icon
-sed -i "s/<\/title>/<\/title><link rel='shortcut icon' type='image\/png' href='..\/book.png' \/>/" *.htm
+sed -i 's/<\/title>/<\/title><link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
 
 
 
