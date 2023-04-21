@@ -81,16 +81,20 @@ printf .
 # this is how the script developed.
 
 # perl is much simpler than sed for multiline searches
-# -i: in place
+# -i: in place (edit in place)
+# -p: Places a printing loop around your command so that it acts on each line of standard input. Used mostly so Perl can beat the pants off Awk in terms of power AND simplicity :-)
 # -0: set record separator to null character (instead of new line)
+# -e: Allows you to provide the program as an argument rather than in a file. You don't want to have to create a script file for every little Perl one-liner.
+# igs: case-insensitive global string-as-single-line
+
 
 # remove name
 perl -i -p0e 's/World English Bible //igs' *.htm
 perl -i -p0e 's/World English Bible//igs' *.htm
 printf .
 
-# remove meta tag (and new line)
-perl -i -p0e 's/<meta name=.*</head>/</head>/igs' *.htm
+# replace meta keywords tag
+perl -i -p0e 's/<meta name="keywords".*\/>/<meta name="keywords" content="Bible, Yehoshua Bible, Yeshua Bible, Jesus Bible, Set-Apart Bible, Scripture, Scriptures, Torah, Prophets, Gospel, Messiah, Messianic" \/>/' *.htm
 printf .
 
 # remove top nav (and new line)
@@ -312,7 +316,8 @@ printf .
 
 # ----------------------------------------------------------
 # give each page an icon
-sed -i 's/<\/title>/<\/title><link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
+sed -i 's/<\/title>/<\/title>\
+<link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
 
 
 
@@ -1251,6 +1256,10 @@ sed -i 's/Jesus/Yehoshua/g' *.htm
 sed -i 's/JESUS/YEHOSHUA/g' *.htm
 
 # no instances of "jesus" all-lowercase were found on last check
+
+# restore "Jesus Bible meta tag keyword"
+sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
+
 
 
 
