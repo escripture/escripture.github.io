@@ -297,6 +297,11 @@ printf .
 
 
 
+# ----------------------------------------------------------
+# give each page an icon
+sed -i "s/<\/title>/<\/title><link rel='shortcut icon' type='image\/png' href='..\/book.png' \/>/" *.htm
+
+
 
 
 # ----------------------------------------------------------
