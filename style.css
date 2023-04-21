@@ -13,6 +13,9 @@ html,body	{font-family: "caslon","Times","serif";}
 
 /* ---------- INDEX PAGE ---------- */
 
+h1 {font-weight:normal;text-align:center;margin-top:1em;margin-bottom:1.5em}
+
+
 /* index uses li for the list of books */
 li {list-style:disc inside}
 
@@ -45,7 +48,7 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 /* TITLES */
 
 /* major title, and extra words like "the first book, commonly called" */
-h1,.mt,.mt2,.mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:2em;margin-bottom:1em}
+h2,.mt,.mt2,.mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:2em;margin-bottom:1em}
 .mt {font-size:1.4em}
 .mt2 {font-size:1.2em}
 
@@ -143,10 +146,16 @@ html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
 /* DO NOT ADD VERSE MUMBERS */
 .verse,
 
+/* DO NOT ADD INDEX PAGE TITLE */
+/* it exists solely for best practices and search engine purposes */
+h1,
+
 /* DO NOT ADD NOTES */
 .mt2, .mt3, .ms, .notemark, .footnote, .mainindex {
   display: none !important;
   visibility: hidden !important;
 }
+
+
 
 
