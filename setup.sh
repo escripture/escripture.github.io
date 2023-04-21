@@ -71,8 +71,12 @@ printf .
 
 # ----------------------------------------------------------
 # change stylesheet link
-sed -i 's/gentiumplus.css/\.\.\/style.css/g' *.htm
+#sed -i 's/gentiumplus.css/\.\.\/style.css/g' *.htm
+
+sed -i 's/<link rel="stylesheet" href="gentiumplus\.css" type="text\/css" \/>/<link rel="stylesheet" type="text\/css" href="\.\.\/style\.css" \/>/' *.htm
+
 printf .
+
 
 # ----------------------------------------------------------
 # HTML BATCH CHANGES to remove clutter
@@ -89,8 +93,8 @@ printf .
 
 
 # remove name
-perl -i -p0e 's/World English Bible //igs' *.htm
-perl -i -p0e 's/World English Bible//igs' *.htm
+perl -i -p0e 's/World English Bible //ig' *.htm
+perl -i -p0e 's/World English Bible//ig' *.htm
 printf .
 
 # replace meta keywords tag
@@ -281,6 +285,12 @@ sed -i 's/'"'"'/"/g' *.htm
 
 
 # ----------------------------------------------------------
+# make utf-8 lowercase
+sed -i 's/charset="UTF-8"/charset="utf-8"/' *.htm
+
+
+
+# ----------------------------------------------------------
 # remove longform titles
 
 # remove any preceding "The "
@@ -305,6 +315,20 @@ sed -i 's/<div class="mt">John’s Third Letter/<div class="mt">3 John/' 3john.h
 sed -i 's/<div class="mt">Revelation to John/<div class="mt">Revelation/' revelation.htm
 printf .
 
+
+
+# ----------------------------------------------------------
+# cleanup whitespace
+
+# remove 2 spaces and linefeed from title,
+# and add 2 linefeeds to separate first chapter
+perl -i -p0e 's/  \n<\/div><div class="chapterlabel" id="V0"> 1</<\/div>\n\n<div class="chapterlabel" id="V0"> 1</' *.htm
+
+# remove extra space and linefeed from between chapters
+perl -i -p0e 's/<\/div>\n\n \n<div class="chapterlabel"/<\/div>\n\n<div class="chapterlabel"/g' *.htm
+
+
+
 # ----------------------------------------------------------
 # prepare psalms for formatting
 
@@ -316,7 +340,7 @@ printf .
 
 # ----------------------------------------------------------
 # give each page an icon
-sed -i 's/<\/title>/<\/title>\
+sed -i 's/css" \/>/css" \/>\
 <link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
 
 
@@ -1010,7 +1034,7 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 
 
 # remove matthew 1 completely, as it seems to be an addition to the original
-sed -i 's/<div class='"'"'chapterlabel'"'"' id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
+sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
 
 # starting with "Now" is awkward. prefer translation that starts with "When",
 # as in the CEV, Geneva Bible of 1587, etc.
