@@ -322,10 +322,11 @@ printf .
 
 # remove 2 spaces and linefeed from title,
 # and add 2 linefeeds to separate first chapter
-perl -i -p0e 's/  \n<\/div><div class="chapterlabel" id="V0"> 1</<\/div>\n\n<div class="chapterlabel" id="V0"> 1</' *.htm
+perl -i -p0e 's/  \n<\/div><div class/<\/div>\n\n<div class/' *.htm
 
 # remove extra space and linefeed from between chapters
-perl -i -p0e 's/<\/div>\n\n \n<div class="chapterlabel"/<\/div>\n\n<div class="chapterlabel"/g' *.htm
+perl -i -p0e 's/ \n\n \n/\n\n/g' *.htm
+perl -i -p0e 's/\n\n \n/\n\n/g' *.htm
 
 
 
