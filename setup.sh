@@ -1277,10 +1277,15 @@ printf .
 # acceptable form, not intoduce un-vetted ideas)
 
 # edit "jesus" to "yehoshua"
+# no instances of "jesus" all-lowercase were found on last check
 sed -i 's/Jesus/Yehoshua/g' *.htm
 sed -i 's/JESUS/YEHOSHUA/g' *.htm
 
-# no instances of "jesus" all-lowercase were found on last check
+# fix apostrophe issue. 12 occurances.
+sed -i 's/Yehoshua’ /Yehoshua’s /g' *.htm
+
+
+
 
 # restore "Jesus Bible meta tag keyword"
 sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
