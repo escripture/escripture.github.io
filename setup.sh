@@ -978,10 +978,9 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
 
 
+# this revision of the translation of john 1:1 is based on the scripture of the greek (nestle-aland 27) with the knowledge of the difference between having a definite article (the "τον" in "και ο λογος ην προς τον θεον") and having an absense of a definite article ("θεος" is not preceded by a definite article such as "ο" or "τον" in "και θεος ην ο λογος").
 # john 1:1
-
 sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word/' john.htm
-
 
 
 # "I was" also supported by Lamsa Bible and Anderson New Testament
