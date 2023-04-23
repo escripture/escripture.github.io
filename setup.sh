@@ -978,6 +978,12 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
 
 
+# john 1:1
+
+sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word/' john.htm
+
+
+
 # "I was" also supported by Lamsa Bible and Anderson New Testament
 # https://www.biblehub.com/parallel/john/8-58.htm
 # john 8:58
