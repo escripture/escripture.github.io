@@ -59,6 +59,8 @@ printf .
 rm ROM*.htm 1CO*.htm 2CO*.htm GAL*.htm EPH*.htm PHP*.htm COL*.htm 1TH*.htm 2TH*.htm 1TI*.htm 2TI*.htm TIT*.htm PHM*.htm HEB*.htm ACT*.htm
 
 # remove text associated with acts
+# aren't luke and acts one work, not two? perhaps a "two volume work"
+# both are to theophilus
 rm LUK*.htm
 
 # remove text associated with luke
@@ -953,15 +955,27 @@ sed -i 's/I AM/I will be/' exodus.htm
 
 
 
+
 # restore matt 3:17 which apparently originally said "today i have begotten thee", which was removed because it disproves the trinity doctrine.
 # see jesus' words only videos and/or site for supporting references,
-# eslecially https://www.youtube.com/watch?v=cfRzYqpXchM
-# psalms 2:7
+# especially https://www.youtube.com/watch?v=cfRzYqpXchM
+# also note: psalms 2:7 (WEB version)
 # I will tell of the decree: Yahweh said to me, “You are my son. Today I have become your father.
+# if yehovah said "today i have begotten thee" about yehoshua during his baptism, then that seems to contradict yehovah begetting yehoshua at yehoshua's birth.
+# also see isaiah 11:1-5 and 42:1-4 for context
 
-# work toward restoring. use "his" not "you" to match sentence
+# see "Gospel Parallels" edited by Burton H. Throckmorton, Jr., 2nd edition, 1949, 1957, page 11.
+#   "Thou art my son; today I have begotten thee"
+# Attested to in manuscripts:
+# Codex Bezae Cantabrigiensis (6th cent., perhaps 5th), Itala (the Old Latin version, as reconstructed by Adolf Jülicher), Justin, Clement, Origen, Augustine, Gospel of the Ebionites.
+# This reading is only footnoted for Luke 3:22. Shouldn't it also apply to Matthew?
+# At least the Gospel of the Ebionites has this reading in Matthew, according to "Gospel Parallels"
+
+# work toward restoring. use "his" not "you" (or thee) to match sentence
 # matthew 3:17
 sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.htm
+
+
 
 
 # restore "the father" to matthew 19:17
@@ -979,8 +993,9 @@ sed -i 's/No one is good but one, that is, God/No one is good but one, God the F
 
 
 # this revision of the translation of john 1:1 is based on the scripture of the greek (nestle-aland 27) with the knowledge of the difference between having a definite article (the "τον" in "και ο λογος ην προς τον θεον") and having an absense of a definite article ("θεος" is not preceded by a definite article such as "ο" or "τον" in "και θεος ην ο λογος").
+# the restorative phrasing for the 3rd clause matches the NWT 1984
 # john 1:1
-sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word/' john.htm
+sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and the Word was a god/' john.htm
 
 
 # "I was" also supported by Lamsa Bible and Anderson New Testament
@@ -1020,7 +1035,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 # 2 samuel 7:12-14
 # When your days are fulfilled and you sleep with your fathers, I will set up your offspring after you, who will proceed out of your body, and I will establish his kingdom.  He will build a house for my name, and I will establish the throne of his kingdom forever.  I will be his father, and he will be my son. If he commits iniquity, I will chasten him with the rod of men and with the stripes of the children of men;
-# note that it says bith 'out of your body' (i.e., not by holy spirit), and 'i will be his father' (at the baptism this is fulfilled, see psalm 2:7 and matthew 3:17 as it is restored)
+# note that it says birth 'out of your body' (i.e., not by holy spirit), and 'i will be his father' (at the baptism this is fulfilled, see psalm 2:7 and matthew 3:17 as it is restored)
 
 # jeremiah 22:30
 # Yahweh says, “Record this man as childless, a man who will not prosper in his days; for no more will a man of his offspring prosper, sitting on David’s throne and ruling in Judah.”
@@ -1038,15 +1053,32 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 
 
 
+# Matthew chapter 1 may be an addition to the original.
+# the "Gospel of the Ebionites" as quoted by Epiphanius, late 2nd century A.D.
+# see https://www.earlychristianwritings.com/text/gospelebionites-panarion.html
+# "And the beginning of their Gospel runs:
+# It came to pass in the days of Herod the king of Judaea"
+# this text, however, seems to have the glaring problem of quoting christ as
+# also saying "I am come to do away with sacrifices", which seems to me to
+# be incompatible with a true gospel from christ. still, there do seem to be
+# problems with the geneology: jechoniah is named, which seems incompatible
+# with prophecy, and the geneology disagrees with luke, and there may be an
+# internal issue of counting 14, 14, and 14 generations. currently, i am
+# removing matthew 1 out of an abundance, perhaps overabundance, of caution.
+# also noteworthy is that this text seems to get matthew 3:17 right, especially
+# because it seems corroborated by psalm 2:7.
 
-# remove matthew 1 completely, as it seems to be an addition to the original
+# remove matthew 1 completely
 sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
+
+
 
 # starting with "Now" is awkward. prefer translation that starts with "When",
 # as in the CEV, Geneva Bible of 1587, etc.
 # remove word "Now"
 sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Herod/When Jesus was born in Bethlehem of Judea in the days of King Herod/' matthew.htm
 
+# see also the matthew 3:17 restoration in the "trinity" section
 
 
 
@@ -1095,8 +1127,11 @@ sed -i 's/You shall not make false vows, but shall perform/You shall not make fa
 # Matthew 5:34
 sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you, don’t swear falsely at all: neither by heaven/' matthew.htm
 
-
-
+# i currently do not have manuscript support for this edit except that it
+# should match what yehoshua was actually saying, and should be
+# compatible with torah. NEEDS MORE RESEARCH!
+# james
+sed -i 's/But above all things, my brothers, don’t swear/But above all things, my brothers, don’t swear falsely/' james.htm
 
 
 
@@ -1112,7 +1147,6 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 # and don’t do.
 # - WEBP
 #
-# Matthew 23:3
 # Therefore all that he says to you, diligently do, but
 # according to their reforms and their precedents do not do,
 # because they talk, but they do not do.
@@ -1122,6 +1156,7 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 # Perhaps instead of "Therefore", "Now" or "And now".
 # but just do the minimal change necessary
 #
+# Matthew 23:3
 sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.htm
 
 
