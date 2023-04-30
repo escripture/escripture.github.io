@@ -1103,37 +1103,6 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 
 
 
-# ----------------------------------------------------------
-# lord's prayer
-# see: ESV, Berean Literal Bible, Douay-Rheims, etc.
-
-# mat 6:13
-sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever/deliver us from evil/' matthew.htm
-
-
-
-
-
-# ----------------------------------------------------------
-# put away vs divorce
-# TO DO: study in hebrew matthew and greek
-
-# there is a difference.
-# the webp version seems accurate in matthew 5, not matthew 19.
-# the kjv seems to be more accurate than other popular translations.
-# the kjv seems accurate in mattew 19, but not all of matthew 5.
-# the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
-
-
-# Matthew 19:8
-sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
-
-# Matthew 19:9
-sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.htm
-
-
-
-
 
 # ----------------------------------------------------------
 # do not swear falsely
@@ -1169,6 +1138,39 @@ sed -i 's/But above all things, my brothers, don’t swear/But above all things,
 
 
 # ----------------------------------------------------------
+# lord's prayer
+# see: ESV, Berean Literal Bible, Douay-Rheims, etc.
+
+# mat 6:13
+sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever/deliver us from evil/' matthew.htm
+
+
+
+
+
+# ----------------------------------------------------------
+# put away vs divorce
+# TO DO: study in hebrew matthew and greek
+
+# there is a difference.
+# the webp version seems accurate in matthew 5, not matthew 19.
+# the kjv seems to be more accurate than other popular translations.
+# the kjv seems accurate in mattew 19, but not all of matthew 5.
+# the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
+
+
+# Matthew 19:8
+sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
+
+# Matthew 19:9
+sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.htm
+
+
+
+
+
+
+# ----------------------------------------------------------
 # seat of moses
 
 # Matthew 23:3
@@ -1189,6 +1191,17 @@ sed -i 's/But above all things, my brothers, don’t swear/But above all things,
 # Matthew 23:3
 sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.htm
 
+
+
+# ----------------------------------------------------------
+# power matthew 26:64
+
+# https://hermeneutics.stackexchange.com/questions/49460/is-it-power-or-the-power-in-matthew-2664
+# της δυνάμεως—“the power,” is a circumlocution for the Tetragrammaton. It is not referring to merely abstract power, but using the epithet της δυνάμεως as a synecdoche
+
+# edit to WEB custom name, which will be modified in BULK below
+# matthew 26:64
+sed -i 's/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Power, and coming on the clouds of the sky/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Yahweh, and coming on the clouds of the sky/' matthew.htm
 
 
 
