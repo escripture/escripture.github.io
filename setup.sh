@@ -1000,8 +1000,20 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
 
 
+# see: Shem Tov
+# for additional witness of lack of the trinitarian style formula, see also: Eusebius of Caesarea, Historia ecclesiastica, 3.5.2.
+#   Kirsopp Lake, J.E.L. Oulton, H.J. Lawlor, Ed.
+#   available online at tufts.edu
+# matthew 28:19
+sed -i 's/and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,//' matthew.htm
+
+# see: Shem Tov
+# matthew 28:20
+sed -i 's/teaching them to observe all things that I commanded you\. Behold, I am with you always, even to the end of the age\.”<\/span> Amen\./and teach them to carry out all the things which I have commanded you forever\.”<\/span>/' matthew.htm
+
+
 # this revision of the translation of john 1:1 is based on the scripture of the greek (nestle-aland 27) with the knowledge of the difference between having a definite article (the "τον" in "και ο λογος ην προς τον θεον") and having an absense of a definite article ("θεος" is not preceded by a definite article such as "ο" or "τον" in "και θεος ην ο λογος").
-# the restorative phrasing for the 3rd clause matches the NWT 1984
+# the restorative phrasing for the 3rd clause matches the New World Translation 1984
 # john 1:1
 sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and the Word was a god/' john.htm
 
@@ -1026,7 +1038,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 # ----------------------------------------------------------
 # isaiah 7:14 and matthew chapter 1
-# TO DO: formalize proof
+# TO DO: cite manuscript witnesses
 
 # it seems most likely that after text such as matthew was written,
 # the text was corrupted to create a virgin birth story, possibly by theodotian
@@ -1087,6 +1099,16 @@ sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to he
 sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Herod/When Jesus was born in Bethlehem of Judea in the days of King Herod/' matthew.htm
 
 # see also the matthew 3:17 restoration in the "trinity" section
+
+
+
+
+# ----------------------------------------------------------
+# lord's prayer
+# see: ESV, Berean Literal Bible, Douay-Rheims, etc.
+
+# mat 6:13
+sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever\. Amen/deliver us from evil/' matthew.htm
 
 
 
