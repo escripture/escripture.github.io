@@ -1108,7 +1108,7 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 # see: ESV, Berean Literal Bible, Douay-Rheims, etc.
 
 # mat 6:13
-sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever\. Amen/deliver us from evil/' matthew.htm
+sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever/deliver us from evil/' matthew.htm
 
 
 
