@@ -383,6 +383,14 @@ sed -i 's/css" \/>/css" \/>\
 
 
 
+# WEB correction update
+# misplaced quotation mark in matthew 19:5
+# the question mark is inside the inner quote, but i think it should be outside the inner quote in this case, because the inner quotation itself is not a question, but rather the question is the messiah's.
+# i expect this issue to be resolved in the WEB distribution soon, but until then, this will fix it. after it's fixed, this code should be harmless.
+
+# matthew 19:5
+sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+
 
 
 # ----------------------------------------------------------
