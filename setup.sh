@@ -7,6 +7,7 @@
 #   FILES:
 #     engwebp_html.zip (scripture source file)
 #       source: https://ebible.org/Scriptures/engwebp_html.zip
+#       changelog: https://ebible.org/Scriptures/changelog.txt
 #       (known to work with the 2023-02-20 version)
 #     setup.sh (this file)
 #     style.css (or any style.css you choose)
@@ -15,6 +16,7 @@
 
 #  ENVIRONMENT:
 #    a linux bash shell (i.e. GNU bash 5.2.2, perl v5.36.0, sed 4.8)
+#    "tidy": HTML Tidy for Linux version 5.9.14
 #    an http server or way to view html files
 
 # INSTRUCTIONS
@@ -390,6 +392,8 @@ sed -i 's/css" \/>/css" \/>\
 
 # matthew 19:5
 sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+
+
 
 
 
@@ -1130,7 +1134,7 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 # should match what yehoshua was actually saying, and should be
 # compatible with torah. NEEDS MORE RESEARCH!
 # james
-sed -i 's/But above all things, my brothers, don’t swear/But above all things, my brothers, don’t swear falsely/' james.htm
+#sed -i 's/But above all things, my brothers, don’t swear/But above all things, my brothers, don’t swear falsely/' james.htm
 
 
 
@@ -1197,7 +1201,11 @@ sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' m
 # power matthew 26:64
 
 # https://hermeneutics.stackexchange.com/questions/49460/is-it-power-or-the-power-in-matthew-2664
-# της δυνάμεως—“the power,” is a circumlocution for the Tetragrammaton. It is not referring to merely abstract power, but using the epithet της δυνάμεως as a synecdoche
+# 'της δυνάμεως—“the power,” is a circumlocution for the Tetragrammaton. It is not referring to merely abstract power, but using the epithet της δυνάμεως as a synecdoche'
+
+# deltondo claims there are many instances of tetragram in meunster version, hebrew matthew...
+# for understanding, also see lev. 24 in lxx vs MT, "blasphemy".. speaking the name
+
 
 # edit to WEB custom name, which will be modified in BULK below
 # matthew 26:64
@@ -1367,15 +1375,6 @@ sed -i 's/JESUS/YEHOSHUA/g' *.htm
 # fix apostrophe issue. 12 occurances.
 sed -i 's/Yehoshua’ /Yehoshua’s /g' *.htm
 
-
-
-
-# restore "Jesus Bible meta tag keyword"
-sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
-
-
-
-
 # do not edit "christ" to "messiah"
 
 # editing "christ" to "messiah" would create a confusing translation.
@@ -1383,6 +1382,10 @@ sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
 
 
 
+# restore "Jesus Bible meta tag keyword"
+sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
+
+printf .
 
 
 
@@ -1404,8 +1407,33 @@ while read; do mv "${REPLY}".htm "${REPLY}".html; done < books2.txt
 
 # cleanup
 rm books2.txt
+printf .
 
 
+# ----------------------------------------------------------
+# format html
+
+# 1. it fixes the end of the viewport tag from "/> to " />
+# 2. it removes the unwanted spaces at the beginning of verses, which were causing line break problems between verse numbers and the beginning of the verse
+# 3. it removes extra spaces at the end of verses or lines
+# 4. it makes the code more usable for grep searches
+# 5. it limits the diff when making changes because diff is based on lines, and now lines are much shorter. generally 1 verse per line, more for footnotes.
+# 6. it makes the files easier to open and scroll in editors.
+
+# 7. IT REMOVES NECESSARY SPACES, RUINING THE RENDERED PAGE. DISABLE!
+
+# beautify.. xml indentation, indent, no wordwrap, quiet, modify
+#for f in *.html; do
+#tidy -xml -i -w -q -m $f
+#printf .
+#done
+
+
+# the space should be after span, like this: lifted up’?</span> Who is this
+# so, using tidy will not work
+#   (unless there's an option to disable changing whitespace)
+# only spaces after span that also are after a nbsp can be safely eliminated,
+#   right? maybe not...
 
 
 
