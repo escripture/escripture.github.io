@@ -138,10 +138,12 @@ html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
 
 
 
-/* DO NOT ADD KETUVIM (PSALMS, PROVERBS, ETC.) */
-/*.ketuvim,*
+/* DO NOT ADD ADDITIONAL KETUVIM (BEYOND PSALMS)
+*/
+.ketuvim2,
 
-/* DO NOT ADD APOSTLES' LETTERS */
+/* DO NOT ADD APOSTLES' LETTERS
+*/
 .letters,
 
 /* DO NOT ADD CHAPTER NUMBERS */

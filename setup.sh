@@ -400,6 +400,16 @@ sed -i 's/’<\/span>”/’<\/span>\&#160;”/' john.htm
 
 
 
+# !!! WARNING !!! --- this edit is not ideal for when showing verse numbers
+
+# em dash, without verse number, has space, but shouldn't
+# this is a stopgap measure, fixing poor html generation.
+# ideally, the html generation should be cleaned up.
+# dan 9:20-21
+sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span class="verse" id="V21">21\&#160;<\/span>yes/' daniel.htm
+
+
+
 # ----------------------------------------------------------
 # USE LXX DATES FOR GENESIS 5 and 11 CHRONOLOGY
 
@@ -526,7 +536,6 @@ sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of
 
 
 
-# genesis 11:12
 
 # deprecated logic (henry smith's paper overrules):
 # according to the following answer, early lxx manuscripts don't have cainan, son of arpachshad. thus, perhaps cainan was added to conform to luke, which in turn may have been corrupted in order to have groups of 7 generations culminating in jesus being 77th from adam.
@@ -535,18 +544,19 @@ sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of
 # (the ages are unique by henry smith's account)
 
 #sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Shelah/' genesis.htm
+# genesis 11:12
 sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Cainan/' genesis.htm
 
 
 
 
-# genesis 11:13
 
 # VERY DIFFICULT: writing in WEB (masoretic) style, recreating this verse from lxx
 # masoretic/web uses "then he died", instead if "and he died" like in lxx.
 # but.. the list in chapter 11 never uses either phrase, so i will recreate based on that structure.
 
 # do add kainan/cainan son of arpachshad
+# genesis 11:13
 sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah, and became the father of more sons and daughters/Arpachshad lived four hundred thirty years after he became the father of Cainan, and became the father of more sons and daughters\. Cainan lived one hundred thirty years, and became the father of Shelah\. Cainan lived three hundred thirty years after he became the father of Shelah, and became the father of more sons and daughters/' genesis.htm
 
 # do not add cainan (do not recreate anything). easier, but not using this translation because it is easier.
@@ -579,12 +589,12 @@ sed -i 's/Eber lived thirty-four years, and became the father of Peleg/Eber live
 
 
 
-# genesis 11:17
 # masoretic says 430.
 # lxx2012 says 270.
 # bible.ca (see above) site says 370.
 # lxx pdf from archive.org says 370. (archive.org ark 13960 t83j67m4m)
 
+# genesis 11:17
 sed -i 's/Eber lived four hundred thirty years after he became the father of Peleg/Eber lived three hundred seventy years after he became the father of Peleg/' genesis.htm
 
 
@@ -604,23 +614,23 @@ sed -i 's/Serug lived thirty years, and became the father of Nahor/Serug lived o
 
 
 
-# genesis 11:24
 # masoretic: 29
 # lxx2012: 179
 # site bible.ca: 79
 # lxx pdf from archive.org (ark 13960 t83j67m4m): 79
 
+# genesis 11:24
 sed -i 's/Nahor lived twenty-nine years, and became the father of Terah/Nahor lived seventy-nine years, and became the father of Terah/' genesis.htm
 
 
 
-# genesis 11:25
 # masoretic 119
 # lxx2012 125
 # site 129
 # lxx archive 129
 # nets 129
 
+# genesis 11:25
 sed -i 's/Nahor lived one hundred nineteen years after he became the father of Terah/Nahor lived one hundred twenty-nine years after he became the father of Terah/' genesis.htm
 
 
@@ -710,32 +720,35 @@ sed -i 's/all the wives will give their husbands honor/all the wives will give t
 # HUSBAND SINGULAR
 # (one occurrance per verse unless noted)
 
-# "man"
+# "man" 8x
 # gen 3:6 3:16 16:3 29:32 29:34 30:15 30:18 30:20
 
 # "brother-in-law"
 # gen 38:8
 sed -i 's/husband’s brother/brother-in-law/' genesis.htm
 
+# "owner"
 # Exodus 21:22
 sed -i 's/he shall be surely fined as much as the woman’s husband demands and the judges allow/he shall be surely fined as much as the woman’s owner demands and the judges allow/' exodus.htm
 
-# "man"
+# "man" x17
 # lev 21:3 21:7
 # num 5:13 5:19 5:20 5:27 5:29 30:6 30:7 30:8 30:10 30:11 30:12x2 30:13x2 30:14
 
+# "owner"
 # Deuteronomy 21:13
 sed -i 's/After that you shall go in to her and be her husband, and she shall be your/After that you shall go in to her and be her owner, and she shall be your/' deuteronomy.htm
 
-# owned by an owner
+# "married to a husband" -> "owned by an owner"
 # בעלב-בעל
 # baal-baal
 # Deuteronomy 22:22
 sed -i 's/If a man is found lying with a woman married to a husband, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/If a man is found lying with a woman owned by an owner, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/' deuteronomy.htm
 
-# "man"
+# "man" x3
 # deu 22:23 24:3x2
 
+# owner
 # Deuteronomy 24:4
 sed -i 's/her former husband, who sent her away, may not take her again to be his wife after she is defiled/her former owner, who sent her away, may not take her again to be his wife after she is defiled/' deuteronomy.htm
 
@@ -743,7 +756,8 @@ sed -i 's/her former husband, who sent her away, may not take her again to be hi
 # deu 25:5x2 25:7x2
 sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.htm
 
-# "man" from איש and in proverbs 6:34 גבר
+# "man" 34x
+#from איש and in proverbs 6:34 גבר
 # deu 25:11 28:56
 # jud 13:6 13:9 13:10 14:15 19:3 20:4
 # rut 1:3 1:5 1:9 1:12x2 2:1 2:11
@@ -752,39 +766,47 @@ sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.htm
 # 2ki 4:1 4:9 4:14 4:22 4:26
 # pro 6:34 7:19
 
+# owner
 # Proverbs 12:4
 sed -i 's/A worthy woman is the crown of her husband/A worthy woman is the crown of her owner/' proverbs.htm
 
+# owner
 # Proverbs 31:11
 sed -i 's/The heart of her husband trusts in her/The heart of her owner trusts in her/' proverbs.htm
 
+# owner
 # Proverbs 31:23
 sed -i 's/Her husband is respected in the gates/Her owner is respected in the gates/' proverbs.htm
 
+# owner
 # Proverbs 31:28
 sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.htm
 
+# owner
 # Isaiah 54:5
 sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.htm
 
+# a husband -> an owner
 # Jeremiah 3:14
 sed -i 's/Return, backsliding children,” says Yahweh, “for I am a husband to you/Return, backsliding children,” says Yahweh, “for I am an owner to you/' jeremiah.htm
 
 # friend not owner
-# (wife in this verse should be be woman)
+# (wife in this verse should be woman)
 # Jeremiah 3:20
 sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.htm
 
-# "man"
+# "man" 1x
 # jer 6:11
 
+# owner
 # Jeremiah 31:32
 sed -i 's/although I was a husband to them/although I was an owner to them/' jeremiah.htm
 
-# "man"
+# "man"6x
 # eze 16:32 16:45 44:25
 # hos 2:2 2:7 2:16
 
+# owner
 # Joel 1:8
 sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
 
@@ -798,7 +820,7 @@ sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
 # searched hebModern bible in "and" bible for בעל, and here are matches:
 # TO DO: define exact process
 
-# owned by an owner
+# "a man's wife" -> "owned by an owner"
 # בעלב-בעל
 # baal-baal
 # Genesis 20:3
@@ -808,12 +830,14 @@ sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; 
 # baal
 # gen 36:38 36:39
 
+# "dreamer" -> "owner of dreams"
 # Genesis 37:19
 sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.htm
 
 # baal
 # exo 14:2 14:9
 
+# "married" -> "the owner of a woman"
 # Exodus 21:3
 sed -i 's/If he comes in by himself, he shall go out by himself\. If he is married, then his wife shall go out with him/If he comes in by himself, he shall go out by himself\. If he is the owner of a woman, then his wife shall go out with him/' exodus.htm
 
@@ -824,9 +848,11 @@ sed -i 's/If he comes in by himself, he shall go out by himself\. If he is marri
 # Exodus 21:34
 #sed -i 's/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/' exodus.htm
 
+# "master" -> "owner"
 # Exodus 22:8
 sed -i 's/then the master of the house shall come near to God/then the owner of the house shall come near to God/' exodus.htm
 
+# "involved in a dispute" -> "an owner of words"
 # mechanical translation says:
 #   'The phrase “master of words” apparently means “one with a dispute.”'
 #   but there is no explanation why, and no further reference
@@ -834,6 +860,7 @@ sed -i 's/then the master of the house shall come near to God/then the owner of 
 # Exodus 24:14
 sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.htm
 
+# "a chief man" -> "an owner"
 # Leviticus 21:4
 sed -i 's/He shall not defile himself, being a chief man among his people, to profane himself/He shall not defile himself, being an owner among his people, to profane himself/' leviticus.htm
 
@@ -841,6 +868,7 @@ sed -i 's/He shall not defile himself, being a chief man among his people, to pr
 # num 22:41 32:38 33:7
 # deu 4:3
 
+# "creditor" -> "owner of a loan"
 # Deuteronomy 15:2
 sed -i s'/This is the way it shall be done: every creditor shall release that which he has lent to his neighbor/This is the way it shall be done: every owner of a loan shall release that which he has lent to his neighbor/' deuteronomy.htm
 
@@ -854,15 +882,18 @@ sed -i s'/This is the way it shall be done: every creditor shall release that wh
 # jos 11:17 13:17 15:60 18:14
 # jud 3:3 8:33 9:4
 
+# "master" -> "owner"
 # Judges 19:22
 sed -i 's/and they spoke to the master of the house, the old man/and they spoke to the owner of the house, the old man/' judges.htm
 
+# "master" -> "owner"
 # Judges 19:23
 sed -i 's/The man, the master of the house, went out to them, and said to them/The man, the owner of the house, went out to them, and said to them/' judges.htm
 
 # baal
 # 2sa 5:20
 
+# "hairy man" -> "man, an owner of hair"
 # Smith's Literal Translation
 #   And they will say to him, A man possessing hair
 # 2 Kings 1:8
@@ -872,19 +903,23 @@ sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt a
 # 1ch 1:49 1:50 4:33 5:5 5:23 8:34 9:40 14:11 27:28
 # 2ch 26:7
 
+# "chancellor" -> "owner of taste"
 # ezra 4:8 4:9 and 4:17
 sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.htm
 
-# bird (owner of wings)
+# "bird" -> "owner of wings"
 # Proverbs 1:17
 sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.htm
 
+# "man" -> "owner"
 # Proverbs 22:24
 sed -i 's/Don’t befriend a hot-tempered man/Don’t befriend a hot-tempered owner/' proverbs.htm
 
+# "a man" -> "an owner"
 # Proverbs 23:2
 sed -i 's/put a knife to your throat if you are a man given to appetite/put a knife to your throat if you are an owner given to appetite/' proverbs.htm
 
+# "schemer" -> "owner of wicked thoughts"
 # Proverbs 24:8
 sed -i 's/One who plots to do evil will be called a schemer/One who plots to do evil will be called an owner of wicked thoughts/' proverbs.htm
 
@@ -986,6 +1021,7 @@ sed -i 's/I AM/I will be/' exodus.htm
 # This reading is only footnoted for Luke 3:22. Shouldn't it also apply to Matthew?
 # At least the Gospel of the Ebionites has this reading in Matthew, according to "Gospel Parallels"
 
+#  + " Today I have become his father."
 # work toward restoring. use "his" not "you" (or thee) to match sentence
 # matthew 3:17
 sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.htm
@@ -1003,6 +1039,7 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 
 # also note that the words "that is" were inserted by translators, and do not reflect the greek.
 
+# "that is, God" -> "God the Father"
 # matthew 19:17
 sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
 
@@ -1019,12 +1056,14 @@ sed -i 's/and make disciples of all nations, baptizing them in the name of the F
 sed -i 's/teaching them to observe all things that I commanded you\. Behold, I am with you always, even to the end of the age\.”<\/span> Amen\./and teach them to carry out all the things which I have commanded you forever\.”<\/span>/' matthew.htm
 
 
+# "God" -> "a god"
 # this revision of the translation of john 1:1 is based on the scripture of the greek (nestle-aland 27) with the knowledge of the difference between having a definite article (the "τον" in "και ο λογος ην προς τον θεον") and having an absense of a definite article ("θεος" is not preceded by a definite article such as "ο" or "τον" in "και θεος ην ο λογος").
 # the restorative phrasing for the 3rd clause matches the New World Translation 1984
 # john 1:1
 sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and the Word was a god/' john.htm
 
 
+# "I AM" -> "I was"
 # "I was" also supported by Lamsa Bible and Anderson New Testament
 # https://www.biblehub.com/parallel/john/8-58.htm
 # john 8:58
@@ -1044,7 +1083,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 
 # ----------------------------------------------------------
-# isaiah 7:14 and matthew chapter 1
+# messiah's birth
 # TO DO: cite manuscript witnesses
 
 # it seems most likely that after text such as matthew was written,
@@ -1075,6 +1114,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 # also supported in translations: GNT, JPS, NAB, NET, NRSV
 # and ISR reads: maiden
 
+# "virgin" -> "young woman"
 # isaiah 7:14
 sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his name Immanuel/Behold, the young woman will conceive, and bear a son, and shall call his name Immanuel/' isaiah.htm
 
@@ -1148,6 +1188,7 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 # lord's prayer
 # see: ESV, Berean Literal Bible, Douay-Rheims, etc.
 
+# "the evil one. For yours is the Kingdom, the power, and the glory forever" -> "evil"
 # mat 6:13
 sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever/deliver us from evil/' matthew.htm
 
@@ -1165,10 +1206,12 @@ sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span cla
 # the kjv seems accurate in mattew 19, but not all of matthew 5.
 # the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
 
-
+# "divorce" -> "put away"
 # Matthew 19:8
 sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
 
+# "divorces" -> "puts away"
+# "divorced" -> "put away"
 # Matthew 19:9
 sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.htm
 
@@ -1194,7 +1237,8 @@ sed -i 's/I tell you that whoever divorces his wife, except for sexual immoralit
 #
 # Perhaps instead of "Therefore", "Now" or "And now".
 # but just do the minimal change necessary
-#
+
+# "they" -> "he"
 # Matthew 23:3
 sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.htm
 
@@ -1211,6 +1255,7 @@ sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' m
 
 
 # edit to WEB custom name, which will be modified in BULK below
+# "Power" -> "Yahweh"
 # matthew 26:64
 sed -i 's/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Power, and coming on the clouds of the sky/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Yahweh, and coming on the clouds of the sky/' matthew.htm
 
@@ -1237,7 +1282,7 @@ printf .
 
 
 # ----------------------------------------------------------
-# yehovah's title
+# word for deity
 
 # in nt edit "god" to "theos" or "theon" or "theou"?
 # it would require extra work to use each type,
@@ -1253,21 +1298,51 @@ printf .
 # since there seems to be no equivalent english word for translation, then
 # transliterate from hebrew: "elohim"
 
-# 19 instances
+
+# special case in 1kings chapter 11:
+# perhaps elohimess? i don't want to start making up new words.
+# upon review of biblehub's versions, 4 have just "god", so i'll use that.
+# See Smith's Literal Translation, Geneva Bible of 1587,
+#   Bishops' Bible of 1568, and Coverdale Bible of 1535
+# more info:
+# the word is אלהי, and is translated "god" other times, even in 1kings 11:33.
+# the gender seems to be in the name, not the title.
+# this is perhaps why 4 translations translated it as "god" not "goddess".
+# translating it as "god" can be seen as a more literal translation.
+# 1ki 11:5, and 1ki 11:33
+sed -i 's/goddess/god/g' 1kings.htm
+
+# mask until changes are complete
+# name of a place
+# deu 10:7 2x
+sed -i 's/Gudgodah/Gudgo-dah/g' deuteronomy.htm
+
+
+# 20x
 sed -i 's/ a God/ an Elohim/g' *.htm
 
-# 11 instances
+# 17x
+# also matches " a godless"
 sed -i 's/ a god/ an elohim/g' *.htm
 
-# 703 instances (722 instances of 'God' minus 19 already replaced above = 703)
+# 3144x (3164 - 20 already replaced = 3144)
 sed -i 's/God/Elohim/g' *.htm
 
-# 153 instances (164 instances of 'god' minus 11 already replaced above = 153)
+# 325x (342 - 17 already replaced = 325)
+# also matches "gods", "ungodliness", "ungodly", "godless", "godly"
 sed -i 's/god/elohim/g' *.htm
 
 # 0 instances of "GOD" all-uppercase were found in 2023-02-20 edition of WEBP
 
+# restore masked name
+# deu 10:7 2x
+sed -i 's/Gudgo-dah/Gudgodah/g' deuteronomy.htm
+
+
+
+
 printf .
+
 
 
 
@@ -1277,7 +1352,10 @@ printf .
 
 # see book(s) by nehemia gordon
 
+# 6885x
 sed -i 's/Yahweh/Yehovah/g' *.htm
+
+# 4x
 sed -i 's/YAHWEH/YEHOVAH/g' *.htm
 
 
@@ -1292,13 +1370,16 @@ sed -i 's/YAHWEH/YEHOVAH/g' *.htm
 # edit "holy", a word associated with the sun, and sun worship,
 # to "set-apart", which is a more straightforward meaning of קדש
 
+# 450x
 sed -i 's/holy/set-apart/g' *.htm
 
 # capitalize "apart" because it may be in a title mid-sentence, and because
 # it is difficult to differentiate between when it is at the beginning of a
 # sentence vs mid-sentence.
+# 79x
 sed -i 's/Holy/Set-Apart/g' *.htm
 
+# 3x
 sed -i 's/HOLY/SET-APART/g' *.htm
 
 
@@ -1310,14 +1391,23 @@ printf .
 # husband and wife
 
 # there is no "wife" or "husband" in hebrew or greek, just man and woman, etc.
+# 9x
 sed -i 's/husbands/men/g' *.htm
+
+# 76x (85 - 9 already changed = 76)
 sed -i 's/husband/man/g' *.htm
 
+# 113x (119 - 6 = 113)
 sed -i 's/wives/women/g' *.htm
+
+# 343x (347 - 4 = 343)
 sed -i 's/wife/woman/g' *.htm
 
-# revert back for term 'midwife'
+# revert back for terms "midwives" and "midwife"
+# 6x
 sed -i 's/midwomen/midwives/g' *.htm
+
+# 4x
 sed -i 's/midwoman/midwife/g' *.htm
 
 
@@ -1372,10 +1462,14 @@ printf .
 
 # edit "jesus" to "yehoshua"
 # no instances of "jesus" all-lowercase were found on last check
+# 511x
 sed -i 's/Jesus/Yehoshua/g' *.htm
+
+# 2x
 sed -i 's/JESUS/YEHOSHUA/g' *.htm
 
-# fix apostrophe issue. 12 occurances.
+# fix apostrophe issue. 12 occurences in 2023-02-20. will be 13 in update.
+# 12x
 sed -i 's/Yehoshua’ /Yehoshua’s /g' *.htm
 
 # do not edit "christ" to "messiah"
