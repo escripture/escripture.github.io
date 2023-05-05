@@ -1440,5 +1440,13 @@ printf .
 
 
 
+# create hash links, especially for psalms.
+# (doesn't work for hidden elements i.e. hidden chapter numbers)
+for f in *.html; do
+perl -i -pe 'BEGIN{$A=1;} s/V0/$A++/ge' $f
+done
+
+
+
 
 echo " Done."
