@@ -146,10 +146,12 @@ html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
 */
 .letters,
 
-/* DO NOT ADD CHAPTER NUMBERS */
+/* DO NOT ADD CHAPTER NUMBERS
+*/
 .chapterlabel,
 
-/* DO NOT ADD VERSE MUMBERS */
+/* DO NOT ADD VERSE MUMBERS
+*/
 .verse,
 
 /* DO NOT ADD INDEX PAGE TITLE */
