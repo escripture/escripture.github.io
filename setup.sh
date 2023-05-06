@@ -385,14 +385,16 @@ sed -i 's/css" \/>/css" \/>\
 
 
 
-# WEB correction update
+# ----------------------------------------------------------
+# WEB corrections
 # misplaced quotation mark in matthew 19:5
 # the question mark is inside the inner quote, but i think it should be outside the inner quote in this case, because the inner quotation itself is not a question, but rather the question is the messiah's.
 # i expect this issue to be resolved in the WEB distribution soon, but until then, this will fix it. after it's fixed, this code should be harmless.
 
 # misplaced question mark
 # matthew 19:5
-sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+# listed with others below
+#sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
 
 # lack of non-breaking space, perhaps due to Haiola HTML oversight
 # joh 5:11
@@ -407,6 +409,188 @@ sed -i 's/’<\/span>”/’<\/span>\&#160;”/' john.htm
 # ideally, the html generation should be cleaned up.
 # dan 9:20-21
 sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span class="verse" id="V21">21\&#160;<\/span>yes/' daniel.htm
+
+
+
+
+# changelog.txt updates
+
+# 2023-02-28: Corrected typo in Nehemiah 11:22 in eng-web*, engwmb, and engwmbb.
+# neh 11:22
+sed -i 's/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers, was over the business of God’s house/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers responsible for the service of God’s house/' nehemiah.htm
+
+
+# 2023-03-02: Corrected typo in Jeremiah 2:18 in eng-web*, engwmb, and engwmbb.
+# jer 2:18
+sed -i 's/Or why do you to go on the way to Assyria, to drink the waters of the River?/Or why do you go on the way to Assyria, to drink the waters of the River?/' jeremiah.htm
+
+
+# 2023-03-28: Corrected typo in Isaiah 40:26 in eng-web*, engwmb, and engwmbb.
+# isa 40:26
+sed -i 's/by the greatness of his might/By the greatness of his might/' isaiah.htm
+
+
+# 2023-04-24: Corrected typo in eng-web*, engwmb, and engwmbb: removed extra "s" from John 12:3. Updated gupk. Rebuilt translations with latest Haiola release candidate
+# solved in messiah's name change
+
+
+# 2023-04-26: Corrected typo in eng-web*, engwmb, and engwmbb in 2CH 3:15 heigh -> high.
+# non-issue in webp
+
+
+
+
+# question mark placement
+
+# 1ki 1:24
+sed -i 's/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne?’/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne’?/' 1kings.htm
+
+# 1ki 2:42
+sed -i 's/Know for certain that on the day you go out and walk anywhere else, you shall surely die?’/Know for certain that on the day you go out and walk anywhere else, you shall surely die’?/' 1kings.htm
+
+# 1ki 12:9 and 2ch 10:9
+sed -i 's/Make the yoke that your father put on us lighter?’.”/Make the yoke that your father put on us lighter’?”/g' *.htm
+
+# 1sa 21:11, 29:5
+sed -i 's/and David his ten thousands?’.”/and David his ten thousands’?”/g' 1samuel.htm
+
+# 1sa 24:9
+sed -i 's/David said to Saul, “Why do you listen to men’s words, saying, ‘Behold, David seeks to harm you?’/David said to Saul, “Why do you listen to men’s words, saying, ‘Behold, David seeks to harm you’?/' 1samuel.htm
+
+# 2ch 32:11
+sed -i 's/will deliver us out of the hand of the king of Assyria?’/will deliver us out of the hand of the king of Assyria’?/' 2chronicles.htm
+
+# 2ch 32:12
+sed -i 's/You shall worship before one altar, and you shall burn incense on it?’/You shall worship before one altar, and you shall burn incense on it’?/' 2chronicles.htm
+
+# 2ki 2:18
+sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’t go’?/' 2kings.htm
+
+# 2ki 5:13
+sed -i 's/Wash, and be clean?’./Wash, and be clean’?/' 2kings.htm
+
+# 2ki 18:22
+sed -i 's/You shall worship before this altar in Jerusalem?’/You shall worship before this altar in Jerusalem’?/' 2kings.htm
+
+# exo 14:12
+sed -i 's/Leave us alone, that we may serve the Egyptians?’/Leave us alone, that we may serve the Egyptians’?/' exodus.htm
+
+# exo 32:12
+sed -i 's/He brought them out for evil, to kill them in the mountains, and to consume them from the surface of the earth?’/He brought them out for evil, to kill them in the mountains, and to consume them from the surface of the earth’?/' exodus.htm
+
+# eze 12:22
+sed -i 's/days are prolonged, and every vision fails?’/days are prolonged, and every vision fails’?/' ezekiel.htm
+
+# gen 26:9
+sed -i 's/Abimelech called Isaac, and said, “Behold, surely she is your woman. Why did you say, ‘She is my sister?’.”/Abimelech called Isaac, and said, “Behold, surely she is your woman. Why did you say, ‘She is my sister’?”/' genesis.htm
+
+# gen 43:7
+sed -i 's/Bring your brother down?’.”/Bring your brother down’?”/' genesis.htm
+
+# isa 36:7
+sed -i 's/You shall worship before this altar?’.”/You shall worship before this altar’?”/' isaiah.htm
+
+# isa 41:26
+sed -i 's/that we may say, ‘He is right?’/that we may say, ‘He is right’?/' isaiah.htm
+
+# jer 26:9
+sed -i 's/desolate, without inhabitant?’.”/desolate, without inhabitant’?”/' jeremiah.htm
+
+# SAME ISSUE AS OTHERS PLUS SPECIAL CASE OF WRONG NESTING.
+# FOR HTML: REMEMBER TO USE NBSP (NON-BREAKING SPACE) BETWEEN QUOTE MARKS!
+# OTHER VERSES IN THIS PARAGRAPH AGREE WITH THE CORRECTED FORM (NOT CURRENT FORM)
+# jer 36:29
+sed -i 's/“Why have you written therein, saying, ‘The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal?’.”.’/‘Why have you written therein, saying, “The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal”?’\&#160;”/' jeremiah.htm
+
+# jer 37:19
+sed -i 's/The king of Babylon will not come against you, nor against this land?’/The king of Babylon will not come against you, nor against this land’?/' jeremiah.htm
+
+# job 6:22 (TWICE)
+sed -i 's/Did I ever say, ‘Give to me?’/Did I ever say, ‘Give to me’?/' job.htm
+sed -i 's/or, ‘Offer a present for me from your substance?’/or, ‘Offer a present for me from your substance’?/' job.htm
+
+# job 6:23 (TWICE)
+sed -i 's/Deliver me from the adversary’s hand?’/Deliver me from the adversary’s hand’?/' job.htm
+sed -i 's/Redeem me from the hand of the oppressors?’/Redeem me from the hand of the oppressors’?/' job.htm
+
+# job 36:23
+sed -i 's/You have committed unrighteousness?’/You have committed unrighteousness’?/' job.htm
+
+# joh 4:35
+sed -i 's/Don’t you say, ‘There are yet four months until the harvest?’/Don’t you say, ‘There are yet four months until the harvest’?/' john.htm
+
+# joh 6:42
+sed -i 's/I have come down out of heaven?’./I have come down out of heaven’?/' john.htm
+
+# joh 10:34
+sed -i 's/Isn’t it written in your law, ‘I said, you are gods?’/Isn’t it written in your law, ‘I said, you are gods?’/' john.htm
+
+# joh 10:36
+sed -i 's/because I said, ‘I am the Son of God?’/because I said, ‘I am the Son of God’?/' john.htm
+
+# joh 12:27
+sed -i 's/What shall I say? ‘Father, save me from this time?’/What shall I say? ‘Father, save me from this time’?/' john.htm
+
+# joh 12:34
+sed -i 's/The Son of Man must be lifted up?’/The Son of Man must be lifted up’?/' john.htm
+
+# joh 14:9
+sed -i 's/How do you say, ‘Show us the Father?’/How do you say, ‘Show us the Father’?/' john.htm
+
+# joh 16:19
+sed -i 's/A little while, and you won’t see me, and again a little while, and you will see me?’/A little while, and you won’t see me, and again a little while, and you will see me’?/' john.htm
+
+# mat 9:5
+sed -i 's/or to say, ‘Get up, and walk?’/or to say, ‘Get up, and walk’?/' matthew.htm
+
+# matthew 19:5
+sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+
+# mat 21:16
+sed -i 's/Did you never read, ‘Out of the mouth of children and nursing babies, you have perfected praise?’.”/Did you never read, ‘Out of the mouth of children and nursing babies, you have perfected praise’?”/' matthew.htm
+
+# mat 22:32
+sed -i 's/and the God of Jacob?’/and the God of Jacob’?/' matthew.htm
+
+# SHOULD BE JUST A PERIOD, NOT A QUESTION MARK
+# mat 23:18
+sed -i 's/whoever swears by the gift that is on it, he is obligated?’/whoever swears by the gift that is on it, he is obligated\.’/' matthew.htm
+
+# ("ALL THIS PEOPLE" is awkward, but is seen in some other modern versions.)
+# num 11:12
+sed -i 's/to the land which you swore to their fathers?’/to the land which you swore to their fathers’?/' numbers.htm
+
+# num 23:26
+sed -i 's/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do?’.”/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do’?”/' numbers.htm
+
+
+
+
+
+
+
+# PART 4 OF 4 (9 ISSUES)
+# grep -l ?” *.html
+# (39 books of 48 with at least 1 occurrence)
+
+# 1ki 1:13
+# ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
