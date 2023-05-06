@@ -339,7 +339,6 @@ perl -i -p0e 's/\n\n \n/\n\n/g' *.htm
 
 # enable psalm chapter labels even when no chapter labels elsewhere
 sed -i 's/chapterlabel/psalmlabel/g' psalms.htm
-printf .
 
 
 
@@ -348,7 +347,7 @@ printf .
 sed -i 's/css" \/>/css" \/>\
 <link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
 
-
+printf .
 
 
 # ----------------------------------------------------------
@@ -384,26 +383,40 @@ sed -i 's/css" \/>/css" \/>\
 # ----------------------------------------------------------
 
 
+# ----------------------------------------------------------
+# official WEB changelog.txt updates
+
+# 2023-02-28: Corrected typo in Nehemiah 11:22 in eng-web*, engwmb, and engwmbb.
+# neh 11:22
+sed -i 's/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers, was over the business of God’s house/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers responsible for the service of God’s house/' nehemiah.htm
+
+# 2023-03-02: Corrected typo in Jeremiah 2:18 in eng-web*, engwmb, and engwmbb.
+# jer 2:18
+sed -i 's/Or why do you to go on the way to Assyria, to drink the waters of the River?/Or why do you go on the way to Assyria, to drink the waters of the River?/' jeremiah.htm
+
+# 2023-03-28: Corrected typo in Isaiah 40:26 in eng-web*, engwmb, and engwmbb.
+# isa 40:26
+sed -i 's/by the greatness of his might/By the greatness of his might/' isaiah.htm
+
+# 2023-04-24: Corrected typo in eng-web*, engwmb, and engwmbb: removed extra "s" from John 12:3. Updated gupk. Rebuilt translations with latest Haiola release candidate
+# solved in messiah's name change
+
+# 2023-04-26: Corrected typo in eng-web*, engwmb, and engwmbb in 2CH 3:15 heigh -> high.
+# issue not found in webp
+
+
+
+
 
 # ----------------------------------------------------------
 # WEB corrections
-# misplaced quotation mark in matthew 19:5
-# the question mark is inside the inner quote, but i think it should be outside the inner quote in this case, because the inner quotation itself is not a question, but rather the question is the messiah's.
-# i expect this issue to be resolved in the WEB distribution soon, but until then, this will fix it. after it's fixed, this code should be harmless.
-
-# misplaced question mark
-# matthew 19:5
-# listed with others below
-#sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+# all of these issues should be fixed upstream, eventually
 
 # lack of non-breaking space, perhaps due to Haiola HTML oversight
 # joh 5:11
 sed -i 's/’<\/span>”/’<\/span>\&#160;”/' john.htm
 
-
-
-# !!! WARNING !!! --- this edit is not ideal for when showing verse numbers
-
+# ----- NOTE -----this may not be ideal for when showing verse numbers
 # em dash, without verse number, has space, but shouldn't
 # this is a stopgap measure, fixing poor html generation.
 # ideally, the html generation should be cleaned up.
@@ -411,36 +424,12 @@ sed -i 's/’<\/span>”/’<\/span>\&#160;”/' john.htm
 sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span class="verse" id="V21">21\&#160;<\/span>yes/' daniel.htm
 
 
+# misplaced quotation mark in matthew 19:5 and many other places
+# the question mark is inside the inner quote, but i think it should be outside the inner quote in this case, because the inner quotation itself is not a question, but rather the question is the messiah's.
+# i expect this issue to be resolved in the WEB distribution soon, but until then, this will fix it. after it's fixed, this code should be harmless.
 
-
-# changelog.txt updates
-
-# 2023-02-28: Corrected typo in Nehemiah 11:22 in eng-web*, engwmb, and engwmbb.
-# neh 11:22
-sed -i 's/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers, was over the business of God’s house/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers responsible for the service of God’s house/' nehemiah.htm
-
-
-# 2023-03-02: Corrected typo in Jeremiah 2:18 in eng-web*, engwmb, and engwmbb.
-# jer 2:18
-sed -i 's/Or why do you to go on the way to Assyria, to drink the waters of the River?/Or why do you go on the way to Assyria, to drink the waters of the River?/' jeremiah.htm
-
-
-# 2023-03-28: Corrected typo in Isaiah 40:26 in eng-web*, engwmb, and engwmbb.
-# isa 40:26
-sed -i 's/by the greatness of his might/By the greatness of his might/' isaiah.htm
-
-
-# 2023-04-24: Corrected typo in eng-web*, engwmb, and engwmbb: removed extra "s" from John 12:3. Updated gupk. Rebuilt translations with latest Haiola release candidate
-# solved in messiah's name change
-
-
-# 2023-04-26: Corrected typo in eng-web*, engwmb, and engwmbb in 2CH 3:15 heigh -> high.
-# non-issue in webp
-
-
-
-
-# question mark placement
+# question mark placement before curly close single quote
+# (40 sed's. 2 sed's fix 2 verses, and 2 verses have 2 sed's each)
 
 # 1ki 1:24
 sed -i 's/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne?’/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne’?/' 1kings.htm
@@ -563,33 +552,50 @@ sed -i 's/to the land which you swore to their fathers?’/to the land which you
 # num 23:26
 sed -i 's/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do?’.”/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do’?”/' numbers.htm
 
+printf .
 
 
-
-
-
-
-# PART 4 OF 4 (9 ISSUES)
+# question mark and close curly double quote (9 ISSUES)
 # grep -l ?” *.html
 # (39 books of 48 with at least 1 occurrence)
 
 # 1ki 1:13
-# ...
+sed -i 's/Assuredly Solomon your son shall reign after me, and he shall sit on my throne?”/Assuredly Solomon your son shall reign after me, and he shall sit on my throne”?/' 1kings.htm
+
+# ecc 1:10
+sed -i 's/this is new?”/this is new”?/' ecclesiastes.htm
+
+# isa 19:11
+sed -i 's/How do you say to Pharaoh, “I am the son of the wise, the son of ancient kings?”/How do you say to Pharaoh, “I am the son of the wise, the son of ancient kings”?/' isaiah.htm
+
+# isa 29:16
+sed -i 's/He has no understanding?”/He has no understanding”?/' isaiah.htm
+
+# isa 40:27
+sed -i 's/the justice due me is disregarded by my God?”/the justice due me is disregarded by my God”?/' isaiah.htm
+
+# jer 8:8
+sed -i 's/We are wise, and Yahweh’s law is with us?”/We are wise, and Yahweh’s law is with us”?/' jeremiah.htm
+
+# jer 32:5
+sed -i 's/though you fight with the Chaldeans, you will not prosper?”.’.”/though you fight with the Chaldeans, you will not prosper”\&#160;’?”/' jeremiah.htm
+
+# pro 20:9
+sed -i 's/I am clean and without sin?”/I am clean and without sin”?/' proverbs.htm
+
+# psa 10:13
+sed -i 's/God won’t call me into account?”/God won’t call me into account”?/' psalms.htm
 
 
 
 
+# add apparently missed quotation marks
+# Jeremiah 21:14
+sed -i 's/I will punish you according to the fruit of your doings, says Yahweh;/I will punish you according to the fruit of your doings,’ says Yahweh;/' jeremiah.htm
 
+sed -i 's/and I will kindle a fire in her forest,/‘and I will kindle a fire in her forest,/' jeremiah.htm
 
-
-
-
-
-
-
-
-
-
+printf .
 
 
 
