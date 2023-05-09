@@ -49,7 +49,7 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 /* TITLES */
 
 /* major title, and extra words like "the first book, commonly called" */
-.mt, .mt2, .mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:1.5em;margin-bottom:1em}
+.mt, .mt2, .mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:1.5em;margin-bottom:2em}
 .mt {font-size:1.5em}
 .mt2 {font-size:1.2em}
 
@@ -57,8 +57,11 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 
 /* TEXT FORMATTING */
 
-/* paragraph. most specific div for much of text */
+/* paragraph. most specific div for much of text
 .p {line-height:1.4em;text-indent:2em;margin-top:0.5em;text-align:justify}
+*/
+.p1 {line-height:1.3em;text-align:justify}
+.p {line-height:1.3em;text-indent:2em;text-align:justify}
 .p, .nb {display:block;font-size:1em}
 
 /* non breaking. only 1sa 4, gen 50, jer 33, john 8 */
@@ -142,15 +145,19 @@ html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
 */
 .ketuvim2,
 
-/* DO NOT ADD APOSTLES' LETTERS
+/* DO NOT ADD LETTERS
 */
 .letters,
 
+/* DO NOT ADD TO THE WORDS OF REVELATION! */
+/* and by that standard, do not add to the words of any book */
 /* DO NOT ADD CHAPTER NUMBERS
 */
 .chapterlabel,
 
-/* DO NOT ADD VERSE MUMBERS
+/* DO NOT ADD TO THE WORDS OF REVELATION! */
+/* and by that standard, do not add to the words of any book */
+/* DO NOT ADD VERSE NUMBERS
 */
 .verse,
 
