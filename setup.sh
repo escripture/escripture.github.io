@@ -388,11 +388,11 @@ printf .
 
 # 2023-02-28: Corrected typo in Nehemiah 11:22 in eng-web*, engwmb, and engwmbb.
 # neh 11:22
-sed -i 's/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers, was over the business of God’s house/The overseer also of the Levites at Jerusalem was Uzzi the son of Bani, the son of Hashabiah, the son of Mattaniah, the son of Mica, of the sons of Asaph, the singers responsible for the service of God’s house/' nehemiah.htm
+sed -i 's/singers, was over the business of God’s house/singers responsible for the service of God’s house/' nehemiah.htm
 
 # 2023-03-02: Corrected typo in Jeremiah 2:18 in eng-web*, engwmb, and engwmbb.
 # jer 2:18
-sed -i 's/Or why do you to go on the way to Assyria, to drink the waters of the River?/Or why do you go on the way to Assyria, to drink the waters of the River?/' jeremiah.htm
+sed -i 's/Or why do you to go on the way to Assyria/Or why do you go on the way to Assyria/' jeremiah.htm
 
 # 2023-03-28: Corrected typo in Isaiah 40:26 in eng-web*, engwmb, and engwmbb.
 # isa 40:26
@@ -832,7 +832,7 @@ printf .
 
 
 # ----------------------------------------------------------
-# credit for righteousness
+# faith and works
 
 # restore the meaning of the hebrew
 # moses credited yehovah, not the other way around
@@ -1315,15 +1315,12 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 # see https://www.earlychristianwritings.com/text/gospelebionites-panarion.html
 # "And the beginning of their Gospel runs:
 # It came to pass in the days of Herod the king of Judaea"
-# this text, however, seems to have the glaring problem of quoting christ as
-# also saying "I am come to do away with sacrifices", which seems to me to
-# be incompatible with a true gospel from christ. still, there do seem to be
-# problems with the geneology: jechoniah is named, which seems incompatible
-# with prophecy, and the geneology disagrees with luke, and there may be an
-# internal issue of counting 14, 14, and 14 generations. currently, i am
-# removing matthew 1 out of an abundance, perhaps overabundance, of caution.
-# also noteworthy is that this text seems to get matthew 3:17 right, especially
-# because it seems corroborated by psalm 2:7.
+# this text, however, quotes christ as saying "I am come to do away with sacrifices", which seems to me to be incompatible with a true gospel from christ.
+# still, there do seem to be problems with the geneology: jechoniah is named, which seems incompatible with prophecy, and the geneology disagrees with luke, and there may be an internal issue of counting 14, 14, and 14 generations.
+# moreover, there is the issue of a virgin birth account. there is motive to have injected it to prove a trinity doctrine, which has been a theological war at least as early as 325 A.D., which continues to this day.
+# however, there are (are there not?) prophecies from tanakh that specify that one (the messiah) will be a descendent, "of the seed"(need citation) of david, as in, a fleshly descendent, in the male line, not a symbolic descendent. and in one of john's letters he emphasizes yehoshua as having come in the flesh.
+# currently, this version opts for trusting the ebionite account: that there was no matthew chapter 1 when matthew was written, because there is reason to believe it isn't original to the text of matthew, and because of the issues with it.
+# also noteworthy is that the ebionite text seems to get matthew 3:17 right ("today i have become your father"), especially because it seems corroborated by psalm 2:7.
 
 # remove matthew 1 completely
 sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
@@ -1730,6 +1727,15 @@ for f in *.html; do
 perl -i -pe 'BEGIN{$A=1;} s/V0/$A++/ge' $f
 done
 
+# give unique class to only the first paragraph
+# this way, css can specify not to indent that first paragraph
+sed -i '0,/"p"/{s/"p"/"p1"/}' *.html
+
+# if chapter labels are used, then the fisrt paragraph of each new chapter
+# should be given the p1 class (so it can have no indentation), like this:
+#sed -i 's/"p"/"p1"/' *.html
+# this would work as each chapter is on one line
+# if the code is eventually cleaned up to avoid long lines, this won't work
 
 
 
