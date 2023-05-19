@@ -14,7 +14,7 @@
 
 # UNDECIDED
 # source language in parallel or interlinear
-# no unnecessary preface, strictly business. postface instead of preface.
+# no unnecessary preface, strictly business. postface instead of preface?
 
 # READERS VERSION (by far the main goal of this project)
 # no verse or chapter numbers in the text
@@ -38,43 +38,55 @@
 # preface/postface
 
 
-# Postface ideas
-# (include WEBP preface?)
-# The textual base of this version is the WEBP 2023-02-20
-# The WEBP is based on the ASV of 1901.
-# The ASV is based on the KJV (of what exact issue?)
+# Preface/Postface ideas
 
-# Only those NT books which are reliable in accordance with
-# qualifications from Torah are presented.
-
-# Psalms and all ketuvim seem valuable, and books like James seem valuable. should they be presented, and if so, how?
-
-# should the prophets be in the same category as torah and messiah?
-
-# edit index.htm so it says "based on WEBP version"?
-#
-# i.e.:
-# index.htm should have (with whatever date appears):
-# <div class="fine">Jesus Words Bible is based on World
-# English Bible source files dated 2/20/2023<br/></div>
+include prefaces from kjv, asv, webp
 
 
+Textual basis
+
+(idea: use chronological order)
+(exactly what edition, year, printing?)
+
+Aleppo (year?) and Leningrad Codex, 1008
+Textus Receptus?
+King James Version (KJV), 1611.
+American Standard Version (ASV), 1901.
+World English Bible Protestant Edition (WEBP) 2023-02-20
+
+Other sources:
+LXX for Genesis 5 & 11 chronologies, LAB, Demetrius, etc.
+Hebrew Gospel of Matthew, Shem Tob(Tov?) (Matthew 5...)
+Gospel of the Ebionites, via Epiphanius (No Matthew 1)
+NA27 (John 1:1)
+...
+
+
+Only those NT books which are reliable in accordance with
+qualifications from Torah are presented.
 
 
 
 
-# ----------------------------------------------------------
-# code
+
+ISSUE:
+Psalms and all ketuvim seem valuable, and books like James seem valuable. should they be presented, and if so, how?
+
+edit index.htm so it says "based on WEBP version"? i.e.:
+index.htm should have (with whatever date appears):
+<div class="fine">Jesus Words Bible is based on World
+English Bible source files dated 2/20/2023<br/></div>
 
 
 
-# ----- not really an issue -----
+----------------------------------------------------------
+code
 
-# daniel 4 double indent dropping back to no indent for a moment
 
 
-# ----- code only -----
+----- not really an issue, could use review -----
 
-# extra spaces like after book title, i.e. "Psalms  "
+daniel 4 double indent dropping back to no indent for a moment
+
 
 
