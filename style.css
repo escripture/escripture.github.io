@@ -60,7 +60,7 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 /* paragraph. most specific div for much of text
 .p {line-height:1.4em;text-indent:2em;margin-top:0.5em;text-align:justify}
 */
-.p1 {line-height:1.3em;text-align:justify}
+.p1, {line-height:1.3em;text-align:justify}
 .p {line-height:1.3em;text-indent:2em;text-align:justify}
 .p, .nb {display:block;font-size:1em}
 

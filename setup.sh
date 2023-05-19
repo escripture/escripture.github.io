@@ -350,6 +350,18 @@ sed -i 's/css" \/>/css" \/>\
 printf .
 
 
+
+# i think it would be a better practice to fix this issue in the usfm,
+#   and then have a custom script to make the html,
+#   instead of having awkward break-fix issues like this.
+# fix html paragraph formatting for john 7:53-8:1
+sed -i 's/Everyone went to his own house, <\/div>/Everyone went to his own house, /' john.htm
+
+sed -i 's/<div class="chapterlabel" id="V0"> 8<\/div><div class="nb">/<div class="chapterlabel" id="8"> 8<\/div>/' john.htm
+
+
+
+
 # ----------------------------------------------------------
 # ----------------------------------------------------------
 # ------- BEGIN SCRIPTURE TEXT TRANSLATION REVISIONS -------
