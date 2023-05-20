@@ -77,7 +77,7 @@ rm HEB*.htm
 
 # remove text which conveys deception from the false apostle
 # this book may have historical usefulness, but it does not pass the torah test
-ACT*.htm
+rm ACT*.htm
 
 # remove text associated with acts
 # luke and acts are considered one work. both are to theophilus.
