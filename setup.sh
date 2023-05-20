@@ -14,10 +14,10 @@
 #     caslon.ttf (any fonts specified in style.css)
 #     index.html (custom index is preferable to default index)
 
-#  ENVIRONMENT:
-#    a linux bash shell (i.e. GNU bash 5.2.2, perl v5.36.0, sed 4.8)
-#    "tidy": HTML Tidy for Linux version 5.9.14
-#    an http server or way to view html files
+#   ENVIRONMENT:
+#     a linux bash shell (i.e. GNU bash 5.2.2, perl v5.36.0, sed 4.8)
+#     "tidy": HTML Tidy for Linux version 5.9.14
+#     an http server or way to view html files
 
 # INSTRUCTIONS
 # 1. run setup.sh (this file) in a clean directory that has engwebp_html.zip
@@ -55,23 +55,54 @@ printf .
 
 
 # ----------------------------------------------------------
-# REMOVE BOOKS
+# REMOVE BOOKS FROM THIS DISTRIBUTION
+# undo canon issues introduced in 367 a.d. by athanasius of alexandria
 
-# remove texts according to revelation 2:2
-rm ROM*.htm 1CO*.htm 2CO*.htm GAL*.htm EPH*.htm PHP*.htm COL*.htm 1TH*.htm 2TH*.htm 1TI*.htm 2TI*.htm TIT*.htm PHM*.htm HEB*.htm ACT*.htm
+# personally, i am not saying what canon is or isn't, because to say
+# such a thing is essentially a prophecy in and of itself.
+# i do not consider athanasius a prophet, so instead of trusting his
+# list of 66 books, i am choosing to distribute only books which
+# i think pass the test of torah and are very trustworthy.
+# my situation is that i want to distribute the torah, prophets, and
+# the testimony of the messiah, and i do not want to distribute text which
+# conflicts with that.
+
+# remove texts not compatible with torah because author does not respect torah
+# author is, i believe, the false apostle mentioned in revelation 2:2
+# see jesuswordsonly.github.io and youtube.com/jesuswordsonly
+rm ROM*.htm 1CO*.htm 2CO*.htm GAL*.htm EPH*.htm PHP*.htm COL*.htm 1TH*.htm 2TH*.htm 1TI*.htm 2TI*.htm TIT*.htm PHM*.htm
+
+# remove text likely by barnabas, an associate of the false apostle
+rm HEB*.htm
+
+# remove text which conveys deception from the false apostle
+# this book may have historical usefulness, but it does not pass the torah test
+rm ACT*.htm
 
 # remove text associated with acts
-# aren't luke and acts one work, not two? perhaps a "two volume work"
-# both are to theophilus
+# luke and acts are considered one work. both are to theophilus.
+# it is likely that luke and acts were both commissioned for the false apostle's
+# behalf, for a trial in rome, and thus have an untrustworthy bias or influence.
+# i do consider this book significant in that it corroborates matthew
+# and john, but i do not necessarily trust its unique aspects.
 rm LUK*.htm
 
-# remove text associated with luke
+# remove text possibly associated with the false apostle.
+# i am perhaps least certain about not distributing this text, but
+# i have not found a compelling reason to include it either.
+# i do consider this book significant in that it corroborates matthew
+# and john, but i do not necessarily trust its unique aspects.
 rm MRK*.htm
 
-# remove text which has indications of being a forgery
+# remove text which has indications of being a forgery.
+# this book is widely and strongly regarded as not having been written by
+# peter, even by christians in the first few centuries, for many reasons.
+# and even if it were, it considers the false apostle δυσνοετας which
+# actually means nonsensical.
 rm 2PE*.htm
 
 printf .
+
 
 # ----------------------------------------------------------
 # change stylesheet link

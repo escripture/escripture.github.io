@@ -1,5 +1,5 @@
 * {margin:0;padding:0}
-html, body {line-height:1.4em;padding-bottom:4em}
+html, body {line-height:1.4em}
 
 @font-face {
     font-family: "caslon";
@@ -35,13 +35,23 @@ ul.vnav {list-style-type:none;padding:5;margin-left:0;text-align:center}
 div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em;padding:3px;width:12.25em}
 
 
+/* version information
+*/
+.colophon {
+/*
+  display:block;
+*/
+  margin-top:8em;padding:0;font-family:sans;font-size:1em;text-decoration:none;text-align:center;color:#777777}
+
+
+
 
  /* ---------- BOOK PAGES ---------- */
 
 /* ALL BOOK TEXT */
 
 /* books are nested in a "main" class */
-.main {min-height:100%;margin-bottom:-4em;padding:1.5em}
+.main {min-height:100%;margin-bottom:4em;padding:1.5em}
 .main:after {content:"";display:block}
 
 
