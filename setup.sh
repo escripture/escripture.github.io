@@ -475,25 +475,25 @@ sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span
 # (40 sed's. 2 sed's fix 2 verses, and 2 verses have 2 sed's each)
 
 # 1ki 1:24
-sed -i 's/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne?’/Nathan said, “My lord, King, have you said, ‘Adonijah shall reign after me, and he shall sit on my throne’?/' 1kings.htm
+sed -i 's/sit on my throne?’/sit on my throne’?/' 1kings.htm
 
 # 1ki 2:42
-sed -i 's/Know for certain that on the day you go out and walk anywhere else, you shall surely die?’/Know for certain that on the day you go out and walk anywhere else, you shall surely die’?/' 1kings.htm
+sed -i 's/shall surely die?’/shall surely die’?/' 1kings.htm
 
 # 1ki 12:9 and 2ch 10:9
-sed -i 's/Make the yoke that your father put on us lighter?’.”/Make the yoke that your father put on us lighter’?”/g' *.htm
+sed -i 's/on us lighter?’.”/on us lighter’?”/g' *.htm
 
 # 1sa 21:11, 29:5
-sed -i 's/and David his ten thousands?’.”/and David his ten thousands’?”/g' 1samuel.htm
+sed -i 's/David his ten thousands?’.”/David his ten thousands’?”/g' 1samuel.htm
 
 # 1sa 24:9
-sed -i 's/David said to Saul, “Why do you listen to men’s words, saying, ‘Behold, David seeks to harm you?’/David said to Saul, “Why do you listen to men’s words, saying, ‘Behold, David seeks to harm you’?/' 1samuel.htm
+sed -i 's/David seeks to harm you?’/David seeks to harm you’?/' 1samuel.htm
 
 # 2ch 32:11
-sed -i 's/will deliver us out of the hand of the king of Assyria?’/will deliver us out of the hand of the king of Assyria’?/' 2chronicles.htm
+sed -i 's/king of Assyria?’/king of Assyria’?/' 2chronicles.htm
 
 # 2ch 32:12
-sed -i 's/You shall worship before one altar, and you shall burn incense on it?’/You shall worship before one altar, and you shall burn incense on it’?/' 2chronicles.htm
+sed -i 's/incense on it?’/incense on it’?/' 2chronicles.htm
 
 # 2ki 2:18
 sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’t go’?/' 2kings.htm
@@ -502,31 +502,31 @@ sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’
 sed -i 's/Wash, and be clean?’./Wash, and be clean’?/' 2kings.htm
 
 # 2ki 18:22
-sed -i 's/You shall worship before this altar in Jerusalem?’/You shall worship before this altar in Jerusalem’?/' 2kings.htm
+sed -i 's/altar in Jerusalem?’/altar in Jerusalem’?/' 2kings.htm
 
 # exo 14:12
-sed -i 's/Leave us alone, that we may serve the Egyptians?’/Leave us alone, that we may serve the Egyptians’?/' exodus.htm
+sed -i 's/serve the Egyptians?’/serve the Egyptians’?/' exodus.htm
 
 # exo 32:12
-sed -i 's/He brought them out for evil, to kill them in the mountains, and to consume them from the surface of the earth?’/He brought them out for evil, to kill them in the mountains, and to consume them from the surface of the earth’?/' exodus.htm
+sed -i 's/surface of the earth?’/surface of the earth’?/' exodus.htm
 
 # eze 12:22
-sed -i 's/days are prolonged, and every vision fails?’/days are prolonged, and every vision fails’?/' ezekiel.htm
+sed -i 's/every vision fails?’/every vision fails’?/' ezekiel.htm
 
 # gen 26:9
-sed -i 's/Abimelech called Isaac, and said, “Behold, surely she is your woman. Why did you say, ‘She is my sister?’.”/Abimelech called Isaac, and said, “Behold, surely she is your woman. Why did you say, ‘She is my sister’?”/' genesis.htm
+sed -i 's/She is my sister?’.”/She is my sister’?”/' genesis.htm
 
 # gen 43:7
 sed -i 's/Bring your brother down?’.”/Bring your brother down’?”/' genesis.htm
 
 # isa 36:7
-sed -i 's/You shall worship before this altar?’.”/You shall worship before this altar’?”/' isaiah.htm
+sed -i 's/before this altar?’.”/before this altar’?”/' isaiah.htm
 
 # isa 41:26
-sed -i 's/that we may say, ‘He is right?’/that we may say, ‘He is right’?/' isaiah.htm
+sed -i 's/He is right?’/He is right’?/' isaiah.htm
 
 # jer 26:9
-sed -i 's/desolate, without inhabitant?’.”/desolate, without inhabitant’?”/' jeremiah.htm
+sed -i 's/without inhabitant?’.”/without inhabitant’?”/' jeremiah.htm
 
 # SAME ISSUE AS OTHERS PLUS SPECIAL CASE OF WRONG NESTING.
 # FOR HTML: REMEMBER TO USE NBSP (NON-BREAKING SPACE) BETWEEN QUOTE MARKS!
@@ -535,65 +535,68 @@ sed -i 's/desolate, without inhabitant?’.”/desolate, without inhabitant’?�
 sed -i 's/“Why have you written therein, saying, ‘The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal?’.”.’/‘Why have you written therein, saying, “The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal”?’\&#160;”/' jeremiah.htm
 
 # jer 37:19
-sed -i 's/The king of Babylon will not come against you, nor against this land?’/The king of Babylon will not come against you, nor against this land’?/' jeremiah.htm
+sed -i 's/against this land?’/against this land’?/' jeremiah.htm
 
-# job 6:22 (TWICE)
-sed -i 's/Did I ever say, ‘Give to me?’/Did I ever say, ‘Give to me’?/' job.htm
-sed -i 's/or, ‘Offer a present for me from your substance?’/or, ‘Offer a present for me from your substance’?/' job.htm
+# job 6:22 (1 of 2)
+sed -i 's/Give to me?’/Give to me’?/' job.htm
 
-# job 6:23 (TWICE)
-sed -i 's/Deliver me from the adversary’s hand?’/Deliver me from the adversary’s hand’?/' job.htm
-sed -i 's/Redeem me from the hand of the oppressors?’/Redeem me from the hand of the oppressors’?/' job.htm
+# job 6:22 (2 of 2)
+sed -i 's/from your substance?’/from your substance’?/' job.htm
+
+# job 6:23 (1 of 2)
+sed -i 's/adversary’s hand?’/adversary’s hand’?/' job.htm
+
+# job 6:23 (2 of 2)
+sed -i 's/of the oppressors?’/of the oppressors’?/' job.htm
 
 # job 36:23
-sed -i 's/You have committed unrighteousness?’/You have committed unrighteousness’?/' job.htm
+sed -i 's/have committed unrighteousness?’/have committed unrighteousness’?/' job.htm
 
 # joh 4:35
-sed -i 's/Don’t you say, ‘There are yet four months until the harvest?’/Don’t you say, ‘There are yet four months until the harvest’?/' john.htm
+sed -i 's/until the harvest?’/until the harvest’?/' john.htm
 
 # joh 6:42
-sed -i 's/I have come down out of heaven?’./I have come down out of heaven’?/' john.htm
+sed -i 's/out of heaven?’./out of heaven’?/' john.htm
 
 # joh 10:34
-sed -i 's/Isn’t it written in your law, ‘I said, you are gods?’/Isn’t it written in your law, ‘I said, you are gods?’/' john.htm
+sed -i 's/you are gods?’/you are gods’?/' john.htm
 
 # joh 10:36
-sed -i 's/because I said, ‘I am the Son of God?’/because I said, ‘I am the Son of God’?/' john.htm
+sed -i 's/am the Son of God?’/am the Son of God’?/' john.htm
 
 # joh 12:27
-sed -i 's/What shall I say? ‘Father, save me from this time?’/What shall I say? ‘Father, save me from this time’?/' john.htm
+sed -i 's/save me from this time?’/save me from this time’?/' john.htm
 
 # joh 12:34
-sed -i 's/The Son of Man must be lifted up?’/The Son of Man must be lifted up’?/' john.htm
+sed -i 's/must be lifted up?’/must be lifted up’?/' john.htm
 
 # joh 14:9
-sed -i 's/How do you say, ‘Show us the Father?’/How do you say, ‘Show us the Father’?/' john.htm
+sed -i 's/Show us the Father?’/Show us the Father’?/' john.htm
 
 # joh 16:19
-sed -i 's/A little while, and you won’t see me, and again a little while, and you will see me?’/A little while, and you won’t see me, and again a little while, and you will see me’?/' john.htm
+sed -i 's/you will see me?’/you will see me’?/' john.htm
 
 # mat 9:5
-sed -i 's/or to say, ‘Get up, and walk?’/or to say, ‘Get up, and walk’?/' matthew.htm
+sed -i 's/Get up, and walk?’/Get up, and walk’?/' matthew.htm
 
 # matthew 19:5
-sed -i 's/and the two shall become one flesh?’/and the two shall become one flesh’?/' matthew.htm
+sed -i 's/become one flesh?’/become one flesh’?/' matthew.htm
 
 # mat 21:16
-sed -i 's/Did you never read, ‘Out of the mouth of children and nursing babies, you have perfected praise?’.”/Did you never read, ‘Out of the mouth of children and nursing babies, you have perfected praise’?”/' matthew.htm
+sed -i 's/perfected praise?’.”/perfected praise’?”/' matthew.htm
 
 # mat 22:32
-sed -i 's/and the God of Jacob?’/and the God of Jacob’?/' matthew.htm
+sed -i 's/the God of Jacob?’/the God of Jacob’?/' matthew.htm
 
 # SHOULD BE JUST A PERIOD, NOT A QUESTION MARK
 # mat 23:18
-sed -i 's/whoever swears by the gift that is on it, he is obligated?’/whoever swears by the gift that is on it, he is obligated\.’/' matthew.htm
+sed -i 's/he is obligated?’/he is obligated\.’/' matthew.htm
 
-# ("ALL THIS PEOPLE" is awkward, but is seen in some other modern versions.)
 # num 11:12
-sed -i 's/to the land which you swore to their fathers?’/to the land which you swore to their fathers’?/' numbers.htm
+sed -i 's/to their fathers?’/to their fathers’?/' numbers.htm
 
 # num 23:26
-sed -i 's/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do?’.”/But Balaam answered Balak, “Didn’t I tell you, saying, ‘All that Yahweh speaks, that I must do’?”/' numbers.htm
+sed -i 's/that I must do?’.”/that I must do’?”/' numbers.htm
 
 printf .
 
@@ -603,40 +606,41 @@ printf .
 # (39 books of 48 with at least 1 occurrence)
 
 # 1ki 1:13
-sed -i 's/Assuredly Solomon your son shall reign after me, and he shall sit on my throne?”/Assuredly Solomon your son shall reign after me, and he shall sit on my throne”?/' 1kings.htm
+sed -i 's/on my throne?”/on my throne”?/' 1kings.htm
 
 # ecc 1:10
 sed -i 's/this is new?”/this is new”?/' ecclesiastes.htm
 
 # isa 19:11
-sed -i 's/How do you say to Pharaoh, “I am the son of the wise, the son of ancient kings?”/How do you say to Pharaoh, “I am the son of the wise, the son of ancient kings”?/' isaiah.htm
+sed -i 's/of ancient kings?”/of ancient kings”?/' isaiah.htm
 
 # isa 29:16
 sed -i 's/He has no understanding?”/He has no understanding”?/' isaiah.htm
 
 # isa 40:27
-sed -i 's/the justice due me is disregarded by my God?”/the justice due me is disregarded by my God”?/' isaiah.htm
+sed -i 's/disregarded by my God?”/disregarded by my God”?/' isaiah.htm
 
 # jer 8:8
-sed -i 's/We are wise, and Yahweh’s law is with us?”/We are wise, and Yahweh’s law is with us”?/' jeremiah.htm
+sed -i 's/law is with us?”/law is with us”?/' jeremiah.htm
 
 # jer 32:5
-sed -i 's/though you fight with the Chaldeans, you will not prosper?”.’.”/though you fight with the Chaldeans, you will not prosper”\&#160;’?”/' jeremiah.htm
+sed -i 's/will not prosper?”.’.”/will not prosper”\&#160;’?”/' jeremiah.htm
 
 # pro 20:9
-sed -i 's/I am clean and without sin?”/I am clean and without sin”?/' proverbs.htm
+sed -i 's/and without sin?”/and without sin”?/' proverbs.htm
 
 # psa 10:13
-sed -i 's/God won’t call me into account?”/God won’t call me into account”?/' psalms.htm
+sed -i 's/me into account?”/me into account”?/' psalms.htm
+
+# developers note: current place in refactoring
 
 
-
-
-# add apparently missed quotation marks
+# add missed quotation marks
+# add closing mark
 # Jeremiah 21:14
-sed -i 's/I will punish you according to the fruit of your doings, says Yahweh;/I will punish you according to the fruit of your doings,’ says Yahweh;/' jeremiah.htm
-
-sed -i 's/and I will kindle a fire in her forest,/‘and I will kindle a fire in her forest,/' jeremiah.htm
+sed -i 's/fruit of your doings, says Yahweh;/fruit of your doings,’ says Yahweh;/' jeremiah.htm
+# add opening mark
+sed -i 's/and I will kindle a fire in her forest/‘and I will kindle a fire in her forest/' jeremiah.htm
 
 printf .
 
@@ -874,21 +878,68 @@ printf .
 
 
 
-# ----------------------------------------------------------
-# faith and works
+# ------------------------------------------------------------------------------
+# credit and righteousness
 
-# restore the meaning of the hebrew
-# moses credited yehovah, not the other way around
-# see the video "#3 Dr. Anthony Buzzard Fighting Back Against Pauline Canon Overeach Ep 3 of JWO Canon Movements"
+# here are two interpretations:
+#   (a) yehovah credited abram's faith to abram as righteousness
+#   (b) abram credited yehovah's truth to yehovah as righteousness
+
+# interpretation (a) has a problem:
+#   the word ויחשבה indicates a feminine subject,
+#   but abram's faith (ויאמן) is masculine.
+
+# interpretation (b) does not neglect the gender.
+#   in the last verse, yehovah spoke (אמר) to abram
+#   the related word: אמת means truth, and is feminine.
+
+# it should be said that english loses the aspect of gender,
+# which i believe is key for understanding this verse.
+# it seems a translation should be made which informs the reader of gender.
+# in lieu of that, this passage will be translated in a way that uses
+# the gender to inform the translation, instead of ignoring it.
+
+# 'for' might seem benign, but it might be interpreted like 'in exchange for',
+# which i think would be very, very far from the meaning.
+# 'as' is a much more straightforward term. many translations use it.
+# it is really just a smoothing-word: it doesn't exist in hebrew, but it
+# helps the sentence flow in english. so if a word is used here,
+# then it should be a word that doesn't introduce ambiguity.
+
+# note: genesis 15:6 is quoted inaccurately in the nt, based on the lxx.
+
+# see also:
+
+# Michael Peterson: Whose Righteousness - God's or Abraham's?
+# https://www.academia.edu/33326228/Whose_Righteousness_Gods_or_Abrams_Another_look_at_Genesis_15_6
+
+# Douglas DelTondo: "#3 Dr. Anthony Buzzard Fighting Back Against Pauline Canon Overeach Ep 3 of JWO Canon Movements"
 # https://www.youtube.com/watch?v=EnkfoNGfrnE
 # at around 28:00
 
-# article by michael peterson:
-# https://www.academia.edu/33326228/Whose_Righteousness_Gods_or_Abrams_Another_look_at_Genesis_15_6
-
 # genesis 15:6
-sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He believed in Yahweh, and credited it to him for righteousness/' genesis.htm
+sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He believed in Yahweh, and credited it to him as righteousness/' genesis.htm
 
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------
+# בעל (baal) - full treatment
+# every occurrence will be reviewed and corrected if necessary
+# this includes every conjugation of בעל
+
+
+# Genesis 14:13
+#sed -i 's/brother of Eshcol and brother of Aner\. They were allies of Abram/brother of Eshcol and brother of Aner\. They were the owners of the covenant of Abram/' genesis.htm
+
+# ... (unfinished)
 
 
 
@@ -1238,7 +1289,6 @@ sed -i 's/I AM/I will be/' exodus.htm
 
 
 
-
 # restore matt 3:17 which apparently originally said "today i have begotten thee", which was removed because it disproves the trinity doctrine.
 # see jesus' words only videos and/or site for supporting references,
 # especially https://www.youtube.com/watch?v=cfRzYqpXchM
@@ -1373,6 +1423,8 @@ sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to he
 # starting with "Now" is awkward. prefer translation that starts with "When",
 # as in the CEV, Geneva Bible of 1587, etc.
 # remove word "Now"
+
+# matthew 2:1
 sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Herod/When Jesus was born in Bethlehem of Judea in the days of King Herod/' matthew.htm
 
 # see also the matthew 3:17 restoration in the "trinity" section
