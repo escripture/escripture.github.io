@@ -46,9 +46,11 @@ set -e
 #     an http server (optional)
 
 # INSTRUCTIONS
-# 1. run setup.sh (this file) in clean directory that also has eng-web_usfm.zip
-# 2. (optional) copy all html files to a subdirectory named "book"
-# 3. (optional) make sure index.html, style.css, and caslon.ttf, are
+# 1. rename eng-web_usfm.zip to eng-web_usfm-source2023-04-27.zip
+#      (or edit that line just below).
+# 2. run setup.sh (this file) in clean directory that also has eng-web_usfm.zip
+# 3. (optional) copy all html files to a subdirectory named "book"
+# 4. (optional) make sure index.html, style.css, and caslon.ttf, are
 #      in the parent directory of the "book" directory
 # the site should now be ready. use an http server to view the site.
 
@@ -1269,7 +1271,7 @@ sed -i 's/teaching them to observe all things that I commanded you\. Behold, I a
 # the restorative phrasing for the 3rd clause matches the New World Translation 1984
 
 # john 1:1
-sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word./' john.usfm
+sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word/' john.usfm
 
 
 
@@ -1337,7 +1339,26 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 # also noteworthy is that the ebionite text seems to get matthew 3:17 right ("today i have become your father"), especially because it seems corroborated by psalm 2:7.
 
 # remove matthew 1 completely
-perl -i -p0e 's/\\c 1\n.*?\\c 2\n/\\c 2\n/s' matthew.usfm
+#perl -i -p0e 's/\\c 1\n.*?\\c 2\n/\\c 2\n/s' matthew.usfm
+
+
+# restore text.
+sed -i 's/Jacob became the father of Joseph, the husband of Mary, from whom was born Jesus/Jacob became the father of Joseph. This Joseph became the father of Jesus/' matthew.usfm
+
+
+# remove v18 to chapter 2. too many issues.
+perl -i -p0e 's/\\p\n\\v 18 Now the birth of Jesus.*He named him Jesus\.//s' matthew.usfm
+
+
+
+
+
+
+
+
+
+
+
 
 
 # starting with "Now" is awkward. prefer translation that starts with "When",
@@ -1345,7 +1366,7 @@ perl -i -p0e 's/\\c 1\n.*?\\c 2\n/\\c 2\n/s' matthew.usfm
 # remove word "Now"
 
 # matthew 2:1
-sed -i 's/Now when Jesus was born/When Jesus was born/' matthew.usfm
+#sed -i 's/Now when Jesus was born/When Jesus was born/' matthew.usfm
 
 
 # see also the matthew 3:17 restoration in the "trinity" section here
@@ -1692,6 +1713,12 @@ sed -i 's/Yehoshua’ /Yehoshua’s /g' *.usfm
 # the term "messiah" is already used in john, distinct from the word "christ"
 
 
+
+
+
+# GLOBAL!
+
+sed -i 's/became the father of/brought forth/g' *.usfm
 
 printf .
 
