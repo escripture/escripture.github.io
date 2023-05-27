@@ -1,85 +1,177 @@
-* {margin:0;padding:0}
-html, body {line-height:1.4em}
+
+/*
+find out how to do this: don't break on em dash!
+and live forever—”
+*/
+
+/* -------------------------------------------------------------------------- */
 
 @font-face {
-    font-family: "caslon";
-    src: url("caslon.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "caslon";
+  src: url("caslon.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-html,body	{font-family: "caslon","Times","serif";}
-
-
-
-/* ---------- INDEX PAGE ---------- */
-
-h1 {font-weight:normal;text-align:center;margin-top:1em;margin-bottom:1.5em}
-h2 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:2em;margin-bottom:1em}
-.index {padding-top:2em;padding-bottom:0em}
-
-/* index uses li for the list of books */
-li {list-style:disc inside}
-
-
-/* index uses ul.vnav */
-ul.vnav {list-style-type:none;padding:5;margin-left:0;text-align:center}
-.vnav li {list-style-type:none}
-.vnav a {display:block;padding:3px;background-color:#0080ff;border-bottom:1px solid #eee;text-decoration:none;width:12em}
-
-.vnav a:visited {color:#ffffff}
-.vnav a:link {color:#ffffff}
-.vnav a:hover {background-color:#777 !important;color:#ffffff}
-
-
-/* index uses div.bookList */
-div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em;padding:3px;width:12.25em}
-
-
-/* version information
-*/
-.colophon {
+html, body {
+  font-family: "caslon", "Times", "serif";
 /*
+  background-color: #eee;
+*/
+}
+
+
+.main {
+  min-height: 100%;
+  margin-bottom: 4em;
+  padding:1.5em;
+}
+.main:after {
+  content:"";
   display:block;
+}
+
+
+
+h1, h2 {
+  text-align: center;
+/*
+  background-color: tan;
+  padding: 0.5em;
 */
-  margin-top:8em;padding:0;font-family:sans;font-size:1em;text-decoration:none;text-align:center;color:#777777}
+}
 
 
-
-
- /* ---------- BOOK PAGES ---------- */
-
-/* ALL BOOK TEXT */
-
-/* books are nested in a "main" class */
-.main {min-height:100%;margin-bottom:4em;padding:1.5em}
-.main:after {content:"";display:block}
-
-
-
-/* TITLES */
-
-/* major title, and extra words like "the first book, commonly called" */
-.mt, .mt2, .mt3 {font-weight:normal;font-size:1.2em;text-align:center;margin-top:1.5em;margin-bottom:2em}
-.mt {font-size:1.5em}
-.mt2 {font-size:1.2em}
-
-
-
-/* TEXT FORMATTING */
-
-/* paragraph. most specific div for much of text
-.p {line-height:1.4em;text-indent:2em;margin-top:0.5em;text-align:justify}
+/*
+.mt, .mt2, .mt3 {
+  font-weight: normal;
+  font-size: 1.2em;
+  text-align:center;
+  margin-top:1.5em;
+  margin-bottom:2em;
+}
+.mt {
+  font-size: 1.5em;
+}
+.mt2 {
+  font-size: 1.2em;
+}
 */
-.p1 {line-height:1.3em;text-align:justify}
-.p {line-height:1.3em;text-indent:2em;text-align:justify}
-.p, .nb {display:block;font-size:1em}
+.booklabel {
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+  font-size: 1.5em;
+}
+
+.chapterlabel {
+  margin-top:1em;
+  font-size:1.1em;
+}
+.psalmlabel {
+  margin-top:2.5em;
+  margin-bottom:0.5em;
+  font-size:1.3em;
+/*
+  background-color: #fdf;
+*/
+}
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+footer {
+  text-align: center;
+  margin-top: 4em;
+}
+#version {
+  color: #777777;
+  font-family: sans;
+}
+
+/* -------------------------------------------------------------------------- */
+/* index page */
+
+
+
+
+div.booklist {
+  display: block;
+
+  width: 12.25em;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-bottom: 3em;
+/*
+  padding: 1em;
+  background-color: tan;
+  background-color: #963;
+*/
+}
+
+
+ul.vnav {
+  padding-left: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+/*
+li {
+  background-color: #b85;
+}
+*/
+
+.vnav a {
+  display: block;
+  background-color: #0080ff;
+  padding: 0.4em;
+  margin: 0.08em;
+/*
+*/
+}
+
+.vnav a:visited {color: #ffffff;}
+.vnav a:link {color: #ffffff;}
+.vnav a:hover {color: #ffffff;
+  background-color: #777777 !important;}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* scripture */
+
+p {
+  line-height: 1.3em;
+  text-indent: 2em;
+  text-align: justify;
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+/*
+  background-color: #ffc;
+  font-size: 1em;
+  margin-top: 0.5em;
+*/
+}
+
+.p1 {
+  text-indent: 0;
+}
+
+
 
 /* non breaking. only 1sa 4, gen 50, jer 33, john 8 */
-/* making margin-top 0 doesn't work well when removing chapter numbers */
+/* this is awkward. turning it off. */
+/*
 .nb {text-indent: 0em; margin-top: 0.5em}
-
-/* html has line break (nbsp), 1ch, psa, etc. */
-.b {display:block;margin-left:12em;text-indent:-2em}
+*/
 
 /* bk for Num21:14 The Book of the Wars of Yahweh */
 /* don't add bold and italic. */
@@ -89,48 +181,88 @@ div.bookList {display:block;margin-left:auto;margin-right:auto;margin-bottom:3em
 */
 
 /* psalms heading, like A Psalm By David, or ALEPH */
-.d {display:block;margin-bottom:0.3em;margin-top:0.7em;font-size:0.9em;font-weight:bold}
+.d {
+  display: block;
+  margin-bottom: 0.3em;
+  margin-top: 0.7em;
+  font-size: 0.9em;
+  font-weight:bold;
+  text-indent: 0;
+}
 
 /* li: ezra 8, 10, neh7. an indented list */
-.li {display:list-item;list-style-type:none;text-indent:2em}
+.li1 {display: list-item; list-style-type: none; text-indent: 2em;}
 
-/* various, especially Joshua 12. basically a non-indented list */
-.m {margin-top:0}
-
-/* ezra 7, etc. for indented letters, decrees, etc. */
-.mi {text-indent:2em;margin-top:0}
-
-/* hab and psalms. selah on right */
-.qs {text-align:right}
-
-/* sp: song of song, for titles lover, beloved, friends */
-.sp {font-style:italic}
-
-/* words of yahushua in red */
-.wj {color:rgb(128,0,0)}
-
-/* pi: only dan, ezr, jer. double-indented. awkward in dan 4 */
-.pi {text-indent:2em}
-.pi {margin:.5em 0 0 2em}
-
-/* q q2: psalms, songofsol, etc. */
+/* various, especially Joshua 12. basically a non-indented list? */
 /*
-.q,.q2 {margin-top:0pt}
-html[dir=ltr] .q {text-indent:-2em; margin-left:2em}
-html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
-.q {text-indent:-2em; margin-left:2em}
-.q2 {text-indent:-2em; margin-left:2em}
+.m {margin-top: 0;}
 */
 
+/* ezra 7, etc. for indented letters, decrees, etc. */
+.mi {
+/*
+  text-indent: 2em;
+  margin-top: 0;
+*/
+}
 
-/* CHAPTER AND VERSE NUMBERS */
+/* hab and psalms. selah on right */
+.qs {text-align: right;}
 
-/* chapter numbers */
-.chapterlabel {text-align:center;margin-top:1em;font-size:1.1em}
-.psalmlabel {text-align:center;margin-top:2.5em;margin-bottom:0.5em;font-size:1.3em}
+/* sp: song of song, for titles lover, beloved, friends */
+.sp {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* words of yahushua in red */
+.wj {color: rgb(128,0,0);}
+
+/* pi: only dan, ezr, jer. double-indented. awkward in dan 4 */
+.pi1 {
+  margin-left: 2em;
+/*
+  text-indent: 2em;
+  margin: .5em 0 0 2em;
+*/
+}
+
+
+/* psalms, songofsol, daniel 4, etc. */
+
+html[dir=ltr] .q1 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+html[dir=ltr] .q2 {
+  text-indent: -1em;
+  margin-left: 2em;
+}
+.q1 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+.q2 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+
+
+
 
 /* verse numbers */
-.verse {white-space:nowrap;vertical-align:super;font-size:.6em;line-height:0}
+.v {white-space:nowrap;vertical-align:super;font-size:.6em;line-height:0}
+
+
+
+/* html has line break (nbsp), 1ch, psa, etc. */
+.b {
+/*
+  display: block;
+  margin-left: 12em;
+  text-indent: -2em;
+*/
+}
 
 
 
@@ -151,37 +283,28 @@ html[dir=ltr] .q2 {text-indent:-1em; margin-left:2em}
 
 
 
-/* DO NOT ADD ADDITIONAL KETUVIM (BEYOND PSALMS)
-*/
-.ketuvim2,
-
-/* DO NOT ADD LETTERS
-*/
-.letters,
-
-/* DO NOT ADD TO THE WORDS OF REVELATION! */
-/* and by that standard, do not add to the words of any book */
-/* DO NOT ADD CHAPTER NUMBERS
-*/
+/* no chapter numbers */
 .chapterlabel,
 
-/* DO NOT ADD TO THE WORDS OF REVELATION! */
-/* and by that standard, do not add to the words of any book */
-/* DO NOT ADD VERSE NUMBERS
+/* no verse numbers */
+.v,
+
+/* no main page heading */
+.indextitle,
+
+/* no psalm book titles */
+.ms1,
+
+/* no full size line breaks */
+/*
+.b,
 */
-.verse,
 
-/* DO NOT ADD INDEX PAGE TITLE */
-/* it exists for best practices and search engine purposes */
-h1,
 
-/* DO NOT ADD NOTES */
-/* .ms is used in psalms: "BOOK 1" */
-.mt2, .mt3, .ms, .notemark, .footnote, .mainindex {
+/* DO NOT ADD OTHER TITLES OR NOTES */
+.mt2, .mt3, .f, .x {
   display: none !important;
   visibility: hidden !important;
 }
-
-
 
 

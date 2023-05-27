@@ -1,470 +1,390 @@
 #!/bin/bash
+set -e
 
+# ------------------------------------------------------------------------------
+# SCRIPTURE PROGRAM
+# revise the world english bible (web)
+# convert USFM formatted scripture files into HTML
+#
+# stages:
+#   * book selection & renaming
+#     usfm format editing
+#     usfm whitespace cleanup
+#     unofficial typo corrections
+#   * specific translation revisions
+#   * bulk translation revisions
+#     convert usfm to html
+#
+# * stages which truly change the text, not just minor corrections like typos
+# ------------------------------------------------------------------------------
 
-# Transforming the World English Bible into scriptures for reading
-# ----------------------------------------------------------------
+# program information
+# ------------------------------------------------------------------------------
 # REQUIREMENTS:
 #   FILES:
-#     engwebp_html.zip (scripture source file)
-#       source: https://ebible.org/Scriptures/engwebp_html.zip
+#     eng-web_usfm.zip (scripture source file)
+#       the 2023-04-28 version generated from source files dated 2023-04-27
+#       version info found on the copr.htm page from the zip
+#       source info page: https://ebible.org/find/details.php?id=eng-web
+#       source file: https://ebible.org/Scriptures/eng-web_usfm.zip
 #       changelog: https://ebible.org/Scriptures/changelog.txt
-#       (known to work with the 2023-02-20 version)
 #     setup.sh (this file)
-#     style.css (or any style.css you choose)
-#     caslon.ttf (any fonts specified in style.css)
-#     index.html (custom index is preferable to default index)
+#     index.html (optional)
+#     style.css (optional)
+#     caslon.ttf (optional)
 
 #   ENVIRONMENT:
-#     a linux bash shell (i.e. GNU bash 5.2.2, perl v5.36.0, sed 4.8)
-#     "tidy": HTML Tidy for Linux version 5.9.14
-#     an http server or way to view html files
+#     a linux bash shell with GNU coreutils:
+#       GNU bash 5.2.2
+#       UnZip 6.00
+#       perl v5.36.0
+#       sed 4.8
+#       grep 3.8
+#       cut 9.1
+#       xargs 4.9.0
+#       cat 9.1
+#     an http server (optional)
 
 # INSTRUCTIONS
-# 1. run setup.sh (this file) in a clean directory that has engwebp_html.zip
-# 2. copy all html files to a subdirectory named "book"
-# 3. make sure index.html, style.css, and caslon.ttf, are in the parent
-#      directory of the "book" directory
-# website is ready to run. use http server or software to view site.
-
-
-# NOTES:
-# lines with just "# ..." indicate planned but unwritten code
+# 1. run setup.sh (this file) in clean directory that also has eng-web_usfm.zip
+# 2. (optional) copy all html files to a subdirectory named "book"
+# 3. (optional) make sure index.html, style.css, and caslon.ttf, are
+#      in the parent directory of the "book" directory
+# the site should now be ready. use an http server to view the site.
 
 
 
-# ----------------------------------------------------------
-# --- FULL PROCEDURE ---
+# ------------------------------------------------------------------------------
+# BOOK SELECTION & RENAMING
+# books will be selected, the collection name changed, and books renamed
+# ------------------------------------------------------------------------------
 
-# ----------------------------------------------------------
-# prepare files
+# ------------------------------------------------------------------------------
+# extract
 
-# inform the person running this script that it is now running
-printf Processing
+printf 'Processing'
 
-# extract quietly
-unzip -q 'engwebp_html.zip'
-
-# delete unnecessary files
-rm index.htm copr.htm copyright.htm FRT*.htm GLO*.htm gentiumplus.css
-rm engwebp-VernacularParms.xml home_sm.png keys.asc
-rm -r fonts/
-
-# output dots throughout processing as a progress indicator
+# unzip and discard unnecessary files
+unzip -q 'eng-web_usfm-source2023-04-27.zip'
+rm copr.htm gentiumplus.css keys.asc signature.txt.asc
 printf .
 
 
 
-# ----------------------------------------------------------
-# REMOVE BOOKS FROM THIS DISTRIBUTION
-# undo canon issues introduced in 367 a.d. by athanasius of alexandria
+# ------------------------------------------------------------------------------
+# remove books
 
-# personally, i am not saying what canon is or isn't, because to say
-# such a thing is essentially a prophecy in and of itself.
-# i do not consider athanasius a prophet, so instead of trusting his
-# list of 66 books, i am choosing to distribute only books which
-# i think pass the test of torah and are very trustworthy.
-# my situation is that i want to distribute the torah, prophets, and
-# the testimony of the messiah, and i do not want to distribute text which
-# conflicts with that.
+# remove preface and glossary
+rm -f 00*.usfm 106*.usfm
 
-# remove texts not compatible with torah because author does not respect torah
-# author is, i believe, the false apostle mentioned in revelation 2:2
-# see jesuswordsonly.github.io and youtube.com/jesuswordsonly
-rm ROM*.htm 1CO*.htm 2CO*.htm GAL*.htm EPH*.htm PHP*.htm COL*.htm 1TH*.htm 2TH*.htm 1TI*.htm 2TI*.htm TIT*.htm PHM*.htm
+# remove paul's letters
+rm *ROM*.usfm *1CO*.usfm *2CO*.usfm *GAL*.usfm *EPH*.usfm *PHP*.usfm *COL*.usfm *1TH*.usfm *2TH*.usfm *1TI*.usfm *2TI*.usfm *TIT*.usfm *PHM*.usfm
 
-# remove text likely by barnabas, an associate of the false apostle
-rm HEB*.htm
+# remove book that conveys paul's sayings
+rm *ACT*.usfm
 
-# remove text which conveys deception from the false apostle
-# this book may have historical usefulness, but it does not pass the torah test
-rm ACT*.htm
+# remove book by author of acts, written to same person
+rm *LUK*.usfm
 
-# remove text associated with acts
-# luke and acts are considered one work. both are to theophilus.
-# it is likely that luke and acts were both commissioned for the false apostle's
-# behalf, for a trial in rome, and thus have an untrustworthy bias or influence.
-# i do consider this book significant in that it corroborates matthew
-# and john, but i do not necessarily trust its unique aspects.
-rm LUK*.htm
+# remove text perhaps by barnabas, paul's associate
+rm *HEB*.usfm
 
-# remove text possibly associated with the false apostle.
-# i am perhaps least certain about not distributing this text, but
-# i have not found a compelling reason to include it either.
-# i do consider this book significant in that it corroborates matthew
-# and john, but i do not necessarily trust its unique aspects.
-rm MRK*.htm
+# remove text considered pseudopigraphical
+rm *2PE*.usfm
 
-# remove text which has indications of being a forgery.
-# this book is widely and strongly regarded as not having been written by
-# peter, even by christians in the first few centuries, for many reasons.
-# and even if it were, it considers the false apostle δυσνοετας which
-# actually means nonsensical.
-rm 2PE*.htm
+# remove book that appears loosely associated with paul, perhaps from rome.
+# the decision to remove this book might be undone if it is proven trustworthy.
+rm *MRK*.usfm
 
-printf .
-
-
-# ----------------------------------------------------------
-# change stylesheet link
-#sed -i 's/gentiumplus.css/\.\.\/style.css/g' *.htm
-
-sed -i 's/<link rel="stylesheet" href="gentiumplus\.css" type="text\/css" \/>/<link rel="stylesheet" type="text\/css" href="\.\.\/style\.css" \/>/' *.htm
-
-printf .
-
-
-# ----------------------------------------------------------
-# HTML BATCH CHANGES to remove clutter
-# this process eliminates some parts in individual steps,
-# which could be re-scripted to be done at once, but
-# this is how the script developed.
-
-# perl is much simpler than sed for multiline searches
-# -i: in place (edit in place)
-# -p: Places a printing loop around your command so that it acts on each line of standard input. Used mostly so Perl can beat the pants off Awk in terms of power AND simplicity :-)
-# -0: set record separator to null character (instead of new line)
-# -e: Allows you to provide the program as an argument rather than in a file. You don't want to have to create a script file for every little Perl one-liner.
-# igs: case-insensitive global string-as-single-line
-
-
-# remove name
-perl -i -p0e 's/World English Bible //ig' *.htm
-perl -i -p0e 's/World English Bible//ig' *.htm
-printf .
-
-# replace meta keywords tag
-perl -i -p0e 's/<meta name="keywords".*\/>/<meta name="keywords" content="Bible, Yehoshua Bible, Yeshua Bible, Jesus Bible, Set-Apart Bible, Scripture, Scriptures, Torah, Prophets, Gospel, Messiah, Messianic" \/>/' *.htm
-printf .
-
-# remove top nav (and new line)
-perl -i -p0e 's/<ul.*<div class="main">/<div class="main">/s' *.htm
-printf .
-
-# remove bottom nav (and new line)
-perl -i -p0e 's/<ul.*<div class="footnote">/<div class="footnote">/s' *.htm
-printf .
-
-# remove copyright
-perl -i -p0e 's/<div class="copyright">.*<\/div>//s' *.htm
-printf .
-
-
-# ----------------------------------------------------------
-# COMBINE CHAPTERS
-
-# list all .htm files
-# starting with unique 3 letter codes
-# not longer than 3 letters (menu pages)
-# remove the .htm part
-# save as file books.txt
-ls -1 *.htm | uniq -w 3 | grep -vE '\w{4,}' | sed 's/\.htm//' > books.txt
-printf .
-
-# now it's safe to remove all menu pages
-rm ???.htm
-rm PSA000.htm
-
-# rename file of psalms chapter 1 so it matches the format of other books
-mv PSA001.htm PSA01.htm
-
-# make chapter 1 the main book file
-# like if this were a valid command: mv ???01.htm ???.htm
-while read; do mv "${REPLY}"01.htm "${REPLY}".htm; done < books.txt
-
-
-# for each ???.htm
-#   match </title>
-#   delete the 2 (always 2) characters before it
-sed -i -e 's/..<\/title>/<\/title>/g' ???.htm
-printf .
-
-# remove all end-of-page footnotes
-# for each *.htm
-#   match <div class="footnote">
-#   delete everything after it, then delete it
-sed -i '0,/<div class="footnote">/I!d' *.htm
-sed -i 's/<div class="footnote">//' *.htm
-printf .
-
-# for each ?????*.htm
-#   match <div class="main">
-#   delete everything before it
-sed -i -n '/<div class="main">/,$p' ?????*.htm
-# delete that line
-sed -i 's/<div class="main">//' ?????*.htm
-printf .
-
-#################
-# ASSEMBLE BOOKS
-
-# concatenate all chapters to ???.htm, in order of number
-# for each book name...
-#   ls ???*.htm | sort > ???-chapters.txt
-#     for each in ???-chapters.txt, append it to ???.htm
-# make a list of chapters
-# ...
-
-
-while read BOOK; do
-  printf " ${BOOK}"
-  if [ -f "${BOOK}"02.htm ] || [ -f "${BOOK}"002.htm ]; then
-    ls "${BOOK}"?*.htm | sort > "${BOOK}"-chapters.txt &&
-    while read CHAPTER; do
-      cat "${CHAPTER}" >> "${BOOK}".htm
-    done < "${BOOK}"-chapters.txt
-  fi
-done < books.txt
-
-printf .
-
-# cleanup
-rm ????*.htm ; rm *chapters.txt
-
-#################
-
-
-# attach ending to main pages
-while read; do echo "</div></body></html>" >> "${REPLY}".htm; done < books.txt
-
-# cleanup
-rm books.txt
+# remove apocrypha
+# a critical examination of the apocrypha is outside the scope of this project
+rm -f 41*.usfm 42*.usfm 43*.usfm 45*.usfm 46*.usfm 47*.usfm
+rm -f 5*.usfm 6*.usfm
 printf .
 
 
 
-# ----------------------------------------------------------
-# expand book filenames
+# ------------------------------------------------------------------------------
+# developer option
 
-# weird abbreviations
-# most book name abbreviations are the first 3 letters.
-# not these:
-#      first 3
-# JDG  JUD
-# SNG  SON
-# EZK  EZE
-# JOL  JOE
-# NAM  NAH
-# JHN  JOH
-# JAS  JAM
-# 2JN  2JO
-# 3JN  3JO
 
-# use full name, avoid arbitrary abbreviations
-mv GEN.htm genesis.htm
-mv EXO.htm exodus.htm
-mv LEV.htm leviticus.htm
-mv NUM.htm numbers.htm
-mv DEU.htm deuteronomy.htm
+# # remove unlisted books for faster testing
+# rm *PRO*.usfm
+# rm *SNG*.usfm
+# rm *RUT*.usfm
+# rm *LAM*.usfm
+# rm *ECC*.usfm
+# rm *EST*.usfm
+# rm *EZR*.usfm
+# rm *NEH*.usfm
+# rm *1CH*.usfm
+# rm *2CH*.usfm
 
-mv JOS.htm joshua.htm
-mv JDG.htm judges.htm
-mv 1SA.htm 1samuel.htm
-mv 2SA.htm 2samuel.htm
-mv 1KI.htm 1kings.htm
-mv 2KI.htm 2kings.htm
-mv ISA.htm isaiah.htm
-mv JER.htm jeremiah.htm
-mv EZK.htm ezekiel.htm
-mv HOS.htm hosea.htm
-mv JOL.htm joel.htm
-mv AMO.htm amos.htm
-mv OBA.htm obadiah.htm
-mv JON.htm jonah.htm
-mv MIC.htm micah.htm
-mv NAM.htm nahum.htm
-mv HAB.htm habakkuk.htm
-mv ZEP.htm zephaniah.htm
-mv HAG.htm haggai.htm
-mv ZEC.htm zechariah.htm
-mv MAL.htm malachi.htm
+# rm *JAS*.usfm
+# rm *1PE*.usfm
+# rm *1JN*.usfm
+# rm *2JN*.usfm
+# rm *3JN*.usfm
+# rm *JUD*.usfm
 
-mv PSA.htm psalms.htm
-mv PRO.htm proverbs.htm
-mv JOB.htm job.htm
-mv SNG.htm songofsolomon.htm
-mv RUT.htm ruth.htm
-mv LAM.htm lamentations.htm
-mv ECC.htm ecclesiastes.htm
-mv EST.htm esther.htm
-mv DAN.htm daniel.htm
-mv EZR.htm ezra.htm
-mv NEH.htm nehemiah.htm
-mv 1CH.htm 1chronicles.htm
-mv 2CH.htm 2chronicles.htm
 
-mv MAT.htm matthew.htm
-mv JHN.htm john.htm
-mv REV.htm revelation.htm
 
-mv JAS.htm james.htm
-mv 1PE.htm peter.htm
-mv 1JN.htm 1john.htm
-mv 2JN.htm 2john.htm
-mv 3JN.htm 3john.htm
-mv JUD.htm jude.htm
+# ------------------------------------------------------------------------------
+# rename collection
+
+# rename this collection of books
+sed -i 's/\\id \(...\).*/\\id \1 World English Scripture (WES)/' *.usfm
+printf .
+
+
+
+# ------------------------------------------------------------------------------
+# rename files
+
+# use full book name, all lowecase, to be used as html page name later
+mv 02-GENeng-web.usfm genesis.usfm
+mv 03-EXOeng-web.usfm exodus.usfm
+mv 04-LEVeng-web.usfm leviticus.usfm
+mv 05-NUMeng-web.usfm numbers.usfm
+mv 06-DEUeng-web.usfm deuteronomy.usfm
+
+mv 07-JOSeng-web.usfm joshua.usfm
+mv 08-JDGeng-web.usfm judges.usfm
+mv 10-1SAeng-web.usfm 1samuel.usfm
+mv 11-2SAeng-web.usfm 2samuel.usfm
+mv 12-1KIeng-web.usfm 1kings.usfm
+mv 13-2KIeng-web.usfm 2kings.usfm
+
+mv 24-ISAeng-web.usfm isaiah.usfm
+mv 25-JEReng-web.usfm jeremiah.usfm
+mv 27-EZKeng-web.usfm ezekiel.usfm
+
+mv 28-DANeng-web.usfm daniel.usfm
+mv 29-HOSeng-web.usfm hosea.usfm
+mv 30-JOLeng-web.usfm joel.usfm
+mv 31-AMOeng-web.usfm amos.usfm
+mv 32-OBAeng-web.usfm obadiah.usfm
+mv 33-JONeng-web.usfm jonah.usfm
+mv 34-MICeng-web.usfm micah.usfm
+mv 35-NAMeng-web.usfm nahum.usfm
+mv 36-HABeng-web.usfm habakkuk.usfm
+mv 37-ZEPeng-web.usfm zephaniah.usfm
+mv 38-HAGeng-web.usfm haggai.usfm
+mv 39-ZECeng-web.usfm zechariah.usfm
+mv 40-MALeng-web.usfm malachi.usfm
+
+mv 20-PSAeng-web.usfm psalms.usfm
+mv 19-JOBeng-web.usfm job.usfm
+
+mv 70-MATeng-web.usfm matthew.usfm
+mv 73-JHNeng-web.usfm john.usfm
+mv 96-REVeng-web.usfm revelation.usfm
+printf .
+
+# rename extra books not necessarily listed, but maybe available
+mv 09-RUTeng-web.usfm ruth.usfm
+mv 14-1CHeng-web.usfm 1chronicles.usfm
+mv 15-2CHeng-web.usfm 2chronicles.usfm
+mv 16-EZReng-web.usfm ezra.usfm
+mv 17-NEHeng-web.usfm nehemiah.usfm
+mv 18-ESTeng-web.usfm esther.usfm
+mv 21-PROeng-web.usfm proverbs.usfm
+mv 22-ECCeng-web.usfm ecclesiastes.usfm
+mv 23-SNGeng-web.usfm songofsolomon.usfm
+mv 26-LAMeng-web.usfm lamentations.usfm
+
+mv 89-JASeng-web.usfm james.usfm
+mv 90-1PEeng-web.usfm 1peter.usfm
+mv 92-1JNeng-web.usfm 1john.usfm
+mv 93-2JNeng-web.usfm 2john.usfm
+mv 94-3JNeng-web.usfm 3john.usfm
+mv 95-JUDeng-web.usfm jude.usfm
+printf .
+
+
+
+# ------------------------------------------------------------------------------
+# rename books
+
+# use classic name "Song of Songs" instead of "Song of Solomon"
+mv songofsolomon.usfm songofsongs.usfm
+sed -i 's/Song of Solomon/Song of Songs/' songofsongs.usfm
+
+# since "2 Peter" is out, use title "Peter" instead of "1 Peter"
+mv 1peter.usfm peter.usfm
+sed -i 's/\\id 1PE/\\id PET/' peter.usfm
+sed -i 's/\\h 1 Peter/\\h Peter/' peter.usfm
+sed -i 's/\\toc1 Peter’s First Letter/\\toc1 The Letter from Peter/' peter.usfm
+sed -i 's/\\toc2 1 Peter/\\toc2 Peter/' peter.usfm
+sed -i 's/\\toc3 1 Peter/\\toc3 Peter/' peter.usfm
+sed -i 's/\\mt1 Peter’s First Letter/\\mt1 The Letter from Peter/' peter.usfm
+printf .
+
+
+
+# ------------------------------------------------------------------------------
+# USFM FORMAT EDITING
+# formatting will be changed. the main text should not be edited here
+# ------------------------------------------------------------------------------
+
+# strip strongs numbering
+# as of 2023-05-05, the strongs numbers provided are WAY off, like random
+sed -i 's/\\w //g' *.usfm
+sed -i 's/\\+w //g' *.usfm
+sed -i 's/|strong="....."\\w\*//g' *.usfm
+sed -i 's/|strong="....."\\+w\*//g' *.usfm
+printf .
+
+# strip blank lines. an optional aspect of formatting.
+# the \b is not in all the places it should be, like right before gen49.28
+# and they are somewhat unconventional for books but do appear in some bibles.
+# the different paragraph styles may provide for this kind of spacing anyway.
+#sed -i '/\\b/d' *.usfm
+
+# this isn't just a blank line but is used as a container like paragraph
+# it gives a half-height blank line above it, depending on css
+#sed -i '/\\nb/d' *.usfm
+
+# strip footnotes and cross-references
+#perl -i -pe 's/\\f .*?\\f\*//g' *.usfm
+#perl -i -pe 's/\\x .*?\\x\*//g' *.usfm
+#printf .
+
+# strip wj markers
+#sed -i 's/\\wj //g' *.usfm
+#sed -i 's/\\wj\*//g' *.usfm
+#printf .
+
+
+
+# strip extra titles
+sed -i '/\\toc1/d' *.usfm
+sed -i '/\\toc2/d' *.usfm
+sed -i '/\\toc3/d' *.usfm
+sed -i '/\\mt1/d' *.usfm
+sed -i '/\\mt2/d' *.usfm
+sed -i '/\\mt3/d' *.usfm
 printf .
 
 
 
 
-# ----------------------------------------------------------
-# change single-quotes in code to double-quotes
-
-# this cleans up the upstream code received from the WEBP
-# authors. this should not change any quotes in the bible
-# text itself because those quotes are special tilted
-# quotes.
-# (the sequence '"'"' functions as a single quote)
-sed -i 's/'"'"'/"/g' *.htm
 
 
 
-# ----------------------------------------------------------
-# make utf-8 lowercase
-sed -i 's/charset="UTF-8"/charset="utf-8"/' *.htm
+
+
+# ------------------------------------------------------------------------------
+# USFM WHITESPACE CLEANUP
+# in this section, usfm code will be cleaned to improve usfm quality.
+# no editing decisions (format or text) should be done here.
+# this is done to fix formatting problems when omitting verse numbers,
+# and other reasons noted below.
+# it is also done just to have cleaner usfm and html code.
+# ------------------------------------------------------------------------------
 
 
 
-# ----------------------------------------------------------
-# remove longform titles
+# ------------------------------------------------------------------------------
+# heading and chapter spacing
 
-# remove any preceding "The "
-sed -i 's/<div class="mt">The /<div class="mt">/' *.htm
+# clean whitespace around heading name
+# also works if it has spaces such as "Song of Songs" or "2 Kings"
+for f in *.usfm; do
+# xargs trims whitespace, leaving multiple words separated by 1 space
+h=$(grep '\\h ' $f | cut -c 4- | xargs)
+# use shell expansion for variable only, or \\ becomes \
+sed -i 's/\\h .*/\\h '"$h"'/' $f
+done
 
-# after removing "The ", replace "First Book of" with "1", and for 2
-sed -i 's/<div class="mt">First Book of/<div class="mt">1/' *.htm
-sed -i 's/<div class="mt">Second Book of/<div class="mt">2/' *.htm
-
-# after removing "The ", remove "Letter from" (James, Jude)
-sed -i 's/<div class="mt">Letter from/<div class="mt">/' *.htm
-
-# since 2 peter is out, use "peter" instead of "1 peter"
-sed -i 's/Peter’s First Letter/Peter/' peter.htm
-
-# john 1 2 3
-sed -i 's/<div class="mt">John’s First Letter/<div class="mt">1 John/' 1john.htm
-sed -i 's/<div class="mt">John’s Second Letter/<div class="mt">2 John/' 2john.htm
-sed -i 's/<div class="mt">John’s Third Letter/<div class="mt">3 John/' 3john.htm
-
-# revelation
-sed -i 's/<div class="mt">Revelation to John/<div class="mt">Revelation/' revelation.htm
+# clean whitespace around chapter number
+# match \c and 1 or more spaces, number, etc. return \c number
+sed -i 's/\\c \+\([0-9]\+\).*/\\c \1/' *.usfm
 printf .
 
 
 
-# ----------------------------------------------------------
-# cleanup whitespace
+# ------------------------------------------------------------------------------
+# em dash spacing
+# for books, em dashes should not have spaces next to them
+# this makes that rule more consistent
+# this is difficult to enforce. more testing might be good.
 
-# remove 2 spaces and linefeed from title,
-# and add 2 linefeeds to separate first chapter
-perl -i -p0e 's/  \n<\/div><div class/<\/div>\n\n<div class/' *.htm
+# remove space at end of line when next verse starts with em dash
+# only known occurrence is lev 4:11-4:12
+perl -i -p0e 's/ \n\\v ([0-9]+) —/\\v \1 —/gs' *.usfm
 
-# remove extra space and linefeed from between chapters
-perl -i -p0e 's/ \n\n \n/\n\n/g' *.htm
-perl -i -p0e 's/\n\n \n/\n\n/g' *.htm
+# remove any space and newline after em dash. newline is space when viewed
+perl -i -p0e 's/— *\n/—/gs' *.usfm
 
-
-
-# ----------------------------------------------------------
-# prepare psalms for formatting
-
-# enable psalm chapter labels even when no chapter labels elsewhere
-sed -i 's/chapterlabel/psalmlabel/g' psalms.htm
+# remove space next to em dash, for when it occurs mid-line
+sed -i 's/— /—/g' *.usfm
 
 
 
-# ----------------------------------------------------------
-# give each page an icon
-sed -i 's/css" \/>/css" \/>\
-<link rel="shortcut icon" type="image\/png" href="..\/book.png" \/>/' *.htm
+# remove any spaces and linebreaks after Selah— at end of line,
+# in case it's put in-line
 
-printf .
+# only known occurrence is psa 68:32
 
+# part 1
+perl -i -p0e 's/—\\qs\* *\n/—\\qs\*/' *.usfm
 
-
-# i think it would be a better practice to fix this issue in the usfm,
-#   and then have a custom script to make the html,
-#   instead of having awkward break-fix issues like this.
-# fix html paragraph formatting for john 7:53-8:1
-sed -i 's/Everyone went to his own house, <\/div>/Everyone went to his own house, /' john.htm
-
-sed -i 's/<div class="chapterlabel" id="V0"> 8<\/div><div class="nb">/<div class="chapterlabel" id="8"> 8<\/div>/' john.htm
-
-
-
-
-# ----------------------------------------------------------
-# ----------------------------------------------------------
-# ------- BEGIN SCRIPTURE TEXT TRANSLATION REVISIONS -------
-# ----------------------------------------------------------
-# ----------------------------------------------------------
-
-# order of revisions/edits:
-# 1. specific edits, grouped by topic, chronological order
-# 2. bulk edits, grouped by topic, chronological order
-
-# some edits rely on previous edits, so order is important.
-# for example, the virgin birth edit relies on the word
-# "husband", so it must be performed before all instances
-# of "husband" are changed to "man".
-
-# this order helps make it clear exactly how the WEB is
-# being revised before bulk edits are applied, and so
-# modifications to bulk changes can be done quickly and
-# easily, without interfering with specific edits. also,
-# this way, any edit can be commented out easily,
-# whereas if bulk edits were first, then commenting out
-# the bulk edit might break a specific edit.
+# part 2: this fixes the last check because there were 2 linebreaks
+perl -i -p0e 's/—\\qs\*\\q1\n/—\\qs\*\\q1 /' *.usfm
 
 
 
 
 
 
-# ----------------------------------------------------------
-# ------------------- SPECIFIC EDITS -----------------------
-# ----------------------------------------------------------
-
-
-# ----------------------------------------------------------
-# official WEB changelog.txt updates
-
-# 2023-02-28: Corrected typo in Nehemiah 11:22 in eng-web*, engwmb, and engwmbb.
-# neh 11:22
-sed -i 's/singers, was over the business of God’s house/singers responsible for the service of God’s house/' nehemiah.htm
-
-# 2023-03-02: Corrected typo in Jeremiah 2:18 in eng-web*, engwmb, and engwmbb.
-# jer 2:18
-sed -i 's/Or why do you to go on the way to Assyria/Or why do you go on the way to Assyria/' jeremiah.htm
-
-# 2023-03-28: Corrected typo in Isaiah 40:26 in eng-web*, engwmb, and engwmbb.
-# isa 40:26
-sed -i 's/by the greatness of his might/By the greatness of his might/' isaiah.htm
-
-# 2023-04-24: Corrected typo in eng-web*, engwmb, and engwmbb: removed extra "s" from John 12:3. Updated gupk. Rebuilt translations with latest Haiola release candidate
-# solved in messiah's name change
-
-# 2023-04-26: Corrected typo in eng-web*, engwmb, and engwmbb in 2CH 3:15 heigh -> high.
-# issue not found in webp
+# alternative: place spaces around em dashes
+# this format is much easier to implement
+# insert a space after each em dash, if there isn't one already
+#sed -i 's/—\([^ ]\)/— \1/g' *.usfm
+# insert a space before each em dash, if there isn't one already
+#sed -i 's/\([^ ]\)—/\1 —/g' *.usfm
 
 
 
+# ------------------------------------------------------------------------------
+# psalm book cleanup
+
+sed -i 's/\\ms1 \([A-Za-z]* [0-9]\+\) *$/\\ms1 \1/g' psalms.usfm
 
 
-# ----------------------------------------------------------
-# WEB corrections
-# all of these issues should be fixed upstream, eventually
+# ------------------------------------------------------------------------------
+# quote spacing
 
-# lack of non-breaking space, perhaps due to Haiola HTML oversight
-# joh 5:11
-sed -i 's/’<\/span>”/’<\/span>\&#160;”/' john.htm
+# space-out apostrophes with non-breaking space. USFM COMPATIBILITY UNTESTED.
+# opens
+sed -i 's/“‘/“ ‘/g' *.usfm
+sed -i 's/‘“/‘ “/g' *.usfm
+# closes
+sed -i 's/’”/’ ”/g' *.usfm
+sed -i 's/”’/” ’/g' *.usfm
+# fix one occurrence
+sed -i 's/’\\wj\*”/’\\wj\* ”/' *.usfm
 
-# ----- NOTE -----this may not be ideal for when showing verse numbers
-# em dash, without verse number, has space, but shouldn't
-# this is a stopgap measure, fixing poor html generation.
-# ideally, the html generation should be cleaned up.
-# dan 9:20-21
-sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span class="verse" id="V21">21\&#160;<\/span>yes/' daniel.htm
+
+
+# ------------------------------------------------------------------------------
+# avoid two spaces
+
+# reduce two adjacent spaces to just one space
+sed -i 's/  / /g' *.usfm
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# UNOFFICIAL TYPO CORRECTIONS
+# fix issues upstream should fix
+# depends on single character (nbsp) inserted between quotes
+# ------------------------------------------------------------------------------
+
 
 
 # misplaced quotation mark in matthew 19:5 and many other places
@@ -475,186 +395,187 @@ sed -i 's/God—  <span class="verse" id="V21">21\&#160;<\/span> yes/God—<span
 # (40 sed's. 2 sed's fix 2 verses, and 2 verses have 2 sed's each)
 
 # 1ki 1:24
-sed -i 's/sit on my throne?’/sit on my throne’?/' 1kings.htm
+sed -i 's/sit on my throne?’/sit on my throne’?/' 1kings.usfm
 
 # 1ki 2:42
-sed -i 's/shall surely die?’/shall surely die’?/' 1kings.htm
+sed -i 's/shall surely die?’/shall surely die’?/' 1kings.usfm
 
 # 1ki 12:9 and 2ch 10:9
-sed -i 's/on us lighter?’.”/on us lighter’?”/g' *.htm
+sed -i 's/on us lighter?’.”/on us lighter’?”/g' *.usfm
 
 # 1sa 21:11, 29:5
-sed -i 's/David his ten thousands?’.”/David his ten thousands’?”/g' 1samuel.htm
+sed -i 's/David his ten thousands?’.”/David his ten thousands’?”/g' 1samuel.usfm
 
 # 1sa 24:9
-sed -i 's/David seeks to harm you?’/David seeks to harm you’?/' 1samuel.htm
+sed -i 's/David seeks to harm you?’/David seeks to harm you’?/' 1samuel.usfm
 
 # 2ch 32:11
-sed -i 's/king of Assyria?’/king of Assyria’?/' 2chronicles.htm
+sed -i 's/king of Assyria?’/king of Assyria’?/' 2chronicles.usfm
 
 # 2ch 32:12
-sed -i 's/incense on it?’/incense on it’?/' 2chronicles.htm
+sed -i 's/incense on it?’/incense on it’?/' 2chronicles.usfm
 
 # 2ki 2:18
-sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’t go’?/' 2kings.htm
+sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’t go’?/' 2kings.usfm
 
 # 2ki 5:13
-sed -i 's/Wash, and be clean?’./Wash, and be clean’?/' 2kings.htm
+sed -i 's/Wash, and be clean?’./Wash, and be clean’?/' 2kings.usfm
 
 # 2ki 18:22
-sed -i 's/altar in Jerusalem?’/altar in Jerusalem’?/' 2kings.htm
+sed -i 's/altar in Jerusalem?’/altar in Jerusalem’?/' 2kings.usfm
 
 # exo 14:12
-sed -i 's/serve the Egyptians?’/serve the Egyptians’?/' exodus.htm
+sed -i 's/serve the Egyptians?’/serve the Egyptians’?/' exodus.usfm
 
 # exo 32:12
-sed -i 's/surface of the earth?’/surface of the earth’?/' exodus.htm
+sed -i 's/surface of the earth?’/surface of the earth’?/' exodus.usfm
 
 # eze 12:22
-sed -i 's/every vision fails?’/every vision fails’?/' ezekiel.htm
+sed -i 's/every vision fails?’/every vision fails’?/' ezekiel.usfm
 
 # gen 26:9
-sed -i 's/She is my sister?’.”/She is my sister’?”/' genesis.htm
+sed -i 's/She is my sister?’.”/She is my sister’?”/' genesis.usfm
 
 # gen 43:7
-sed -i 's/Bring your brother down?’.”/Bring your brother down’?”/' genesis.htm
+sed -i 's/Bring your brother down?’.”/Bring your brother down’?”/' genesis.usfm
 
 # isa 36:7
-sed -i 's/before this altar?’.”/before this altar’?”/' isaiah.htm
+sed -i 's/before this altar?’.”/before this altar’?”/' isaiah.usfm
 
 # isa 41:26
-sed -i 's/He is right?’/He is right’?/' isaiah.htm
+sed -i 's/He is right?’/He is right’?/' isaiah.usfm
 
 # jer 26:9
-sed -i 's/without inhabitant?’.”/without inhabitant’?”/' jeremiah.htm
+sed -i 's/without inhabitant?’.”/without inhabitant’?”/' jeremiah.usfm
 
 # SAME ISSUE AS OTHERS PLUS SPECIAL CASE OF WRONG NESTING.
 # FOR HTML: REMEMBER TO USE NBSP (NON-BREAKING SPACE) BETWEEN QUOTE MARKS!
 # OTHER VERSES IN THIS PARAGRAPH AGREE WITH THE CORRECTED FORM (NOT CURRENT FORM)
 # jer 36:29
-sed -i 's/“Why have you written therein, saying, ‘The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal?’.”.’/‘Why have you written therein, saying, “The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal”?’\&#160;”/' jeremiah.htm
+sed -i 's/“Why have you written therein, saying, ‘The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal?’.”.’/‘Why have you written therein, saying, “The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal”?’ ”/' jeremiah.usfm
 
 # jer 37:19
-sed -i 's/against this land?’/against this land’?/' jeremiah.htm
+sed -i 's/against this land?’/against this land’?/' jeremiah.usfm
 
 # job 6:22 (1 of 2)
-sed -i 's/Give to me?’/Give to me’?/' job.htm
+sed -i 's/Give to me?’/Give to me’?/' job.usfm
 
 # job 6:22 (2 of 2)
-sed -i 's/from your substance?’/from your substance’?/' job.htm
+sed -i 's/from your substance?’/from your substance’?/' job.usfm
 
 # job 6:23 (1 of 2)
-sed -i 's/adversary’s hand?’/adversary’s hand’?/' job.htm
+sed -i 's/adversary’s hand?’/adversary’s hand’?/' job.usfm
 
 # job 6:23 (2 of 2)
-sed -i 's/of the oppressors?’/of the oppressors’?/' job.htm
+sed -i 's/of the oppressors?’/of the oppressors’?/' job.usfm
 
 # job 36:23
-sed -i 's/have committed unrighteousness?’/have committed unrighteousness’?/' job.htm
+sed -i 's/have committed unrighteousness?’/have committed unrighteousness’?/' job.usfm
 
 # joh 4:35
-sed -i 's/until the harvest?’/until the harvest’?/' john.htm
+sed -i 's/until the harvest?’/until the harvest’?/' john.usfm
 
 # joh 6:42
-sed -i 's/out of heaven?’./out of heaven’?/' john.htm
+sed -i 's/out of heaven?’./out of heaven’?/' john.usfm
 
 # joh 10:34
-sed -i 's/you are gods?’/you are gods’?/' john.htm
+sed -i 's/you are gods?’/you are gods’?/' john.usfm
 
 # joh 10:36
-sed -i 's/am the Son of God?’/am the Son of God’?/' john.htm
+sed -i 's/am the Son of God?’/am the Son of God’?/' john.usfm
 
 # joh 12:27
-sed -i 's/save me from this time?’/save me from this time’?/' john.htm
+sed -i 's/save me from this time?’/save me from this time’?/' john.usfm
 
 # joh 12:34
-sed -i 's/must be lifted up?’/must be lifted up’?/' john.htm
+sed -i 's/must be lifted up?’/must be lifted up’?/' john.usfm
 
 # joh 14:9
-sed -i 's/Show us the Father?’/Show us the Father’?/' john.htm
+sed -i 's/Show us the Father?’/Show us the Father’?/' john.usfm
 
 # joh 16:19
-sed -i 's/you will see me?’/you will see me’?/' john.htm
+sed -i 's/you will see me?’/you will see me’?/' john.usfm
 
 # mat 9:5
-sed -i 's/Get up, and walk?’/Get up, and walk’?/' matthew.htm
+sed -i 's/Get up, and walk?’/Get up, and walk’?/' matthew.usfm
 
 # matthew 19:5
-sed -i 's/become one flesh?’/become one flesh’?/' matthew.htm
+sed -i 's/become one flesh?’/become one flesh’?/' matthew.usfm
 
 # mat 21:16
-sed -i 's/perfected praise?’.”/perfected praise’?”/' matthew.htm
+sed -i 's/perfected praise?’.”/perfected praise’?”/' matthew.usfm
 
 # mat 22:32
-sed -i 's/the God of Jacob?’/the God of Jacob’?/' matthew.htm
+sed -i 's/the God of Jacob?’/the God of Jacob’?/' matthew.usfm
 
 # SHOULD BE JUST A PERIOD, NOT A QUESTION MARK
 # mat 23:18
-sed -i 's/he is obligated?’/he is obligated\.’/' matthew.htm
+sed -i 's/he is obligated?’/he is obligated\.’/' matthew.usfm
 
 # num 11:12
-sed -i 's/to their fathers?’/to their fathers’?/' numbers.htm
+sed -i 's/to their fathers?’/to their fathers’?/' numbers.usfm
 
 # num 23:26
-sed -i 's/that I must do?’.”/that I must do’?”/' numbers.htm
+sed -i 's/that I must do?’.”/that I must do’?”/' numbers.usfm
 
 printf .
 
 
 # question mark and close curly double quote (9 ISSUES)
-# grep -l ?” *.html
+# grep -l ?” *.usfml
 # (39 books of 48 with at least 1 occurrence)
 
 # 1ki 1:13
-sed -i 's/on my throne?”/on my throne”?/' 1kings.htm
+sed -i 's/on my throne?”/on my throne”?/' 1kings.usfm
 
 # ecc 1:10
-sed -i 's/this is new?”/this is new”?/' ecclesiastes.htm
+sed -i 's/this is new?”/this is new”?/' ecclesiastes.usfm
 
 # isa 19:11
-sed -i 's/of ancient kings?”/of ancient kings”?/' isaiah.htm
+sed -i 's/of ancient kings?”/of ancient kings”?/' isaiah.usfm
 
 # isa 29:16
-sed -i 's/He has no understanding?”/He has no understanding”?/' isaiah.htm
+sed -i 's/He has no understanding?”/He has no understanding”?/' isaiah.usfm
 
 # isa 40:27
-sed -i 's/disregarded by my God?”/disregarded by my God”?/' isaiah.htm
+sed -i 's/disregarded by my God?”/disregarded by my God”?/' isaiah.usfm
 
 # jer 8:8
-sed -i 's/law is with us?”/law is with us”?/' jeremiah.htm
+sed -i 's/law is with us?”/law is with us”?/' jeremiah.usfm
 
 # jer 32:5
-sed -i 's/will not prosper?”.’.”/will not prosper”\&#160;’?”/' jeremiah.htm
+sed -i 's/will not prosper?”.’.”/will not prosper” ’?”/' jeremiah.usfm
 
 # pro 20:9
-sed -i 's/and without sin?”/and without sin”?/' proverbs.htm
+sed -i 's/and without sin?”/and without sin”?/' proverbs.usfm
 
 # psa 10:13
-sed -i 's/me into account?”/me into account”?/' psalms.htm
-
-# developers note: current place in refactoring
-
+sed -i 's/me into account?”/me into account”?/' psalms.usfm
 
 # add missed quotation marks
 # add closing mark
 # Jeremiah 21:14
-sed -i 's/fruit of your doings, says Yahweh;/fruit of your doings,’ says Yahweh;/' jeremiah.htm
+sed -i 's/fruit of your doings, says Yahweh;/fruit of your doings,’ says Yahweh;/' jeremiah.usfm
 # add opening mark
-sed -i 's/and I will kindle a fire in her forest/‘and I will kindle a fire in her forest/' jeremiah.htm
+sed -i 's/and I will kindle a fire in her forest/‘and I will kindle a fire in her forest/' jeremiah.usfm
 
 printf .
 
 
 
+# ------------------------------------------------------------------------------
+# TRANSLATION REVISIONS
+# attempt to restore scripture and improve translation
+# ------------------------------------------------------------------------------
 
-# ----------------------------------------------------------
+# ------------------------------------------------------------------------------
 # USE LXX DATES FOR GENESIS 5 and 11 CHRONOLOGY
 
 # See: Henry B. Smith Jr., The case for the Septuagint's chronology in
 # Genesis 5 and Genesis 11, 2018.
 
-# edit ages from masoretic to septuagint record, in general, according
-# to Henry B. Smith Jr's proposal.
+# edit ages from masoretic to septuagint record, in general.
+# follow Henry B. Smith Jr's proposal precisely.
 
 # the following site has a similar method:
 # https://www.bible.ca/manuscripts/Bible-chronology-charts-age-of-earth-date-Genesis-5-11-Septuagint-text-LXX-original-autograph-corrupted-Masoretic-MT-primeval-5554BC.htm
@@ -662,50 +583,50 @@ printf .
 
 
 # genesis 5:3
-sed -i 's/Adam lived one hundred thirty years/Adam lived two hundred thirty years/' genesis.htm
+sed -i 's/Adam lived one hundred thirty years/Adam lived two hundred thirty years/' genesis.usfm
 
 # genesis 5:4
-sed -i 's/Adam after he became the father of Seth were eight hundred years/Adam after he became the father of Seth were seven hundred years/' genesis.htm
+sed -i 's/Adam after he became the father of Seth were eight hundred years/Adam after he became the father of Seth were seven hundred years/' genesis.usfm
 
 
 
 # genesis 5:6
-sed -i 's/Seth lived one hundred five years, then became the father of Enosh/Seth lived two hundred five years, then became the father of Enosh/' genesis.htm
+sed -i 's/Seth lived one hundred five years, then became the father of Enosh/Seth lived two hundred five years, then became the father of Enosh/' genesis.usfm
 
 # genesis 5:7
-sed -i 's/Seth lived after he became the father of Enosh eight hundred seven years/Seth lived after he became the father of Enosh seven hundred seven years/' genesis.htm
+sed -i 's/Seth lived after he became the father of Enosh eight hundred seven years/Seth lived after he became the father of Enosh seven hundred seven years/' genesis.usfm
 
 
 
 # genesis 5:9
-sed -i 's/Enosh lived ninety years, and became the father of Kenan/Enosh lived one hundred ninety years, and became the father of Kenan/' genesis.htm
+sed -i 's/Enosh lived ninety years, and became the father of Kenan/Enosh lived one hundred ninety years, and became the father of Kenan/' genesis.usfm
 
 # genesis 5:10
-sed -i 's/Enosh lived after he became the father of Kenan eight hundred fifteen years/Enosh lived after he became the father of Kenan seven hundred fifteen years/' genesis.htm
+sed -i 's/Enosh lived after he became the father of Kenan eight hundred fifteen years/Enosh lived after he became the father of Kenan seven hundred fifteen years/' genesis.usfm
 
 
 
 # genesis 5:12
-sed -i 's/Kenan lived seventy years, then became the father of Mahalalel/Kenan lived one hundred seventy years, then became the father of Mahalalel/' genesis.htm
+sed -i 's/Kenan lived seventy years, then became the father of Mahalalel/Kenan lived one hundred seventy years, then became the father of Mahalalel/' genesis.usfm
 
 # genesis 5:13
-sed -i 's/Kenan lived after he became the father of Mahalalel eight hundred forty years/Kenan lived after he became the father of Mahalalel seven hundred forty years/' genesis.htm
+sed -i 's/Kenan lived after he became the father of Mahalalel eight hundred forty years/Kenan lived after he became the father of Mahalalel seven hundred forty years/' genesis.usfm
 
 
 
 # genesis 5:15
-sed -i 's/Mahalalel lived sixty-five years, then became the father of Jared/Mahalalel lived one hundred sixty-five years, then became the father of Jared/' genesis.htm
+sed -i 's/Mahalalel lived sixty-five years, then became the father of Jared/Mahalalel lived one hundred sixty-five years, then became the father of Jared/' genesis.usfm
 
 # genesis 5:16
-sed -i 's/Mahalalel lived after he became the father of Jared eight hundred thirty years/Mahalalel lived after he became the father of Jared seven hundred thirty years/' genesis.htm
+sed -i 's/Mahalalel lived after he became the father of Jared eight hundred thirty years/Mahalalel lived after he became the father of Jared seven hundred thirty years/' genesis.usfm
 
 
 
 # genesis 5:21
-sed -i 's/Enoch lived sixty-five years, then became the father of Methuselah/Enoch lived one hundred sixty-five years, then became the father of Methuselah/' genesis.htm
+sed -i 's/Enoch lived sixty-five years, then became the father of Methuselah/Enoch lived one hundred sixty-five years, then became the father of Methuselah/' genesis.usfm
 
 # genesis 5:22
-sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred years/After Methuselah’s birth, Enoch walked with God for two hundred years/' genesis.htm
+sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred years/After Methuselah’s birth, Enoch walked with God for two hundred years/' genesis.usfm
 
 
 
@@ -755,10 +676,10 @@ sed -i 's/After Methuselah’s birth, Enoch walked with God for three hundred ye
 
 # henry smith's paper propses mt here, so no change
 # genesis 5:30
-# sed -i 's/Lamech lived after he became the father of Noah five hundred ninety-five years/Lamech lived after he became the father of Noah five hundred sixty-five years/' genesis.htm
+# sed -i 's/Lamech lived after he became the father of Noah five hundred ninety-five years/Lamech lived after he became the father of Noah five hundred sixty-five years/' genesis.usfm
 
 # genesis 5:31
-# sed -i 's/All the days of Lamech were seven hundred seventy-seven years/All the days of Lamech were seven hundred fifty-three years/' genesis.htm
+# sed -i 's/All the days of Lamech were seven hundred seventy-seven years/All the days of Lamech were seven hundred fifty-three years/' genesis.usfm
 
 printf .
 
@@ -768,7 +689,7 @@ printf .
 # restoring cainan
 
 # Genesis 10:24
-sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan\. Cainan became the father of Shelah/' genesis.htm
+sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan\. Cainan became the father of Shelah/' genesis.usfm
 
 
 
@@ -780,9 +701,9 @@ sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of
 # also, the ages for cainan are not unique, which supports the above theory: cainan's ages are 130 and 330, identical to shelah's. it seems cainan was injected, and shelah's ages were copied.
 # (the ages are unique by henry smith's account)
 
-#sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Shelah/' genesis.htm
+#sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Shelah/' genesis.usfm
 # genesis 11:12
-sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Cainan/' genesis.htm
+sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arpachshad lived one hundred thirty-five years and became the father of Cainan/' genesis.usfm
 
 
 
@@ -794,35 +715,35 @@ sed -i 's/Arpachshad lived thirty-five years and became the father of Shelah/Arp
 
 # do add kainan/cainan son of arpachshad
 # genesis 11:13
-sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah, and became the father of more sons and daughters/Arpachshad lived four hundred thirty years after he became the father of Cainan, and became the father of more sons and daughters\. Cainan lived one hundred thirty years, and became the father of Shelah\. Cainan lived three hundred thirty years after he became the father of Shelah, and became the father of more sons and daughters/' genesis.htm
+sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah, and became the father of more sons and daughters/Arpachshad lived four hundred thirty years after he became the father of Cainan, and became the father of more sons and daughters\. Cainan lived one hundred thirty years, and became the father of Shelah\. Cainan lived three hundred thirty years after he became the father of Shelah, and became the father of more sons and daughters/' genesis.usfm
 
 # do not add cainan (do not recreate anything). easier, but not using this translation because it is easier.
-#sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah/Arpachshad lived four hundred thirty years after he became the father of Shelah/' genesis.htm
+#sed -i 's/Arpachshad lived four hundred three years after he became the father of Shelah/Arpachshad lived four hundred thirty years after he became the father of Shelah/' genesis.usfm
 
 
 # restore chronology in chronicles, adding cainan back in
 
 # 1 Chronicles 1:18
-sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan, and Cainan became the father of Shelah/' 1chronicles.htm
+sed -i 's/Arpachshad became the father of Shelah/Arpachshad became the father of Cainan, and Cainan became the father of Shelah/' 1chronicles.usfm
 
 # 1 Chronicles 1:24
-sed -i 's/Shem, Arpachshad, Shelah/Shem, Arpachshad, Cainan, Shelah/' 1chronicles.htm
+sed -i 's/Shem, Arpachshad, Shelah/Shem, Arpachshad, Cainan, Shelah/' 1chronicles.usfm
 
 
 
 
 # genesis 11:14
-sed -i 's/Shelah lived thirty years, and became the father of Eber/Shelah lived one hundred thirty years, and became the father of Eber/' genesis.htm
+sed -i 's/Shelah lived thirty years, and became the father of Eber/Shelah lived one hundred thirty years, and became the father of Eber/' genesis.usfm
 
 
 # do not change
 # genesis 11:15
-#sed -i 's/Shelah lived four hundred three years after he became the father of Eber/Shelah lived three hundred thirty years after he became the father of Eber/' genesis.htm
+#sed -i 's/Shelah lived four hundred three years after he became the father of Eber/Shelah lived three hundred thirty years after he became the father of Eber/' genesis.usfm
 
 
 
 # genesis 11:16
-sed -i 's/Eber lived thirty-four years, and became the father of Peleg/Eber lived one hundred thirty-four years, and became the father of Peleg/' genesis.htm
+sed -i 's/Eber lived thirty-four years, and became the father of Peleg/Eber lived one hundred thirty-four years, and became the father of Peleg/' genesis.usfm
 
 
 
@@ -832,22 +753,22 @@ sed -i 's/Eber lived thirty-four years, and became the father of Peleg/Eber live
 # lxx pdf from archive.org says 370. (archive.org ark 13960 t83j67m4m)
 
 # genesis 11:17
-sed -i 's/Eber lived four hundred thirty years after he became the father of Peleg/Eber lived three hundred seventy years after he became the father of Peleg/' genesis.htm
+sed -i 's/Eber lived four hundred thirty years after he became the father of Peleg/Eber lived three hundred seventy years after he became the father of Peleg/' genesis.usfm
 
 
 
 # genesis 11:18
-sed -i 's/Peleg lived thirty years, and became the father of Reu/Peleg lived one hundred thirty years, and became the father of Reu/' genesis.htm
+sed -i 's/Peleg lived thirty years, and became the father of Reu/Peleg lived one hundred thirty years, and became the father of Reu/' genesis.usfm
 
 
 
 # genesis 11:20
-sed -i 's/Reu lived thirty-two years, and became the father of Serug/Reu lived one hundred thirty-two years, and became the father of Serug/' genesis.htm
+sed -i 's/Reu lived thirty-two years, and became the father of Serug/Reu lived one hundred thirty-two years, and became the father of Serug/' genesis.usfm
 
 
 
 # genesis 11:22
-sed -i 's/Serug lived thirty years, and became the father of Nahor/Serug lived one hundred thirty years, and became the father of Nahor/' genesis.htm
+sed -i 's/Serug lived thirty years, and became the father of Nahor/Serug lived one hundred thirty years, and became the father of Nahor/' genesis.usfm
 
 
 
@@ -857,7 +778,7 @@ sed -i 's/Serug lived thirty years, and became the father of Nahor/Serug lived o
 # lxx pdf from archive.org (ark 13960 t83j67m4m): 79
 
 # genesis 11:24
-sed -i 's/Nahor lived twenty-nine years, and became the father of Terah/Nahor lived seventy-nine years, and became the father of Terah/' genesis.htm
+sed -i 's/Nahor lived twenty-nine years, and became the father of Terah/Nahor lived seventy-nine years, and became the father of Terah/' genesis.usfm
 
 
 
@@ -868,13 +789,11 @@ sed -i 's/Nahor lived twenty-nine years, and became the father of Terah/Nahor li
 # nets 129
 
 # genesis 11:25
-sed -i 's/Nahor lived one hundred nineteen years after he became the father of Terah/Nahor lived one hundred twenty-nine years after he became the father of Terah/' genesis.htm
+sed -i 's/Nahor lived one hundred nineteen years after he became the father of Terah/Nahor lived one hundred twenty-nine years after he became the father of Terah/' genesis.usfm
+
 
 
 printf .
-
-
-
 
 
 
@@ -918,9 +837,7 @@ printf .
 # at around 28:00
 
 # genesis 15:6
-sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He believed in Yahweh, and credited it to him as righteousness/' genesis.htm
-
-
+sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He believed in Yahweh, and credited it to him as righteousness/' genesis.usfm
 
 
 
@@ -937,7 +854,7 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 
 
 # Genesis 14:13
-#sed -i 's/brother of Eshcol and brother of Aner\. They were allies of Abram/brother of Eshcol and brother of Aner\. They were the owners of the covenant of Abram/' genesis.htm
+#sed -i 's/brother of Eshcol and brother of Aner\. They were allies of Abram/brother of Eshcol and brother of Aner\. They were the owners of the covenant of Abram/' genesis.usfm
 
 # ... (unfinished)
 
@@ -954,12 +871,7 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # marry is a modern word
 
 # Genesis 19:14
-#sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.htm
-
-
-
-
-
+#sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.usfm
 
 
 
@@ -988,15 +900,15 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # webp
 # adonaim, lords
 # Amos 4:1
-sed -i 's/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their husbands, “Bring us drinks!”/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their lords, “Bring us drinks!”/' amos.htm
+sed -i 's/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their husbands, “Bring us drinks!”/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their lords, “Bring us drinks!”/' amos.usfm
 
 # baal, owners
 # Esther 1:17
-sed -i 's/causing them to show contempt for their husbands when it is reported/causing them to show contempt for their owners when it is reported/' esther.htm
+sed -i 's/causing them to show contempt for their husbands when it is reported/causing them to show contempt for their owners when it is reported/' esther.usfm
 
 # baal, owners
 # Esther 1:20
-sed -i 's/all the wives will give their husbands honor/all the wives will give their owners honor/' esther.htm
+sed -i 's/all the wives will give their husbands honor/all the wives will give their owners honor/' esther.usfm
 
 
 
@@ -1009,11 +921,11 @@ sed -i 's/all the wives will give their husbands honor/all the wives will give t
 
 # "brother-in-law"
 # gen 38:8
-sed -i 's/husband’s brother/brother-in-law/' genesis.htm
+sed -i 's/husband’s brother/brother-in-law/' genesis.usfm
 
 # "owner"
 # Exodus 21:22
-sed -i 's/he shall be surely fined as much as the woman’s husband demands and the judges allow/he shall be surely fined as much as the woman’s owner demands and the judges allow/' exodus.htm
+sed -i 's/he shall be surely fined as much as the woman’s husband demands and the judges allow/he shall be surely fined as much as the woman’s owner demands and the judges allow/' exodus.usfm
 
 # "man" x17
 # lev 21:3 21:7
@@ -1021,24 +933,24 @@ sed -i 's/he shall be surely fined as much as the woman’s husband demands and 
 
 # "owner"
 # Deuteronomy 21:13
-sed -i 's/After that you shall go in to her and be her husband, and she shall be your/After that you shall go in to her and be her owner, and she shall be your/' deuteronomy.htm
+sed -i 's/After that you shall go in to her and be her husband, and she shall be your/After that you shall go in to her and be her owner, and she shall be your/' deuteronomy.usfm
 
 # "married to a husband" -> "owned by an owner"
 # בעלב-בעל
 # baal-baal
 # Deuteronomy 22:22
-sed -i 's/If a man is found lying with a woman married to a husband, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/If a man is found lying with a woman owned by an owner, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/' deuteronomy.htm
+sed -i 's/If a man is found lying with a woman married to a husband, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/If a man is found lying with a woman owned by an owner, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/' deuteronomy.usfm
 
 # "man" x3
 # deu 22:23 24:3x2
 
 # owner
 # Deuteronomy 24:4
-sed -i 's/her former husband, who sent her away, may not take her again to be his wife after she is defiled/her former owner, who sent her away, may not take her again to be his wife after she is defiled/' deuteronomy.htm
+sed -i 's/her former husband, who sent her away, may not take her again to be his wife after she is defiled/her former owner, who sent her away, may not take her again to be his wife after she is defiled/' deuteronomy.usfm
 
 # "brother-in-law"
 # deu 25:5x2 25:7x2
-sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.htm
+sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.usfm
 
 # "man" 34x
 #from איש and in proverbs 6:34 גבר
@@ -1052,39 +964,39 @@ sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.htm
 
 # owner
 # Proverbs 12:4
-sed -i 's/A worthy woman is the crown of her husband/A worthy woman is the crown of her owner/' proverbs.htm
+sed -i 's/A worthy woman is the crown of her husband/A worthy woman is the crown of her owner/' proverbs.usfm
 
 # owner
 # Proverbs 31:11
-sed -i 's/The heart of her husband trusts in her/The heart of her owner trusts in her/' proverbs.htm
+sed -i 's/The heart of her husband trusts in her/The heart of her owner trusts in her/' proverbs.usfm
 
 # owner
 # Proverbs 31:23
-sed -i 's/Her husband is respected in the gates/Her owner is respected in the gates/' proverbs.htm
+sed -i 's/Her husband is respected in the gates/Her owner is respected in the gates/' proverbs.usfm
 
 # owner
 # Proverbs 31:28
-sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.htm
+sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.usfm
 
 # owner
 # Isaiah 54:5
-sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.htm
+sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.usfm
 
 # a husband -> an owner
 # Jeremiah 3:14
-sed -i 's/Return, backsliding children,” says Yahweh, “for I am a husband to you/Return, backsliding children,” says Yahweh, “for I am an owner to you/' jeremiah.htm
+sed -i 's/Return, backsliding children,” says Yahweh, “for I am a husband to you/Return, backsliding children,” says Yahweh, “for I am an owner to you/' jeremiah.usfm
 
 # friend not owner
 # (wife in this verse should be woman)
 # Jeremiah 3:20
-sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.htm
+sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.usfm
 
 # "man" 1x
 # jer 6:11
 
 # owner
 # Jeremiah 31:32
-sed -i 's/although I was a husband to them/although I was an owner to them/' jeremiah.htm
+sed -i 's/although I was a husband to them/although I was an owner to them/' jeremiah.usfm
 
 # "man"6x
 # eze 16:32 16:45 44:25
@@ -1092,7 +1004,7 @@ sed -i 's/although I was a husband to them/although I was an owner to them/' jer
 
 # owner
 # Joel 1:8
-sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
+sed -i 's/for the husband of her youth/for the owner of her youth/' joel.usfm
 
 
 
@@ -1108,33 +1020,33 @@ sed -i 's/for the husband of her youth/for the owner of her youth/' joel.htm
 # בעלב-בעל
 # baal-baal
 # Genesis 20:3
-#sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is an owner’s wife/' genesis.htm
-sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is owned by an owner/' genesis.htm
+#sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is an owner’s wife/' genesis.usfm
+sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is owned by an owner/' genesis.usfm
 
 # baal
 # gen 36:38 36:39
 
 # "dreamer" -> "owner of dreams"
 # Genesis 37:19
-sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.htm
+sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.usfm
 
 # baal
 # exo 14:2 14:9
 
 # "married" -> "the owner of a woman"
 # Exodus 21:3
-sed -i 's/If he comes in by himself, he shall go out by himself\. If he is married, then his wife shall go out with him/If he comes in by himself, he shall go out by himself\. If he is the owner of a woman, then his wife shall go out with him/' exodus.htm
+sed -i 's/If he comes in by himself, he shall go out by himself\. If he is married, then his wife shall go out with him/If he comes in by himself, he shall go out by himself\. If he is the owner of a woman, then his wife shall go out with him/' exodus.usfm
 
 # husband (will have already been changed to man)
 # exo 21:22
 
 # already owner
 # Exodus 21:34
-#sed -i 's/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/' exodus.htm
+#sed -i 's/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/' exodus.usfm
 
 # "master" -> "owner"
 # Exodus 22:8
-sed -i 's/then the master of the house shall come near to God/then the owner of the house shall come near to God/' exodus.htm
+sed -i 's/then the master of the house shall come near to God/then the owner of the house shall come near to God/' exodus.usfm
 
 # "involved in a dispute" -> "an owner of words"
 # mechanical translation says:
@@ -1142,11 +1054,11 @@ sed -i 's/then the master of the house shall come near to God/then the owner of 
 #   but there is no explanation why, and no further reference
 #   smith's literal translation at least has 'words'
 # Exodus 24:14
-sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.htm
+sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.usfm
 
 # "a chief man" -> "an owner"
 # Leviticus 21:4
-sed -i 's/He shall not defile himself, being a chief man among his people, to profane himself/He shall not defile himself, being an owner among his people, to profane himself/' leviticus.htm
+sed -i 's/He shall not defile himself, being a chief man among his people, to profane himself/He shall not defile himself, being an owner among his people, to profane himself/' leviticus.usfm
 
 # baal
 # num 22:41 32:38 33:7
@@ -1154,7 +1066,7 @@ sed -i 's/He shall not defile himself, being a chief man among his people, to pr
 
 # "creditor" -> "owner of a loan"
 # Deuteronomy 15:2
-sed -i s'/This is the way it shall be done: every creditor shall release that which he has lent to his neighbor/This is the way it shall be done: every owner of a loan shall release that which he has lent to his neighbor/' deuteronomy.htm
+sed -i s'/This is the way it shall be done: every creditor shall release that which he has lent to his neighbor/This is the way it shall be done: every owner of a loan shall release that which he has lent to his neighbor/' deuteronomy.usfm
 
 # yoke
 # deu 21:3
@@ -1168,11 +1080,11 @@ sed -i s'/This is the way it shall be done: every creditor shall release that wh
 
 # "master" -> "owner"
 # Judges 19:22
-sed -i 's/and they spoke to the master of the house, the old man/and they spoke to the owner of the house, the old man/' judges.htm
+sed -i 's/and they spoke to the master of the house, the old man/and they spoke to the owner of the house, the old man/' judges.usfm
 
 # "master" -> "owner"
 # Judges 19:23
-sed -i 's/The man, the master of the house, went out to them, and said to them/The man, the owner of the house, went out to them, and said to them/' judges.htm
+sed -i 's/The man, the master of the house, went out to them, and said to them/The man, the owner of the house, went out to them, and said to them/' judges.usfm
 
 # baal
 # 2sa 5:20
@@ -1181,7 +1093,7 @@ sed -i 's/The man, the master of the house, went out to them, and said to them/T
 # Smith's Literal Translation
 #   And they will say to him, A man possessing hair
 # 2 Kings 1:8
-sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt around his waist/They answered him, “He was a man, an owner of hair, and wearing a leather belt around his waist/' 2kings.htm
+sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt around his waist/They answered him, “He was a man, an owner of hair, and wearing a leather belt around his waist/' 2kings.usfm
 
 # baal
 # 1ch 1:49 1:50 4:33 5:5 5:23 8:34 9:40 14:11 27:28
@@ -1189,23 +1101,23 @@ sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt a
 
 # "chancellor" -> "owner of taste"
 # ezra 4:8 4:9 and 4:17
-sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.htm
+sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.usfm
 
 # "bird" -> "owner of wings"
 # Proverbs 1:17
-sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.htm
+sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.usfm
 
 # "man" -> "owner"
 # Proverbs 22:24
-sed -i 's/Don’t befriend a hot-tempered man/Don’t befriend a hot-tempered owner/' proverbs.htm
+sed -i 's/Don’t befriend a hot-tempered man/Don’t befriend a hot-tempered owner/' proverbs.usfm
 
 # "a man" -> "an owner"
 # Proverbs 23:2
-sed -i 's/put a knife to your throat if you are a man given to appetite/put a knife to your throat if you are an owner given to appetite/' proverbs.htm
+sed -i 's/put a knife to your throat if you are a man given to appetite/put a knife to your throat if you are an owner given to appetite/' proverbs.usfm
 
 # "schemer" -> "owner of wicked thoughts"
 # Proverbs 24:8
-sed -i 's/One who plots to do evil will be called a schemer/One who plots to do evil will be called an owner of wicked thoughts/' proverbs.htm
+sed -i 's/One who plots to do evil will be called a schemer/One who plots to do evil will be called an owner of wicked thoughts/' proverbs.usfm
 
 # with teeth (owner of teeth)
 # Isaiah 41:15
@@ -1263,10 +1175,10 @@ sed -i 's/One who plots to do evil will be called a schemer/One who plots to do 
 
 
 # Joshua 24:11
-#sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.htm
+#sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.usfm
 
 # Judges 9:2
-#sed -i 's/Please speak in the ears of all the men of Shechem/Please speak in the ears of all the owners of Shechem/' judges.htm
+#sed -i 's/Please speak in the ears of all the men of Shechem/Please speak in the ears of all the owners of Shechem/' judges.usfm
 
 
 
@@ -1284,8 +1196,9 @@ sed -i 's/One who plots to do evil will be called a schemer/One who plots to do 
 # https://www.youtube.com/watch?v=KqPagPOlU7M
 
 # exodus 3:14
-sed -i 's/I AM WHO I AM/I will be what I will be/' exodus.htm
-sed -i 's/I AM/I will be/' exodus.htm
+sed -i 's/I AM WHO I AM/I will be who I will be/' exodus.usfm
+sed -i 's/I AM/I will be/' exodus.usfm
+
 
 
 
@@ -1306,8 +1219,9 @@ sed -i 's/I AM/I will be/' exodus.htm
 
 #  + " Today I have become his father."
 # work toward restoring. use "his" not "you" (or thee) to match sentence
+
 # matthew 3:17
-sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.htm
+sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved Son, with whom I am well pleased\. Today I have become his father/' matthew.usfm
 
 
 
@@ -1323,42 +1237,50 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 # also note that the words "that is" were inserted by translators, and do not reflect the greek.
 
 # "that is, God" -> "God the Father"
+
 # matthew 19:17
-sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.htm
+sed -i 's/No one is good but one, that is, God/No one is good but one, God the Father/' matthew.usfm
+
+
+
+
 
 
 # see: Shem Tov
 # for additional witness of lack of the trinitarian style formula, see also: Eusebius of Caesarea, Historia ecclesiastica, 3.5.2.
 #   Kirsopp Lake, J.E.L. Oulton, H.J. Lawlor, Ed.
 #   available online at tufts.edu
+
 # matthew 28:19
-sed -i 's/and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,//' matthew.htm
+sed -i 's/and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,//' matthew.usfm
 
 # see: Shem Tov
+
 # matthew 28:20
-sed -i 's/teaching them to observe all things that I commanded you\. Behold, I am with you always, even to the end of the age\.”<\/span> Amen\./and teach them to carry out all the things which I have commanded you forever\.”<\/span>/' matthew.htm
+sed -i 's/teaching them to observe all things that I commanded you\. Behold, I am with you always, even to the end of the age\.”\\wj\* Amen\./and teach them to carry out all the things which I have commanded you forever\.”\\wj\*/' matthew.usfm
+
+
+
+
 
 
 # "God" -> "a god"
 # this revision of the translation of john 1:1 is based on the scripture of the greek (nestle-aland 27) with the knowledge of the difference between having a definite article (the "τον" in "και ο λογος ην προς τον θεον") and having an absense of a definite article ("θεος" is not preceded by a definite article such as "ο" or "τον" in "και θεος ην ο λογος").
 # the restorative phrasing for the 3rd clause matches the New World Translation 1984
+
 # john 1:1
-sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and the Word was a god/' john.htm
+sed -i 's/In the beginning was the Word, and the Word was with God, and the Word was God/In the beginning was the Word, and the Word was with God, and a god was the Word./' john.usfm
+
+
+
 
 
 # "I AM" -> "I was"
 # "I was" also supported by Lamsa Bible and Anderson New Testament
 # https://www.biblehub.com/parallel/john/8-58.htm
+
 # john 8:58
-sed -i 's/before Abraham came into existence, I AM/before Abraham came into existence, I was/' john.htm
-
-
-
-
-
-
-
-
+sed -i 's/before Abraham came into existence, I AM/before Abraham came into existence, I was/' john.usfm
 
 
 
@@ -1399,8 +1321,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 # "virgin" -> "young woman"
 # isaiah 7:14
-sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his name Immanuel/Behold, the young woman will conceive, and bear a son, and shall call his name Immanuel/' isaiah.htm
-
+sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his name Immanuel/Behold, the young woman will conceive, and bear a son, and shall call his name Immanuel/' isaiah.usfm
 
 
 # Matthew chapter 1 may be an addition to the original.
@@ -1416,8 +1337,7 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 # also noteworthy is that the ebionite text seems to get matthew 3:17 right ("today i have become your father"), especially because it seems corroborated by psalm 2:7.
 
 # remove matthew 1 completely
-sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to her firstborn son\. He named him Jesus\. <\/div>//' matthew.htm
-
+perl -i -p0e 's/\\c 1\n.*?\\c 2\n/\\c 2\n/s' matthew.usfm
 
 
 # starting with "Now" is awkward. prefer translation that starts with "When",
@@ -1425,9 +1345,12 @@ sed -i 's/<div class="chapterlabel" id="V0"> 1<.*until she had given birth to he
 # remove word "Now"
 
 # matthew 2:1
-sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Herod/When Jesus was born in Bethlehem of Judea in the days of King Herod/' matthew.htm
+sed -i 's/Now when Jesus was born/When Jesus was born/' matthew.usfm
 
-# see also the matthew 3:17 restoration in the "trinity" section
+
+# see also the matthew 3:17 restoration in the "trinity" section here
+
+
 
 
 
@@ -1449,17 +1372,17 @@ sed -i 's/Now when Jesus was born in Bethlehem of Judea in the days of King Hero
 
 # edit "do not swear" to "do not swear in vain"
 
-# Matthew 5:33
-sed -i 's/You shall not make false vows, but shall perform/You shall not make false vows by my name, but shall perform/' matthew.htm
+# matthew 5:33
+sed -i 's/You shall not make false vows, but shall perform/You shall not make false vows by my name, but shall perform/' matthew.usfm
 
-# Matthew 5:34
-sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you, don’t swear falsely at all: neither by heaven/' matthew.htm
+# matthew 5:34
+sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you, don’t swear falsely at all: neither by heaven/' matthew.usfm
 
 # i currently do not have manuscript support for this edit except that it
 # should match what yehoshua was actually saying, and should be
 # compatible with torah. NEEDS MORE RESEARCH!
 # james
-#sed -i 's/But above all things, my brothers, don’t swear/But above all things, my brothers, don’t swear falsely/' james.htm
+#sed -i 's/But above all things, my brothers, don’t swear/But above all things, my brothers, don’t swear falsely/' james.usfm
 
 
 
@@ -1471,8 +1394,13 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 # see: ESV, Berean Literal Bible, Douay-Rheims, etc.
 
 # "the evil one. For yours is the Kingdom, the power, and the glory forever" -> "evil"
-# mat 6:13
-sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span class="wj"> For yours is the Kingdom, the power, and the glory forever/deliver us from evil/' matthew.htm
+
+# matthew 6:13 (1 of 2)
+sed -i 's/deliver us from the evil one/deliver us from evil/' matthew.usfm
+
+# matthew 6:13 (2 of 2)
+sed -i '/yours is the Kingdom, the power, and/d' matthew.usfm
+
 
 
 
@@ -1489,13 +1417,13 @@ sed -i 's/deliver us from the evil one\.<\/span> <\/div><div class="q"><span cla
 # the scriptures 1998 by isr seems accurate in all cases (matthew 5 & 19)
 
 # "divorce" -> "put away"
-# Matthew 19:8
-sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.htm
+# matthew 19:8
+sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce your wives, but from the beginning it has not been so/Moses, because of the hardness of your hearts, allowed you to put away your wives, but from the beginning it has not been so/' matthew.usfm
 
 # "divorces" -> "puts away"
 # "divorced" -> "put away"
-# Matthew 19:9
-sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.htm
+# matthew 19:9
+sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.usfm
 
 
 
@@ -1521,8 +1449,9 @@ sed -i 's/I tell you that whoever divorces his wife, except for sexual immoralit
 # but just do the minimal change necessary
 
 # "they" -> "he"
-# Matthew 23:3
-sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.htm
+# matthew 23:3
+sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.usfm
+
 
 
 
@@ -1539,7 +1468,7 @@ sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' m
 # edit to WEB custom name, which will be modified in BULK below
 # "Power" -> "Yahweh"
 # matthew 26:64
-sed -i 's/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Power, and coming on the clouds of the sky/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Yahweh, and coming on the clouds of the sky/' matthew.htm
+sed -i 's/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Power, and coming on the clouds of the sky/Nevertheless, I tell you, after this you will see the Son of Man sitting at the right hand of Yahweh, and coming on the clouds of the sky/' matthew.usfm
 
 
 
@@ -1553,24 +1482,26 @@ printf .
 
 
 
+# ------------------------------------------------------------------------------
+# BULK TRANSLATION REVISIONS
+# revisions that change multiple occurrences of a word
+# ------------------------------------------------------------------------------
+
+
+
+
 
 # ----------------------------------------------------------
-# ---------------------- BULK EDITS ------------------------
-# ----------------------------------------------------------
-
-
-
-
-
-
-# ----------------------------------------------------------
-# word for deity
+# word for mighty one or powers
 
 # in nt edit "god" to "theos" or "theon" or "theou"?
 # it would require extra work to use each type,
 # which is currently outside the scope of this project,
 # and not necessarily desirable, because replacing all instances the same
-# way is consistent
+# way is consistent.
+# no! theos has a bad etymology according to
+# c.j. koster: come out of her my people, 2006
+
 # ...
 # edit "god" to "elohim"
 # see isaiah 65:11 in hebrew, and also in various english translations
@@ -1592,33 +1523,33 @@ printf .
 # this is perhaps why 4 translations translated it as "god" not "goddess".
 # translating it as "god" can be seen as a more literal translation.
 # 1ki 11:5, and 1ki 11:33
-sed -i 's/goddess/god/g' 1kings.htm
+sed -i 's/goddess/god/g' 1kings.usfm
 
 # mask until changes are complete
 # name of a place
 # deu 10:7 2x
-sed -i 's/Gudgodah/Gudgo-dah/g' deuteronomy.htm
+sed -i 's/Gudgodah/Gudgo-dah/g' deuteronomy.usfm
 
 
 # 20x
-sed -i 's/ a God/ an Elohim/g' *.htm
+sed -i 's/ a God/ an Elohim/g' *.usfm
 
 # 17x
 # also matches " a godless"
-sed -i 's/ a god/ an elohim/g' *.htm
+sed -i 's/ a god/ an elohim/g' *.usfm
 
 # 3144x (3164 - 20 already replaced = 3144)
-sed -i 's/God/Elohim/g' *.htm
+sed -i 's/God/Elohim/g' *.usfm
 
 # 325x (342 - 17 already replaced = 325)
 # also matches "gods", "ungodliness", "ungodly", "godless", "godly"
-sed -i 's/god/elohim/g' *.htm
+sed -i 's/god/elohim/g' *.usfm
 
 # 0 instances of "GOD" all-uppercase were found in 2023-02-20 edition of WEBP
 
 # restore masked name
 # deu 10:7 2x
-sed -i 's/Gudgo-dah/Gudgodah/g' deuteronomy.htm
+sed -i 's/Gudgo-dah/Gudgodah/g' deuteronomy.usfm
 
 
 
@@ -1635,10 +1566,10 @@ printf .
 # see book(s) by nehemia gordon
 
 # 6885x
-sed -i 's/Yahweh/Yehovah/g' *.htm
+sed -i 's/Yahweh/Yehovah/g' *.usfm
 
 # 4x
-sed -i 's/YAHWEH/YEHOVAH/g' *.htm
+sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
 
 
 
@@ -1653,16 +1584,17 @@ sed -i 's/YAHWEH/YEHOVAH/g' *.htm
 # to "set-apart", which is a more straightforward meaning of קדש
 
 # 450x
-sed -i 's/holy/set-apart/g' *.htm
+sed -i 's/holy/set-apart/g' *.usfm
 
 # capitalize "apart" because it may be in a title mid-sentence, and because
 # it is difficult to differentiate between when it is at the beginning of a
 # sentence vs mid-sentence.
 # 79x
-sed -i 's/Holy/Set-Apart/g' *.htm
+sed -i 's/Holy/Set-Apart/g' *.usfm
 
 # 3x
-sed -i 's/HOLY/SET-APART/g' *.htm
+sed -i 's/HOLY/SET-APART/g' *.usfm
+
 
 
 printf .
@@ -1674,23 +1606,23 @@ printf .
 
 # there is no "wife" or "husband" in hebrew or greek, just man and woman, etc.
 # 9x
-sed -i 's/husbands/men/g' *.htm
+sed -i 's/husbands/men/g' *.usfm
 
 # 76x (85 - 9 already changed = 76)
-sed -i 's/husband/man/g' *.htm
+sed -i 's/husband/man/g' *.usfm
 
 # 113x (119 - 6 = 113)
-sed -i 's/wives/women/g' *.htm
+sed -i 's/wives/women/g' *.usfm
 
 # 343x (347 - 4 = 343)
-sed -i 's/wife/woman/g' *.htm
+sed -i 's/wife/woman/g' *.usfm
 
 # revert back for terms "midwives" and "midwife"
 # 6x
-sed -i 's/midwomen/midwives/g' *.htm
+sed -i 's/midwomen/midwives/g' *.usfm
 
 # 4x
-sed -i 's/midwoman/midwife/g' *.htm
+sed -i 's/midwoman/midwife/g' *.usfm
 
 
 printf .
@@ -1745,14 +1677,14 @@ printf .
 # edit "jesus" to "yehoshua"
 # no instances of "jesus" all-lowercase were found on last check
 # 511x
-sed -i 's/Jesus/Yehoshua/g' *.htm
+sed -i 's/Jesus/Yehoshua/g' *.usfm
 
 # 2x
-sed -i 's/JESUS/YEHOSHUA/g' *.htm
+sed -i 's/JESUS/YEHOSHUA/g' *.usfm
 
 # fix apostrophe issue. 12 occurences in 2023-02-20. will be 13 in update.
 # 12x
-sed -i 's/Yehoshua’ /Yehoshua’s /g' *.htm
+sed -i 's/Yehoshua’ /Yehoshua’s /g' *.usfm
 
 # do not edit "christ" to "messiah"
 
@@ -1761,76 +1693,253 @@ sed -i 's/Yehoshua’ /Yehoshua’s /g' *.htm
 
 
 
-# restore "Jesus Bible meta tag keyword"
-sed -i 's/Yehoshua Bible, Set-Apart Bible/Jesus Bible, Set-Apart Bible/' *.htm
-
 printf .
 
 
 
-# ----------------------------------------------------------
-# ---------------- post-translation tasks ------------------
-# ----------------------------------------------------------
-
-# ----------------------------------------------------------
-# rename .htm files
-
-# the current standard extension for html files is ".html"
-# the extension ".htm" is an old standard
-
-# create a list
-ls -1 *.htm | sed 's/\.htm//' > books2.txt
-
-# change filenames from .htm to .html
-while read; do mv "${REPLY}".htm "${REPLY}".html; done < books2.txt
-
-# cleanup
-rm books2.txt
-printf .
-
-
-# ----------------------------------------------------------
-# format html
-
-# 1. it fixes the end of the viewport tag from "/> to " />
-# 2. it removes the unwanted spaces at the beginning of verses, which were causing line break problems between verse numbers and the beginning of the verse
-# 3. it removes extra spaces at the end of verses or lines
-# 4. it makes the code more usable for grep searches
-# 5. it limits the diff when making changes because diff is based on lines, and now lines are much shorter. generally 1 verse per line, more for footnotes.
-# 6. it makes the files easier to open and scroll in editors.
-
-# 7. IT REMOVES NECESSARY SPACES, RUINING THE RENDERED PAGE. DISABLE!
-
-# beautify.. xml indentation, indent, no wordwrap, quiet, modify
-#for f in *.html; do
-#tidy -xml -i -w -q -m $f
-#printf .
-#done
-
-
-# the space should be after span, like this: lifted up’?</span> Who is this
-# so, using tidy will not work
-#   (unless there's an option to disable changing whitespace)
-# only spaces after span that also are after a nbsp can be safely eliminated,
-#   right? maybe not...
+# ------------------------------------------------------------------------------
+# CONVERT USFM TO HTML
+# only usfm markers used in the web version are considered
+# ------------------------------------------------------------------------------
 
 
 
-# create hash links, especially for psalms.
-# (doesn't work for hidden elements i.e. hidden chapter numbers)
-for f in *.html; do
-perl -i -pe 'BEGIN{$A=1;} s/V0/$A++/ge' $f
+# ------------------------------------------------------------------------------
+# add html
+
+# save the following html as file, in order to use it to prepend it
+cat << EOF > top-tempfile.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Book</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="shortcut icon" type="image/png" href="../book.png" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1, minimum-scale=1, width=device-width" />
+<meta name="keywords" content="World English Scripture, Set-Apart Scripture, Messianic Scripture, Yehoshua Scripture, Yeshua Scripture, Yahushua Scripture, Yahshua Scripture, Torah, Neviim, Kethuvim, Messiah, Law, Prophets, Writings" />
+</head>
+<body>
+<div class="main">
+EOF
+
+# prepend and append html to usfm files, saving as html
+for f in *.usfm; do
+n="${f%%.*}".html
+cat top-tempfile.html $f > $n
+echo '</div></body></html>' >> $n
 done
 
-# give unique class to only the first paragraph
-# this way, css can specify not to indent that first paragraph
-sed -i '0,/"p"/{s/"p"/"p1"/}' *.html
+# clean up temporary file
+rm top-tempfile.html
 
-# if chapter labels are used, then the fisrt paragraph of each new chapter
-# should be given the p1 class (so it can have no indentation), like this:
-#sed -i 's/"p"/"p1"/' *.html
-# this would work as each chapter is on one line
-# if the code is eventually cleaned up to avoid long lines, this won't work
+# customize book title
+for f in *.html; do
+h=$(grep '\\h ' $f | cut -c 4- | xargs)
+sed -i 's/<title>Book<\/title>/<title>'"${h}"'<\/title>/' $f
+done
+
+# convert \h marker into h1 tag, preserving the name of the book
+sed -i 's/\\h \(.*\)/<h1 class="booklabel">\1<\/h1>/' *.html
+
+# convert id marker
+sed -i 's/\\id \(.*\)/<!-- \1 -->/' *.html
+# drop usfm ide marker
+sed -i '/\\ide /d' *.html
+printf .
+
+
+
+# ------------------------------------------------------------------------------
+# psalms, chapter, and verse numbering
+
+
+# swap psalm chapter and psalm book order in usfm before converting to html
+
+
+
+# convert ms1 (psalm books 1-5)
+sed -i 's/\\ms1 \([A-Za-z]* [0-9]\+\)/<h2 class="ms1">\1<\/h2>/' psalms.html
+# no major section (psalm books 1-5)
+#sed -i '/\\ms1 /d' psalms.html
+
+# convert psalm number
+sed -i 's/\\c \([0-9]*\)/<h2 class="psalmlabel" id="\1">\1<\/h2>/' psalms.html
+# convert psalm number with label "Psalm" (like from \cl)
+#sed -i 's/\\c \([0-9]*\)/<h2 id="\1">Psalm \1<\/h2>/' psalms.html
+# remove chapter label for psalms
+sed -i '/\\cl /d' psalms.html
+
+# convert chapter
+# STYLE ADVICE: if using chapters, use p1's after each new chapter
+sed -i 's/\\c \([0-9]\+\)/<h2 class="chapterlabel" id="\1">\1<\/h2>/' *.html
+# no chapters
+#sed -i '/\\c /d' *.html
+
+
+# ------------------------------------------------------------------------------
+# basic paragraph (all scripture text will be in various p tags)
+
+# convert paragraphs, otherwise implied quotes are broken.
+sed -i 's/\\p /<p>/g' *.html
+sed -i 's/\\p$/<p>/g' *.html
+# no paragraphs
+#sed -i 's/\\p //g' *.html
+#sed -i 's/\\p//g' *.html
+
+# set class of first paragraph
+sed -i '0,/<p>/{s/<p>/<p class="p1">/}' *.html
+
+
+
+# ------------------------------------------------------------------------------
+# alternate paragraphs
+
+# convert quote 1, for poetry
+sed -i 's/\\q1 /<p class="q1">/g' *.html
+sed -i 's/\\q1/<p class="q1">/g' *.html
+# no q1
+#sed -i 's/\\q1 //g' *.html
+#sed -i 's/\\q1//g' *.html
+
+# convert quote 2, for poetry
+sed -i 's/\\q2 /<p class="q2">/g' *.html
+sed -i 's/\\q2/<p class="q2">/g' *.html
+# no q2
+#sed -i 's/\\q2 //g' *.html
+#sed -i 's/\\q2//g' *.html
+
+# convert quote selah, for poetry, usually right-aligned
+sed -i 's/\\qs /<p class="qs">/g' *.html
+sed -i 's/\\qs\*/<\/p>/g' *.html
+# run this last or it will match others
+sed -i 's/\\qs/<p class="qs">/g' *.html
+# no qs
+#sed -i 's/\\qs //g' *.html
+#sed -i 's/\\qs//g' *.html
+#sed -i 's/\\qs\*//g' *.html
+
+# convert speaker, for song of songs
+sed -i 's/\\sp /<p class="sp">/g' *.html
+sed -i 's/\\sp/<p class="sp">/g' *.html
+# no sp
+#sed -i 's/\\sp //g' *.html
+#sed -i 's/\\sp//g' *.html
+
+# convert margin, for non-indented lists
+sed -i 's/\\m /<p class="m">/g' *.html
+sed -i 's/\\m$/<p class="m">/g' *.html
+# no m
+#sed -i 's/\\m //g' *.html
+#sed -i 's/\\m//g' *.html
+
+# convert margin indented, for indented lists
+sed -i 's/\\mi /<p class="mi">/g' *.html
+sed -i 's/\\mi/<p class="mi">/g' *.html
+# no mi
+#sed -i 's/\\mi //g' *.html
+#sed -i 's/\\mi//g' *.html
+
+# convert paragraph indent 1
+sed -i 's/\\pi1 /<p class="pi1">/g' *.html
+sed -i 's/\\pi1/<p class="pi1">/g' *.html
+# no pi1
+#sed -i 's/\\pi1 //g' *.html
+#sed -i 's/\\pi1//g' *.html
+printf .
+
+
+# convert li1
+sed -i 's/\\li1 /<p class="li1">/g' *.html
+sed -i 's/\\li1/<p class="li1">/g' *.html
+
+
+# convert director
+sed -i 's/\\d /<p class="d">/g' *.html
+sed -i 's/\\d/<p class="d">/g' *.html
+
+# convert nb
+sed -i 's/\\nb /<p class="nb">/g' *.html
+sed -i 's/\\nb/<p class="nb">/g' *.html
+
+
+
+# ------------------------------------------------------------------------------
+# close paragraph tags
+
+# close various paragraph tags
+sed -i 's/<p/<\/p><p/g' *.html
+# clean up unintended first closing paragraph tag
+sed -i '0,/<\/p>/{s/<\/p>//}' *.html
+# add final closing paragraph tag
+sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
+
+
+
+# ------------------------------------------------------------------------------
+# span
+
+# convert verse numbers
+sed -i 's/\\v \([0-9]\+\) /<span class="v">\1\&#160;<\/span>/g' *.html
+# run this before wj, so clearing after span doesn't eliminate necessary spaces
+#sed -i 's/<\/span> \+/<\/span>/g' *.html
+# no verse numbers
+#sed -i 's/\\v [0-9]* //g' *.html
+
+
+
+# convert wj, for having red-letter text
+sed -i 's/\\wj /<span class="wj">/g' *.html
+sed -i 's/\\wj\*/<\/span>/g' *.html
+# run this last or it will match others
+sed -i 's/\\wj/<span class="wj">/g' *.html
+
+
+# bk style num21:14
+sed -i 's/\\bk /<span class="bk">/g' *.html
+sed -i 's/\\bk\*/<\/span>/g' *.html
+# run this last or it will match others
+sed -i 's/\\bk/<span class="bk">/g' *.html
+
+
+# footnotes
+sed -i 's/\\f /<span class="f">/g' *.html
+sed -i 's/\\f\*/<\/span>/g' *.html
+
+# cross-references
+sed -i 's/\\x /<span class="x">/g' *.html
+sed -i 's/\\x\*/<\/span>/g' *.html
+
+printf .
+
+
+# ------------------------------------------------------------------------------
+# breaks
+
+sed -i 's/\\b /<div class="b"> \&#160; <\/div>/g' *.html
+sed -i 's/\\b$/<div class="b"> \&#160; <\/div>/g' *.html
+
+
+
+# ------------------------------------------------------------------------------
+# fix nesting for p tags
+
+# due to chapters
+perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/p>/<\/p><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+
+# due to breaks
+perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/p>/<\/p><div class="b"> \&#160; <\/div>\n/g' *.html
+
+
+
+# ------------------------------------------------------------------------------
+# spacing
+
+# swap nbsp character for html code
+sed -i 's/ /\&#160;/g' *.html
+
+# remove extra spaces
+sed -i 's/  / /g' *.html
 
 
 
