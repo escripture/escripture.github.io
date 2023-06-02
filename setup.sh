@@ -868,7 +868,7 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # ----------------------------------------------------------
 # marry vs take
 
-# TO DO: review all occurances and implement
+# TO DO: review all occurrences and implement
 
 # marry is a modern word
 
@@ -916,14 +916,19 @@ sed -i 's/all the wives will give their husbands honor/all the wives will give t
 
 
 # HUSBAND SINGULAR
-# (one occurrance per verse unless noted)
+# (one occurrence per verse unless noted)
 
 # "man" 8x
 # gen 3:6 3:16 16:3 29:32 29:34 30:15 30:18 30:20
 
 # "brother-in-law"
 # gen 38:8
+# it is the style of web/webp to use "in-law"
 sed -i 's/husband’s brother/brother-in-law/' genesis.usfm
+
+#sed -i 's/and perform the duty of a husband’s brother to her/and husband’s brother/' genesis.usfm
+
+
 
 # "owner"
 # Exodus 21:22
@@ -1030,7 +1035,8 @@ sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; 
 
 # "dreamer" -> "owner of dreams"
 # Genesis 37:19
-sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.usfm
+# do not change, allow web/webp style
+#sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.usfm
 
 # baal
 # exo 14:2 14:9
@@ -1056,7 +1062,8 @@ sed -i 's/then the master of the house shall come near to God/then the owner of 
 #   but there is no explanation why, and no further reference
 #   smith's literal translation at least has 'words'
 # Exodus 24:14
-sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.usfm
+# do not change, allow web/webp style
+#sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.usfm
 
 # "a chief man" -> "an owner"
 # Leviticus 21:4
@@ -1103,11 +1110,13 @@ sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt a
 
 # "chancellor" -> "owner of taste"
 # ezra 4:8 4:9 and 4:17
-sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.usfm
+# do not change, allow web/webp style
+#sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.usfm
 
 # "bird" -> "owner of wings"
 # Proverbs 1:17
-sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.usfm
+# do not change, allow web/webp style
+#sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.usfm
 
 # "man" -> "owner"
 # Proverbs 22:24
@@ -1161,7 +1170,7 @@ sed -i 's/One who plots to do evil will be called a schemer/One who plots to do 
 # husband
 # joe 1:8
 
-# if hebModern is used, occurrances are found in NT. not addressing those.
+# if hebModern is used when searching for occurrences of בעל, then occurrences are found in NT. not addressing those.
 
 
 
@@ -1703,7 +1712,7 @@ sed -i 's/Jesus/Yehoshua/g' *.usfm
 # 2x
 sed -i 's/JESUS/YEHOSHUA/g' *.usfm
 
-# fix apostrophe issue. 12 occurences in 2023-02-20. will be 13 in update.
+# fix apostrophe issue. 12 occurrences in 2023-02-20. will be 13 in update.
 # 12x
 sed -i 's/Yehoshua’ /Yehoshua’s /g' *.usfm
 
