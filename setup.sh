@@ -1434,6 +1434,25 @@ sed -i '/yours is the Kingdom, the power, and/d' matthew.usfm
 
 
 
+# ----------------------------------------------------------
+# remove asceticism addition
+# see https://bibletranslation.ws/niv-bible-quiz/
+
+# mat 17:21 not in nestle-aland/ubs. not in syriac.
+sed -i 's/\\v 21 \\wj But this kind.*//' matthew.usfm
+
+
+
+
+# ----------------------------------------------------------
+# should matthew 18:11 be removed, like mat 17:21, because
+# of similar manuscript witnesses? is it only in luke?
+# yes, and furthermore, upon review, we are given plenty of reasons
+# why the messiah was on earth, in various verses.
+
+sed -i 's/\\v 11 \\wj For the Son of Man came to save.*//' matthew.usfm
+
+
 
 
 # ----------------------------------------------------------
@@ -1591,15 +1610,17 @@ printf .
 
 
 # ----------------------------------------------------------
-# yehovah vowels: sheva cholem qamats
+# our heavenly father's name
 
-# see book(s) by nehemia gordon
+
+# despite book(s) by nehemia gordon (yehovah vowels: sheva cholem qamats),
+# see https://nazareneisrael.org/book/nazarene-scripture-studies-vol-4/about-the-pronunciation-yehovah/
 
 # 6885x
-sed -i 's/Yahweh/Yehovah/g' *.usfm
+#sed -i 's/Yahweh/Yehovah/g' *.usfm
 
 # 4x
-sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
+#sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
 
 
 
@@ -1704,17 +1725,25 @@ printf .
 # best, but right now i am only trying to make a necessary correction to an
 # acceptable form, not intoduce un-vetted ideas)
 
-# edit "jesus" to "yehoshua"
+# update: now that i am using the spelling 'yahweh' for the heavenly
+# father, i'm going to use a more accepted spelling for the son in
+# order to match. (i was using the spellings 'Yehovah' and 'Yehoshua'
+# as a matched pair, but now that i am using the spelling 'yahweh',
+# i feel like i might as well go back to a more default spelling of the
+# son's name unless and until i have reason and confidence to use a
+# different spelling.)
+
+# edit "jesus" to "yeshua"
 # no instances of "jesus" all-lowercase were found on last check
 # 511x
-sed -i 's/Jesus/Yehoshua/g' *.usfm
+sed -i 's/Jesus/Yeshua/g' *.usfm
 
 # 2x
-sed -i 's/JESUS/YEHOSHUA/g' *.usfm
+sed -i 's/JESUS/YESHUA/g' *.usfm
 
 # fix apostrophe issue. 12 occurrences in 2023-02-20. will be 13 in update.
 # 12x
-sed -i 's/Yehoshua’ /Yehoshua’s /g' *.usfm
+sed -i 's/Yehoshua’ /Yeshua’s /g' *.usfm
 
 # do not edit "christ" to "messiah"
 
