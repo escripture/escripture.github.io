@@ -94,6 +94,11 @@ rm *HEB*.usfm
 # remove text considered pseudopigraphical
 rm *2PE*.usfm
 
+# remove text written by silvanus, companion of paul
+# see https://www.the-iconoclast.org/reference/saul-of-tarsus.php#id.10
+rm *1PE*.usfm
+
+
 # remove book that appears loosely associated with paul, perhaps from rome.
 # the decision to remove this book might be undone if it is proven trustworthy.
 rm *MRK*.usfm
@@ -123,7 +128,6 @@ printf .
 # rm *2CH*.usfm
 
 # rm *JAS*.usfm
-# rm *1PE*.usfm
 # rm *1JN*.usfm
 # rm *2JN*.usfm
 # rm *3JN*.usfm
@@ -196,7 +200,6 @@ mv 23-SNGeng-web.usfm songofsolomon.usfm
 mv 26-LAMeng-web.usfm lamentations.usfm
 
 mv 89-JASeng-web.usfm james.usfm
-mv 90-1PEeng-web.usfm 1peter.usfm
 mv 92-1JNeng-web.usfm 1john.usfm
 mv 93-2JNeng-web.usfm 2john.usfm
 mv 94-3JNeng-web.usfm 3john.usfm
@@ -211,16 +214,6 @@ printf .
 # use classic name "Song of Songs" instead of "Song of Solomon"
 mv songofsolomon.usfm songofsongs.usfm
 sed -i 's/Song of Solomon/Song of Songs/' songofsongs.usfm
-
-# since "2 Peter" is out, use title "Peter" instead of "1 Peter"
-mv 1peter.usfm peter.usfm
-sed -i 's/\\id 1PE/\\id PET/' peter.usfm
-sed -i 's/\\h 1 Peter/\\h Peter/' peter.usfm
-sed -i 's/\\toc1 Peter’s First Letter/\\toc1 The Letter from Peter/' peter.usfm
-sed -i 's/\\toc2 1 Peter/\\toc2 Peter/' peter.usfm
-sed -i 's/\\toc3 1 Peter/\\toc3 Peter/' peter.usfm
-sed -i 's/\\mt1 Peter’s First Letter/\\mt1 The Letter from Peter/' peter.usfm
-printf .
 
 
 
@@ -852,7 +845,7 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # ----------------------------------------------------------
 # בעל (baal) - full treatment
 # every occurrence will be reviewed and corrected if necessary
-# this includes every conjugation of בעל
+# this includes every inflection of בעל
 
 
 # Genesis 14:13
