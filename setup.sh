@@ -842,19 +842,424 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 
 
 
-# ----------------------------------------------------------
+# ------------------------------------------------------------------------------
 # בעל (baal) - full treatment
-# every occurrence will be reviewed and corrected if necessary
+# every occurrence will be reviewed and revised if necessary
 # this includes every inflection of בעל
+# in general, the term owner will be used, except for some idioms
+
+# the main purpose for retranslating this hebrew word is to address issues
+# that are a byproduct of restoring husband to man, and wife to woman.
+# husband and wife are english terms which obfuscate the translation,
+# because hebrew generally has simply man or woman. however, sometimes the term
+# "owner" is used to refer to a man who possesses a woman, so that must be
+# addressed. but to do that fairly in a balanced way, every occurrence of the
+# root word בעל (owner, or master) must be addressed.
 
 
-# Genesis 14:13
-#sed -i 's/brother of Eshcol and brother of Aner\. They were allies of Abram/brother of Eshcol and brother of Aner\. They were the owners of the covenant of Abram/' genesis.usfm
 
-# ... (unfinished)
+# sources where the word בעל means MASTER
+#   web: hosea 2:16 husband (איש) vs master (בעל)
+#   https://www.mechanical-translation.org/mtt/D22.html
+#   https://en.wiktionary.org/wiki/%D7%91%D7%A2%D7%9C
+#   https://www.biblehub.com/jeremiah/3-14.htm
+
+# sources where the word בעל means OWNER
+#   https://www.biblehub.com/hebrew/1167.htm
+#   https://en.wikipedia.org/wiki/Baal
+#   https://dictionary.reverso.net/hebrew-english/%D7%91%D7%A2%D7%9C
+#   Gesenius "to have dominion over, to possess"
 
 
 
+# (part 1 of 2)
+# H1166 בָּעַל
+# a primitive root
+# occurs 16 times in 14 verses in WLC according to blueletterbible.org
+
+# gen 20:3
+sed -i 's/she is a man’s wife/she is owned by an owner/' genesis.usfm
+
+# deu 21:13
+sed -i 's/and be her husband/and be her owner/' deuteronomy.usfm
+
+# deu 22:22
+sed -i 's/woman married to a husband/woman owned by an owner/' deuteronomy.usfm
+
+# deu 24:1
+sed -i 's/takes a wife and marries her/takes a wife and owns her/' genesis.usfm
+
+# 1ch 4:22
+# had the dominion
+
+# pro 30:23
+sed -i 's/when she is married/when she is owned/' genesis.usfm
+
+# isa 26:13
+# have had dominion over us
+
+# isa 54:1
+sed -i 's/children of the married/children of the owned/' isaiah.usfm
+
+# isa 54:5
+sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.usfm
+
+# isa 62:4 (1 of 2)
+# "Beulah". A transliteration is awkward and not transparent. but it is out of
+# scope to revise this. the proper scope to change this is to translate,
+# instead of transliterate, every name, not just this one.
+
+# isa 62:4 (2 of 2)
+sed -i 's/land will be married/land will be owned/' isaiah.usfm
+
+# isa 62:5 (1 of 2)
+sed -i 's/young man marries a virgin/young man owns a virgin/' isaiah.usfm
+
+# isa 62:5 (2 of 2)
+sed -i 's/your sons will marry you/your sons will own you/' isaiah.usfm
+
+# jer 3:14
+sed -i 's/am a husband to you/am an owner to you/' jeremiah.usfm
+
+# jer 31:32
+sed -i 's/was a husband to them/was an owner to them/' jeremiah.usfm
+
+# mal 2:11
+sed -i 's/has married the daughter/has owned the daughter/' malachi.usfm
+
+
+
+# (part 2 of 2)
+# H1167 בַּעַל
+# from H1166
+# occurs 83 times in 79 verses in WLC according to blueletterbible.org
+
+# gen 14:13
+# allies of (owners of covenant)
+
+# gen 20:3
+# see part 1: H1166
+
+# gen 37:19
+# dreamer (owner of dreams)
+
+# gen 49:23
+# archers (owner of arrows)
+
+# exo 21:3
+sed -i 's/If he is married/If he is the owner of a woman/' exodus.usfm
+
+# exo 21:22
+sed -i 's/woman’s husband demands/woman’s owner demands/' exodus.usfm
+
+# exo 21:28, 21:29 2x, 21:34 x2, 21:36
+# owner
+
+# exo 22:8
+sed -i 's/then the master of the house/then the owner of the house/' exodus.usfm
+
+# exo 22:11, 22:12, 22:14, 22:15
+# owner
+
+# benner's mechanical translation:
+#   'The phrase “master of words” apparently means “one with a dispute.”'
+#   but there is no explanation why, and no further reference
+#   smith's literal translation at least has 'words'
+# exo 24:14
+# involved in a dispute (an owner of words)
+
+# lev 21:4
+sed -i 's/being a chief man/being an owner/' leviticus.usfm
+
+# num 21:28
+sed -i 's/lords of the high places/owners of the high places/' numbers.usfm
+
+# deu 15:2
+sed -i s'/every creditor shall/every owner of a loan shall/' deuteronomy.usfm
+
+# deu 22:22
+# see part 1: H1166
+
+# deu 24:4
+sed -i 's/her former husband/her former owner/' deuteronomy.usfm
+
+# jos 24:11
+sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.usfm
+
+# jud 9:2
+sed -i 's/Please speak in the ears of all the men of Shechem/Please speak in the ears of all the owners of Shechem/' judges.usfm
+
+# jud 9:3
+sed -i 's/spoke of him in the ears of all the men of Shechem/spoke of him in the ears of all the owners of Shechem/' judges.usfm
+
+# jud 9:6
+sed -i 's/the men of Shechem assembled/the owners of Shechem assembled/' judges.usfm
+
+# jud 9:7
+sed -i 's/listen to me, you men of Shechem/listen to me, you owners of Shechem/' judges.usfm
+
+# jud 9:18
+sed -i 's/king over the men of Shechem/king over the owners of Shechem/' judges.usfm
+
+# jud 9:20 (1 of 2)
+sed -i 's/devour the men of Shechem/devour the owners of Shechem/' judges.usfm
+
+# jud 9:20 (2 of 2)
+sed -i 's/fire come out from the men of Shechem/fire come out from the owners of Shechem/' judges.usfm
+
+# jud 9:23 (1 of 2)
+sed -i 's/Abimelech and the men of Shechem/Abimelech and the owners of Shechem/' judges.usfm
+
+# jud 9:23 (2 of 2)
+sed -i 's/the men of Shechem dealt/the owners of Shechem dealt/' judges.usfm
+
+# jud 9:24
+sed -i 's/on the men of Shechem/on the owners of Shechem/' judges.usfm
+
+# jud 9:25
+sed -i 's/The men of Shechem set/The owners of Shechem set/' judges.usfm
+
+# jud 9:26
+sed -i 's/the men of Shechem put/the owners of Shechem put/' judges.usfm
+
+# jud 9:39
+sed -i 's/Gaal went out before the men of Shechem/Gaal went out before the owners of Shechem/' judges.usfm
+
+# jud 9:46
+sed -i 's/When all the men of the tower/When all the owners of the tower/' judges.usfm
+
+# jud 9:47
+sed -i 's/that all the men/that all the owners/' judges.usfm
+
+# jud 9:51
+sed -i 's/all the men and women of the city fled there, and shut/all the men and women and all the owners of the city fled there, and shut/' judges.usfm
+
+# jud 19:22
+sed -i 's/to the master of the house/to the owner of the house/' judges.usfm
+
+# jud 19:23
+sed -i 's/man, the master of the house/man, the owner of the house/' judges.usfm
+
+# jud 20:5
+sed -i 's/the men of Gibeah/the owners of Gibeah/' judges.usfm
+
+# 1sa 23:11
+sed -i 's/the men of Keilah deliver me up/the owners of Keilah deliver me up/' 1samuel.usfm
+
+# 1sa 23:12
+sed -i 's/the men of Keilah deliver me and/the owners of Keilah deliver me and/' 1samuel.usfm
+
+# 2sa 1:6
+# horsemen (owners of horses)
+
+# 2sa 11:26
+sed -i 's/she mourned for her husband/she mourned for her owner/' 2samuel.usfm
+
+# 2sa 21:12
+sed -i 's/son from the men of Jabesh/son from the owners of Jabesh/' 2samuel.usfm
+
+# 2ki 1:8
+# "hairy man" -> "man, an owner of hair"
+# Smith's Literal Translation
+#   And they will say to him, A man possessing hair
+# perhaps he was hairy, perhaps he had a fur coat. let the reader decide
+sed -i 's/He was a hairy man, and wearing/He was a man, an owner of hair, and wearing/' 2kings.usfm
+
+# neh 6:18
+# sworn (owners of an oath)
+
+# Esther 1:17
+sed -i 's/contempt for their husbands/contempt for their owners/' esther.usfm
+
+# Esther 1:20
+sed -i 's/give their husbands honor/give their owners honor/' esther.usfm
+
+# job 31:39
+# owners
+
+# pro 1:17
+# bird (owner of wings)
+
+# pro 1:19
+# owners
+
+# pro 3:27
+# from those to whom it is due (from he who owns)
+
+# pro 12:4
+sed -i 's/crown of her husband/crown of her owner/' proverbs.usfm
+
+# pro 16:22
+# to one who has it (to one who owns it)
+
+# pro 17:8
+# him who gives it (him who owns it)
+# ***** alternative translation, not relevant to scope of בעל *****
+sed -i 's/A bribe is a precious stone/A gift is a precious stone/' proverbs.usfm
+
+# pro 18:9
+# a master of destruction (an owner of destruction)
+
+# pro 22:24
+# angry man (owner of anger)
+
+# pro 23:2
+# man given to appetite (owner of appetite)
+
+# pro 24:8
+# schemer (owner of mischief)
+
+# pro 29:22
+# wrathful man (owner of fury)
+
+# pro 31:11
+sed -i 's/her husband trusts/her owner trusts/' proverbs.usfm
+
+# pro 31:23
+sed -i 's/Her husband is respected/Her owner is respected/' proverbs.usfm
+
+# pro 31:28
+sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.usfm
+
+# ecc 5:11
+# owner
+
+# ecc 5:13
+# owner
+
+# ecc 7:12
+# him who has it
+
+# ecc 8:8
+# those who practice it (owners of it)
+
+# ecc 10:11
+# charmer's tongue (owner of the tongue)
+
+# ecc 10:20
+# and that which has wings (and owner of the wings)
+
+# ecc 12:11
+# the masters of assemblies (owners of assemblies)
+
+# isa 1:3
+# his master's (his owners)
+# The ox knows his owner (buyer), and the donkey his master’s crib
+
+# isa 16:8
+sed -i 's/The lords of the nations/The owners of the nations/' isaiah.usfm
+
+# isa 41:15
+# with teeth (owner of teeth)
+
+# isa 50:8
+# my adversary (owner of judgement)
+
+# jer 37:13
+# a captain of the guard (owner of the ward)
+
+# dan 8:6
+# ram that had the two horns (ram owner of dual horns)
+
+# dan 8:20
+# that had the two horns (owner of dual horns)
+
+# Joel 1:8
+sed -i 's/for the husband of her youth/for the owner of her youth/' joel.usfm
+
+# nah 1:2
+# and is full of wrath (owner of fury)
+
+
+
+# H1168 H1170 H1171 H1173 H1174 H1175 H1176 H1177 H1178 H1179 H1182
+# H1183 H1184 H1185 H1186 H1187 H1188 H1189 H1190 H1191 H1192 H1193
+# these instances in KJV are always transliterated as a proper name
+
+# H1169
+# ezr 4:8 4:9 and 4:17
+# Rehum the chancellor (Rehum the owner of taste)
+
+
+
+# H1172
+# 1sa 28:7
+# woman who has a familiar spirit (woman owner of familiar spirit)
+
+# 1ki 17:17 and nah 3:4
+# mistress (owner of house)
+
+
+
+# H1180
+# hos 2:16
+sed -i 's/call me ‘my master/call me ‘my owner/' hosea.usfm
+
+# H1181
+# "no occurrences in WLC" (actually same as numbers 21:28)
+
+
+
+# ------------------------------------------------------------------------------
+# check all remaining instances of husband(s)
+# change to lord(s) when root is adonai (occurs 1 time) (אדני)
+
+
+
+# HUSBANDS PLURAL
+# cases where the translation "husbands" is not based on אִישׁ (men)
+# but based on בעל ("lords" or "owners")
+
+# webp
+# adonim, lords
+# Amos 4:1
+sed -i 's/who tell their husbands/who tell their lords/' amos.usfm
+
+
+
+# HUSBAND SINGULAR
+# (one occurrence per verse unless noted)
+
+# "man" 8x
+# gen 3:6 3:16 16:3 29:32 29:34 30:15 30:18 30:20
+
+# "brother-in-law"
+# gen 38:8
+# it is the style of web/webp to use "in-law"
+sed -i 's/husband’s brother/brother-in-law/' genesis.usfm
+#sed -i 's/and perform the duty of a husband’s brother to her/and husband’s brother/' genesis.usfm
+
+# "man" x17
+# lev 21:3 21:7
+# num 5:13 5:19 5:20 5:27 5:29 30:6 30:7 30:8 30:10 30:11 30:12x2 30:13x2 30:14
+
+# "man" x3
+# deu 22:23 24:3x2
+
+# "brother-in-law"
+# deu 25:5x2 25:7x2
+sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.usfm
+
+# "man" 34x
+# from איש and in proverbs 6:34 גבר
+# deu 25:11 28:56
+# jud 13:6 13:9 13:10 14:15 19:3 20:4
+# rut 1:3 1:5 1:9 1:12x2 2:1 2:11
+# 1sa 1:8 1:22 1:23 2:19 4:19 4:21 25:19
+# 2sa 3:15 3:16 11:26 14:5 14:7
+# 2ki 4:1 4:9 4:14 4:22 4:26
+# pro 6:34 7:19
+
+# friend not owner
+# Jeremiah 3:20
+sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.usfm
+
+# "man" 1x
+# jer 6:11
+
+# "man" 6x
+# eze 16:32 16:45 44:25
+# hos 2:2 2:7 2:16
 
 
 
@@ -870,319 +1275,6 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 
 
 
-# ----------------------------------------------------------
-# restore husband(s) to owner(s) when root is baal (בעל)
-# and to lord(s) when root is adonai (אדני)
-
-# sources where the word בעל means MASTER
-#   web: hosea 2:16 husband (איש) vs master (בעל)
-#   https://www.mechanical-translation.org/mtt/D22.html
-#   https://en.wiktionary.org/wiki/%D7%91%D7%A2%D7%9C
-#   https://www.biblehub.com/jeremiah/3-14.htm
-
-# sources where the word בעל means OWNER
-#   https://www.biblehub.com/hebrew/1167.htm
-#   https://en.wikipedia.org/wiki/Baal
-#   https://dictionary.reverso.net/hebrew-english/%D7%91%D7%A2%D7%9C
-
-
-
-
-
-# HUSBANDS PLURAL
-# cases where "husbands" is not "men" but "lords" or "owners"
-
-# webp
-# adonaim, lords
-# Amos 4:1
-sed -i 's/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their husbands, “Bring us drinks!”/Listen to this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who tell their lords, “Bring us drinks!”/' amos.usfm
-
-# baal, owners
-# Esther 1:17
-sed -i 's/causing them to show contempt for their husbands when it is reported/causing them to show contempt for their owners when it is reported/' esther.usfm
-
-# baal, owners
-# Esther 1:20
-sed -i 's/all the wives will give their husbands honor/all the wives will give their owners honor/' esther.usfm
-
-
-
-
-# HUSBAND SINGULAR
-# (one occurrence per verse unless noted)
-
-# "man" 8x
-# gen 3:6 3:16 16:3 29:32 29:34 30:15 30:18 30:20
-
-# "brother-in-law"
-# gen 38:8
-# it is the style of web/webp to use "in-law"
-sed -i 's/husband’s brother/brother-in-law/' genesis.usfm
-
-#sed -i 's/and perform the duty of a husband’s brother to her/and husband’s brother/' genesis.usfm
-
-
-
-# "owner"
-# Exodus 21:22
-sed -i 's/he shall be surely fined as much as the woman’s husband demands and the judges allow/he shall be surely fined as much as the woman’s owner demands and the judges allow/' exodus.usfm
-
-# "man" x17
-# lev 21:3 21:7
-# num 5:13 5:19 5:20 5:27 5:29 30:6 30:7 30:8 30:10 30:11 30:12x2 30:13x2 30:14
-
-# "owner"
-# Deuteronomy 21:13
-sed -i 's/After that you shall go in to her and be her husband, and she shall be your/After that you shall go in to her and be her owner, and she shall be your/' deuteronomy.usfm
-
-# "married to a husband" -> "owned by an owner"
-# בעלב-בעל
-# baal-baal
-# Deuteronomy 22:22
-sed -i 's/If a man is found lying with a woman married to a husband, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/If a man is found lying with a woman owned by an owner, then they shall both die, the man who lay with the woman and the woman\. So you shall remove the evil from Israel/' deuteronomy.usfm
-
-# "man" x3
-# deu 22:23 24:3x2
-
-# owner
-# Deuteronomy 24:4
-sed -i 's/her former husband, who sent her away, may not take her again to be his wife after she is defiled/her former owner, who sent her away, may not take her again to be his wife after she is defiled/' deuteronomy.usfm
-
-# "brother-in-law"
-# deu 25:5x2 25:7x2
-sed -i 's/husband’s brother/brother-in-law/g' deuteronomy.usfm
-
-# "man" 34x
-#from איש and in proverbs 6:34 גבר
-# deu 25:11 28:56
-# jud 13:6 13:9 13:10 14:15 19:3 20:4
-# rut 1:3 1:5 1:9 1:12x2 2:1 2:11
-# 1sa 1:8 1:22 1:23 2:19 4:19 4:21 25:19
-# 2sa 3:15 3:16 11:26 14:5 14:7
-# 2ki 4:1 4:9 4:14 4:22 4:26
-# pro 6:34 7:19
-
-# owner
-# Proverbs 12:4
-sed -i 's/A worthy woman is the crown of her husband/A worthy woman is the crown of her owner/' proverbs.usfm
-
-# owner
-# Proverbs 31:11
-sed -i 's/The heart of her husband trusts in her/The heart of her owner trusts in her/' proverbs.usfm
-
-# owner
-# Proverbs 31:23
-sed -i 's/Her husband is respected in the gates/Her owner is respected in the gates/' proverbs.usfm
-
-# owner
-# Proverbs 31:28
-sed -i 's/Her husband also praises her/Her owner also praises her/' proverbs.usfm
-
-# owner
-# Isaiah 54:5
-sed -i 's/For your Maker is your husband/For your Maker is your owner/' isaiah.usfm
-
-# a husband -> an owner
-# Jeremiah 3:14
-sed -i 's/Return, backsliding children,” says Yahweh, “for I am a husband to you/Return, backsliding children,” says Yahweh, “for I am an owner to you/' jeremiah.usfm
-
-# friend not owner
-# (wife in this verse should be woman)
-# Jeremiah 3:20
-sed -i 's/treacherously departs from her husband/treacherously departs from her friend/' jeremiah.usfm
-
-# "man" 1x
-# jer 6:11
-
-# owner
-# Jeremiah 31:32
-sed -i 's/although I was a husband to them/although I was an owner to them/' jeremiah.usfm
-
-# "man"6x
-# eze 16:32 16:45 44:25
-# hos 2:2 2:7 2:16
-
-# owner
-# Joel 1:8
-sed -i 's/for the husband of her youth/for the owner of her youth/' joel.usfm
-
-
-
-
-
-# ----------------------------------------------------------------------
-# restore many instances of baal meaning owner (i.e. not just a name)
-# restore man to owner when root is baal
-# searched hebModern bible in "and" bible for בעל, and here are matches:
-# TO DO: define exact process
-
-# "a man's wife" -> "owned by an owner"
-# בעלב-בעל
-# baal-baal
-# Genesis 20:3
-#sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is an owner’s wife/' genesis.usfm
-sed -i 's/Behold, you are a dead man, because of the woman whom you have taken; for she is a man’s wife/Behold, you are a dead man, because of the woman whom you have taken; for she is owned by an owner/' genesis.usfm
-
-# baal
-# gen 36:38 36:39
-
-# "dreamer" -> "owner of dreams"
-# Genesis 37:19
-# do not change, allow web/webp style
-#sed -i 's/They said to one another, “Behold, this dreamer comes/They said to one another, “Behold, this owner of dreams comes/' genesis.usfm
-
-# baal
-# exo 14:2 14:9
-
-# "married" -> "the owner of a woman"
-# Exodus 21:3
-sed -i 's/If he comes in by himself, he shall go out by himself\. If he is married, then his wife shall go out with him/If he comes in by himself, he shall go out by himself\. If he is the owner of a woman, then his wife shall go out with him/' exodus.usfm
-
-# husband (will have already been changed to man)
-# exo 21:22
-
-# already owner
-# Exodus 21:34
-#sed -i 's/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/the owner of the pit shall make it good\. He shall give money to its owner, and the dead animal shall be his/' exodus.usfm
-
-# "master" -> "owner"
-# Exodus 22:8
-sed -i 's/then the master of the house shall come near to God/then the owner of the house shall come near to God/' exodus.usfm
-
-# "involved in a dispute" -> "an owner of words"
-# mechanical translation says:
-#   'The phrase “master of words” apparently means “one with a dispute.”'
-#   but there is no explanation why, and no further reference
-#   smith's literal translation at least has 'words'
-# Exodus 24:14
-# do not change, allow web/webp style
-#sed -i 's/Behold, Aaron and Hur are with you\. Whoever is involved in a dispute can go to them/Behold, Aaron and Hur are with you\. Whoever is an owner of words can go to them/' exodus.usfm
-
-# "a chief man" -> "an owner"
-# Leviticus 21:4
-sed -i 's/He shall not defile himself, being a chief man among his people, to profane himself/He shall not defile himself, being an owner among his people, to profane himself/' leviticus.usfm
-
-# baal
-# num 22:41 32:38 33:7
-# deu 4:3
-
-# "creditor" -> "owner of a loan"
-# Deuteronomy 15:2
-sed -i s'/This is the way it shall be done: every creditor shall release that which he has lent to his neighbor/This is the way it shall be done: every owner of a loan shall release that which he has lent to his neighbor/' deuteronomy.usfm
-
-# yoke
-# deu 21:3
-
-# husband
-# deu 22:22
-
-# baal
-# jos 11:17 13:17 15:60 18:14
-# jud 3:3 8:33 9:4
-
-# "master" -> "owner"
-# Judges 19:22
-sed -i 's/and they spoke to the master of the house, the old man/and they spoke to the owner of the house, the old man/' judges.usfm
-
-# "master" -> "owner"
-# Judges 19:23
-sed -i 's/The man, the master of the house, went out to them, and said to them/The man, the owner of the house, went out to them, and said to them/' judges.usfm
-
-# baal
-# 2sa 5:20
-
-# "hairy man" -> "man, an owner of hair"
-# Smith's Literal Translation
-#   And they will say to him, A man possessing hair
-# 2 Kings 1:8
-sed -i 's/They answered him, “He was a hairy man, and wearing a leather belt around his waist/They answered him, “He was a man, an owner of hair, and wearing a leather belt around his waist/' 2kings.usfm
-
-# baal
-# 1ch 1:49 1:50 4:33 5:5 5:23 8:34 9:40 14:11 27:28
-# 2ch 26:7
-
-# "chancellor" -> "owner of taste"
-# ezra 4:8 4:9 and 4:17
-# do not change, allow web/webp style
-#sed -i 's/Rehum the chancellor/Rehum the owner of taste/g' ezra.usfm
-
-# "bird" -> "owner of wings"
-# Proverbs 1:17
-# do not change, allow web/webp style
-#sed -i 's/For the net is spread in vain in the sight of any bird/For the net is spread in vain in the sight of any owner of wings/' proverbs.usfm
-
-# "man" -> "owner"
-# Proverbs 22:24
-sed -i 's/Don’t befriend a hot-tempered man/Don’t befriend a hot-tempered owner/' proverbs.usfm
-
-# "a man" -> "an owner"
-# Proverbs 23:2
-sed -i 's/put a knife to your throat if you are a man given to appetite/put a knife to your throat if you are an owner given to appetite/' proverbs.usfm
-
-# "schemer" -> "owner of wicked thoughts"
-# Proverbs 24:8
-sed -i 's/One who plots to do evil will be called a schemer/One who plots to do evil will be called an owner of wicked thoughts/' proverbs.usfm
-
-# with teeth (owner of teeth)
-# Isaiah 41:15
-#Behold, I have made you into a new sharp threshing instrument with teeth.  You will thresh the mountains,  and beat them small,  and will make the hills like chaff.  
-
-# my
-# Isaiah 50:8
-#He who justifies me is near.  Who will bring charges against me?  Let us stand up together.  Who is my adversary?  Let him come near to me.  
-
-# yoke בְּעֹל
-#Jeremiah 27:8
-#“‘“‘It will happen that I will punish the nation and the kingdom which will not serve the same Nebuchadnezzar king of Babylon, and that will not put their neck under the yoke of the king of Babylon,’ says Yahweh, ‘with the sword, with famine, and with pestilence, until I have consumed them by his hand.
-
-# yoke
-# Jeremiah 27:11
-#But the nation that brings their neck under the yoke of the king of Babylon and serves him, that nation I will let remain in their own land,’ says Yahweh; ‘and they will till it and dwell in it.’”’”  
-
-# yoke
-# Jeremiah 27:12
-#I spoke to Zedekiah king of Judah according to all these words, saying, “Bring your necks under the yoke of the king of Babylon, and serve him and his people, and live.
-
-# captain
-# Jeremiah 37:13
-#When he was in Benjamin’s gate, a captain of the guard was there, whose name was Irijah, the son of Shelemiah, the son of Hananiah; and he seized Jeremiah the prophet, saying, “You are defecting to the Chaldeans!”  
-
-# baal
-# eze 25:9
-
-# had
-# Daniel 8:6
-#He came to the ram that had the two horns, which I saw standing before the river, and ran on him in the fury of his power.  
-
-# had
-# dan 8:20
-
-# baal
-# his 9:10
-
-# husband
-# joe 1:8
-
-# if hebModern is used when searching for occurrences of בעל, then occurrences are found in NT. not addressing those.
-
-
-
-
-# ---------------------------------
-# word בעלי is owners
-
-# this would be a natural progression of the work done to replace husband with
-# owner instead of man. but it's out of the scope of this project to keep
-# digging into every conjugation of ba'al and replacing it. so this section
-# will not be implemented, which may be inconsistent, but i believe it is still
-# helpful that i have done the work on this matter up to this point.
-
-
-# Joshua 24:11
-#sed -i 's/The men of Jericho fought against you/The owners of Jericho fought against you/' joshua.usfm
-
-# Judges 9:2
-#sed -i 's/Please speak in the ears of all the men of Shechem/Please speak in the ears of all the owners of Shechem/' judges.usfm
 
 
 
@@ -1413,7 +1505,7 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 
 
 # ----------------------------------------------------------
-# lord's prayer
+# yeshua's prayer
 # see: ESV, Berean Literal Bible, Douay-Rheims, etc.
 
 # "the evil one. For yours is the Kingdom, the power, and the glory forever" -> "evil"
@@ -1593,10 +1685,29 @@ sed -i 's/god/elohim/g' *.usfm
 # deu 10:7 2x
 sed -i 's/Gudgo-dah/Gudgodah/g' deuteronomy.usfm
 
-
-
-
 printf .
+
+
+
+
+# ----------------------------------------------------------
+# adonai
+
+# considering changing lord to adonai
+
+# make sure the root of each use is adonai before changing
+# and check for all occurrences of the hebrew word adonai
+
+# lord
+# lordly
+# lords
+# lord’s
+
+# adonai
+# adonaily
+# adonim
+# adonai’s
+
 
 
 
@@ -1639,7 +1750,18 @@ sed -i 's/Holy/Set-Apart/g' *.usfm
 # 3x
 sed -i 's/HOLY/SET-APART/g' *.usfm
 
+# continue removing term 'holy'
+# 1x
+sed -i 's/Holiness/Set-Apartness/g' *.usfm
 
+# 11x
+sed -i 's/holiness/set-apartness/g' *.usfm
+
+# 1x
+sed -i 's/holier/more set-apart/g' *.usfm
+
+# 5x (one of these is 'holidays')
+sed -i 's/holiday/set-apart day/g' *.usfm
 
 printf .
 
@@ -1734,8 +1856,8 @@ sed -i 's/Jesus/Yeshua/g' *.usfm
 # 2x
 sed -i 's/JESUS/YESHUA/g' *.usfm
 
-# fix apostrophe issue. 12 occurrences in 2023-02-20. will be 13 in update.
-# 12x
+# fix apostrophe issue.
+# 13x
 sed -i 's/Yehoshua’ /Yeshua’s /g' *.usfm
 
 # do not edit "christ" to "messiah"
