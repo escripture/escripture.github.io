@@ -23,7 +23,7 @@ set -e
 # REQUIREMENTS:
 #   FILES:
 #     eng-web_usfm.zip (scripture source file)
-#       the 2023-04-28 version generated from source files dated 2023-04-27
+#       the 2023-06-06 version (changelog has it as 2023-06-07)
 #       version info found on the copr.htm page from the zip
 #       source info page: https://ebible.org/find/details.php?id=eng-web
 #       source file: https://ebible.org/Scriptures/eng-web_usfm.zip
@@ -46,11 +46,9 @@ set -e
 #     an http server (optional)
 
 # INSTRUCTIONS
-# 1. rename eng-web_usfm.zip to eng-web_usfm-source2023-04-27.zip
-#      (or edit that line just below).
-# 2. run setup.sh (this file) in clean directory that also has eng-web_usfm.zip
-# 3. (optional) copy all html files to a subdirectory named "book"
-# 4. (optional) make sure index.html, style.css, and caslon.ttf, are
+# 1. run setup.sh (this file) in clean directory that also has eng-web_usfm.zip
+# 2. (optional) copy all html files to a subdirectory named "book"
+# 3. (optional) make sure index.html, style.css, and caslon.ttf, are
 #      in the parent directory of the "book" directory
 # the site should now be ready. use an http server to view the site.
 
@@ -67,7 +65,7 @@ set -e
 printf 'Processing'
 
 # unzip and discard unnecessary files
-unzip -q 'eng-web_usfm-source2023-04-27.zip'
+unzip -q 'eng-web_usfm.zip'
 rm copr.htm gentiumplus.css keys.asc signature.txt.asc
 printf .
 
@@ -85,7 +83,7 @@ rm *ROM*.usfm *1CO*.usfm *2CO*.usfm *GAL*.usfm *EPH*.usfm *PHP*.usfm *COL*.usfm 
 # remove book that conveys paul's sayings
 rm *ACT*.usfm
 
-# remove book by author of acts, written to same person
+# remove book written by same person who wrote acts
 rm *LUK*.usfm
 
 # remove text perhaps by barnabas, paul's associate
@@ -97,7 +95,6 @@ rm *2PE*.usfm
 # remove text written by silvanus, companion of paul
 # see https://www.the-iconoclast.org/reference/saul-of-tarsus.php#id.10
 rm *1PE*.usfm
-
 
 # remove book that appears loosely associated with paul, perhaps from rome.
 # the decision to remove this book might be undone if it is proven trustworthy.
@@ -358,8 +355,6 @@ sed -i 's/‘“/‘ “/g' *.usfm
 # closes
 sed -i 's/’”/’ ”/g' *.usfm
 sed -i 's/”’/” ’/g' *.usfm
-# fix one occurrence
-sed -i 's/’\\wj\*”/’\\wj\* ”/' *.usfm
 
 
 
@@ -382,179 +377,45 @@ sed -i 's/  / /g' *.usfm
 
 
 
-# misplaced quotation mark in matthew 19:5 and many other places
-# the question mark is inside the inner quote, but i think it should be outside the inner quote in this case, because the inner quotation itself is not a question, but rather the question is the messiah's.
-# i expect this issue to be resolved in the WEB distribution soon, but until then, this will fix it. after it's fixed, this code should be harmless.
-
-# question mark placement before curly close single quote
-# (40 sed's. 2 sed's fix 2 verses, and 2 verses have 2 sed's each)
-
-# 1ki 1:24
-sed -i 's/sit on my throne?’/sit on my throne’?/' 1kings.usfm
-
-# 1ki 2:42
-sed -i 's/shall surely die?’/shall surely die’?/' 1kings.usfm
-
-# 1ki 12:9 and 2ch 10:9
-sed -i 's/on us lighter?’.”/on us lighter’?”/g' *.usfm
-
-# 1sa 21:11, 29:5
-sed -i 's/David his ten thousands?’.”/David his ten thousands’?”/g' 1samuel.usfm
-
-# 1sa 24:9
-sed -i 's/David seeks to harm you?’/David seeks to harm you’?/' 1samuel.usfm
-
 # 2ch 32:11
 sed -i 's/king of Assyria?’/king of Assyria’?/' 2chronicles.usfm
-
-# 2ch 32:12
-sed -i 's/incense on it?’/incense on it’?/' 2chronicles.usfm
-
-# 2ki 2:18
-sed -i 's/Didn’t I tell you, ‘Don’t go?’./Didn’t I tell you, ‘Don’t go’?/' 2kings.usfm
-
-# 2ki 5:13
-sed -i 's/Wash, and be clean?’./Wash, and be clean’?/' 2kings.usfm
-
-# 2ki 18:22
-sed -i 's/altar in Jerusalem?’/altar in Jerusalem’?/' 2kings.usfm
-
-# exo 14:12
-sed -i 's/serve the Egyptians?’/serve the Egyptians’?/' exodus.usfm
-
-# exo 32:12
-sed -i 's/surface of the earth?’/surface of the earth’?/' exodus.usfm
-
-# eze 12:22
-sed -i 's/every vision fails?’/every vision fails’?/' ezekiel.usfm
-
-# gen 26:9
-sed -i 's/She is my sister?’.”/She is my sister’?”/' genesis.usfm
-
-# gen 43:7
-sed -i 's/Bring your brother down?’.”/Bring your brother down’?”/' genesis.usfm
-
-# isa 36:7
-sed -i 's/before this altar?’.”/before this altar’?”/' isaiah.usfm
-
-# isa 41:26
-sed -i 's/He is right?’/He is right’?/' isaiah.usfm
+# NOT implemented upstream
 
 # jer 26:9
 sed -i 's/without inhabitant?’.”/without inhabitant’?”/' jeremiah.usfm
+# NOT implemented
 
 # SAME ISSUE AS OTHERS PLUS SPECIAL CASE OF WRONG NESTING.
 # FOR HTML: REMEMBER TO USE NBSP (NON-BREAKING SPACE) BETWEEN QUOTE MARKS!
 # OTHER VERSES IN THIS PARAGRAPH AGREE WITH THE CORRECTED FORM (NOT CURRENT FORM)
 # jer 36:29
 sed -i 's/“Why have you written therein, saying, ‘The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal?’.”.’/‘Why have you written therein, saying, “The king of Babylon will certainly come and destroy this land, and will cause to cease from there man and animal”?’ ”/' jeremiah.usfm
-
-# jer 37:19
-sed -i 's/against this land?’/against this land’?/' jeremiah.usfm
+# NOT implemented
 
 # job 6:22 (1 of 2)
 sed -i 's/Give to me?’/Give to me’?/' job.usfm
+# NOT implemented
 
 # job 6:22 (2 of 2)
 sed -i 's/from your substance?’/from your substance’?/' job.usfm
-
-# job 6:23 (1 of 2)
-sed -i 's/adversary’s hand?’/adversary’s hand’?/' job.usfm
-
-# job 6:23 (2 of 2)
-sed -i 's/of the oppressors?’/of the oppressors’?/' job.usfm
-
-# job 36:23
-sed -i 's/have committed unrighteousness?’/have committed unrighteousness’?/' job.usfm
-
-# joh 4:35
-sed -i 's/until the harvest?’/until the harvest’?/' john.usfm
-
-# joh 6:42
-sed -i 's/out of heaven?’./out of heaven’?/' john.usfm
-
-# joh 10:34
-sed -i 's/you are gods?’/you are gods’?/' john.usfm
-
-# joh 10:36
-sed -i 's/am the Son of God?’/am the Son of God’?/' john.usfm
-
-# joh 12:27
-sed -i 's/save me from this time?’/save me from this time’?/' john.usfm
+# NOT implemented
 
 # joh 12:34
 sed -i 's/must be lifted up?’/must be lifted up’?/' john.usfm
-
-# joh 14:9
-sed -i 's/Show us the Father?’/Show us the Father’?/' john.usfm
-
-# joh 16:19
-sed -i 's/you will see me?’/you will see me’?/' john.usfm
-
-# mat 9:5
-sed -i 's/Get up, and walk?’/Get up, and walk’?/' matthew.usfm
-
-# matthew 19:5
-sed -i 's/become one flesh?’/become one flesh’?/' matthew.usfm
-
-# mat 21:16
-sed -i 's/perfected praise?’.”/perfected praise’?”/' matthew.usfm
-
-# mat 22:32
-sed -i 's/the God of Jacob?’/the God of Jacob’?/' matthew.usfm
+# NOT implemented
 
 # SHOULD BE JUST A PERIOD, NOT A QUESTION MARK
 # mat 23:18
-sed -i 's/he is obligated?’/he is obligated\.’/' matthew.usfm
+#sed -i 's/he is obligated?’/he is obligated\.’/' matthew.usfm
+# NOT implemented, but changed to another error, so fix:
+sed -i 's/he is obligated’?/he is obligated\.’/' matthew.usfm
 
-# num 11:12
-sed -i 's/to their fathers?’/to their fathers’?/' numbers.usfm
 
-# num 23:26
-sed -i 's/that I must do?’.”/that I must do’?”/' numbers.usfm
 
 printf .
 
 
-# question mark and close curly double quote (9 ISSUES)
-# grep -l ?” *.usfml
-# (39 books of 48 with at least 1 occurrence)
 
-# 1ki 1:13
-sed -i 's/on my throne?”/on my throne”?/' 1kings.usfm
-
-# ecc 1:10
-sed -i 's/this is new?”/this is new”?/' ecclesiastes.usfm
-
-# isa 19:11
-sed -i 's/of ancient kings?”/of ancient kings”?/' isaiah.usfm
-
-# isa 29:16
-sed -i 's/He has no understanding?”/He has no understanding”?/' isaiah.usfm
-
-# isa 40:27
-sed -i 's/disregarded by my God?”/disregarded by my God”?/' isaiah.usfm
-
-# jer 8:8
-sed -i 's/law is with us?”/law is with us”?/' jeremiah.usfm
-
-# jer 32:5
-sed -i 's/will not prosper?”.’.”/will not prosper” ’?”/' jeremiah.usfm
-
-# pro 20:9
-sed -i 's/and without sin?”/and without sin”?/' proverbs.usfm
-
-# psa 10:13
-sed -i 's/me into account?”/me into account”?/' psalms.usfm
-
-# add missed quotation marks
-# add closing mark
-# Jeremiah 21:14
-sed -i 's/fruit of your doings, says Yahweh;/fruit of your doings,’ says Yahweh;/' jeremiah.usfm
-# add opening mark
-sed -i 's/and I will kindle a fire in her forest/‘and I will kindle a fire in her forest/' jeremiah.usfm
-
-printf .
 
 
 
@@ -1263,18 +1124,22 @@ sed -i 's/treacherously departs from her husband/treacherously departs from her 
 
 
 
-# ----------------------------------------------------------
+# ------------------------------------------------------------------------------
 # marry vs take
-
 # TO DO: review all occurrences and implement
-
 # marry is a modern word
 
-# Genesis 19:14
+# marry
+
+# gen 19:14
 #sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.usfm
 
 
 
+# marriage
+
+# 1ki 3:1
+#sed -i 's/Solomon made a marriage alliance with Pharaoh/Solomon made himself son in law of Pharaoh/' 1kings.usfm
 
 
 
@@ -1282,7 +1147,11 @@ sed -i 's/treacherously departs from her husband/treacherously departs from her 
 
 
 
-# ----------------------------------------------------------
+
+
+
+
+# ------------------------------------------------------------------------------
 # remove trinity bias
 # TO DO: review in hebrew
 
@@ -1383,7 +1252,7 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 
 
-# ----------------------------------------------------------
+# ------------------------------------------------------------------------------
 # messiah's birth
 # TO DO: cite manuscript witnesses
 
@@ -1436,7 +1305,15 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 #perl -i -p0e 's/\\c 1\n.*?\\c 2\n/\\c 2\n/s' matthew.usfm
 
 
-# restore text.
+# instead of removing matthew 1 completely, attempt to restore
+
+# there is a possibility the curse of jechoniah was reversed
+
+# but most importantly:
+# many syriac manuscripts and other witnesses read "joseph begat jesus"
+# as pointed out in recent (~5/2023) videos on youtube.com/jesuswordsonly
+
+# restore text in world-english-bible style
 sed -i 's/Jacob became the father of Joseph, the husband of Mary, from whom was born Jesus/Jacob became the father of Joseph. This Joseph became the father of Jesus/' matthew.usfm
 
 
@@ -1458,6 +1335,8 @@ perl -i -p0e 's/\\p\n\\v 18 Now the birth of Jesus.*He named him Jesus\.//s' mat
 # starting with "Now" is awkward. prefer translation that starts with "When",
 # as in the CEV, Geneva Bible of 1587, etc.
 # remove word "Now"
+
+# actually, web uses Now to start several books, so don't edit
 
 # matthew 2:1
 #sed -i 's/Now when Jesus was born/When Jesus was born/' matthew.usfm
@@ -1582,7 +1461,6 @@ sed -i 's/I tell you that whoever divorces his wife, except for sexual immoralit
 # Perhaps instead of "Therefore", "Now" or "And now".
 # but just do the minimal change necessary
 
-# "they" -> "he"
 # matthew 23:3
 sed -i 's/whatever they tell you to observe/whatever he tells you to observe/' matthew.usfm
 
@@ -1704,7 +1582,7 @@ printf .
 # lord’s
 
 # adonai
-# adonaily
+# adonaily (?)
 # adonim
 # adonai’s
 
@@ -1718,11 +1596,18 @@ printf .
 
 
 # despite book(s) by nehemia gordon (yehovah vowels: sheva cholem qamats),
-# see https://nazareneisrael.org/book/nazarene-scripture-studies-vol-4/about-the-pronunciation-yehovah/
+# see:
+# https://nazareneisrael.org/book/nazarene-scripture-studies-vol-4/about-the-pronunciation-yehovah/
+# https://eliyah.com/why-the-heavenly-fathers-name-is-pronounced-yahweh/
 
+# compare with "The Pronunciation of the Name" by Nehemiah Gordon:
+# www.elyosoy.com/uploads/4/3/2/8/4328985/yhwh_2_nehemia_gordon.pdf
+
+# do not change
 # 6885x
 #sed -i 's/Yahweh/Yehovah/g' *.usfm
 
+# do not change
 # 4x
 #sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
 
@@ -1869,7 +1754,11 @@ sed -i 's/Yehoshua’ /Yeshua’s /g' *.usfm
 
 
 
-# GLOBAL!
+# ----------------------------------------------------------
+# brought forth
+
+# the hebrew term used means brought forth, not 'became the father of'
+# and using the phrase 'became the father of' has problematic doctrinal issues.
 
 sed -i 's/became the father of/brought forth/g' *.usfm
 
@@ -1880,6 +1769,7 @@ printf .
 # ------------------------------------------------------------------------------
 # CONVERT USFM TO HTML
 # only usfm markers used in the web version are considered
+# (this is not a universal converter for any usfm file)
 # ------------------------------------------------------------------------------
 
 
@@ -1935,7 +1825,7 @@ printf .
 
 
 # swap psalm chapter and psalm book order in usfm before converting to html
-
+# ... (not yet coded)
 
 
 # convert ms1 (psalm books 1-5)
