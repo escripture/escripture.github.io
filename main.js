@@ -29,7 +29,6 @@ function toggleVers() {
     }
   }
 }
-
 html.addEventListener("click", () => {
 
   // tap/click feedback for testing
@@ -41,18 +40,24 @@ html.addEventListener("click", () => {
   }
   */
 
-  // 3-way toggle: add chapters, add verses, remove chapter and verses
-  if (chap[0].style.display !== "block"
-    && vers[0].style.display !== "inline") {
-    toggleChap();
-  } else if (chap[0].style.display === "block"
-    && vers[0].style.display !== "inline") {
+  // catch psalms
+  if (chap.length === 0) {
+    // 2-way toggle: add verses, remove verses
     toggleVers();
   } else {
-    toggleChap();
-    toggleVers();
+    // 3-way toggle: add chapters, add verses, remove chapter and verses
+    // use chap[0] as an indicator of all chapter items
+    if (chap[0].style.display !== "block"
+      && vers[0].style.display !== "inline") {
+      toggleChap();
+    } else if (chap[0].style.display === "block"
+      && vers[0].style.display !== "inline") {
+      toggleVers();
+    } else {
+      toggleChap();
+      toggleVers();
+    }
   }
 
 });
-
 
