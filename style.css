@@ -216,7 +216,10 @@ p {
 }
 
 /* words of yahushua in red */
+/*
+there may be issues with red lettering
 .wj {color: rgb(128,0,0);}
+*/
 
 /* pi: only dan, ezr, jer. double-indented. awkward in dan 4 */
 .pi1 {
