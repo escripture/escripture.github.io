@@ -710,7 +710,10 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 # in general, the term owner will be used, except for some idioms
 
 # the main purpose for retranslating this hebrew word is to address issues
-# that are a byproduct of restoring husband to man, and wife to woman.
+# that are a byproduct of translating איש (man) as man, 
+# and אישה (woman) as woman,
+# instead of translating איש as man sometimes, and husband other times,
+# and instead of translating אישה as woman sometimes, and wife other times.
 # husband and wife are english terms which obfuscate the translation,
 # because hebrew generally has simply man or woman. however, sometimes the term
 # "owner" is used to refer to a man who possesses a woman, so that must be
@@ -720,7 +723,7 @@ sed -i 's/He believed in Yahweh, who credited it to him for righteousness/He bel
 
 
 # sources where the word בעל means MASTER
-#   web: hosea 2:16 husband (איש) vs master (בעל)
+#   webp: hosea 2:16 husband (איש) vs master (בעל)
 #   https://www.mechanical-translation.org/mtt/D22.html
 #   https://en.wiktionary.org/wiki/%D7%91%D7%A2%D7%9C
 #   https://www.biblehub.com/jeremiah/3-14.htm
@@ -1797,7 +1800,7 @@ EOF
 for f in *.usfm; do
 n="${f%%.*}".html
 cat top-tempfile.html $f > $n
-echo '</div></body></html>' >> $n
+echo '</div><script src="../main.js"></script></body></html>' >> $n
 done
 
 # clean up temporary file

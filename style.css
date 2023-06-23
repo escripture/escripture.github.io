@@ -217,7 +217,7 @@ p {
 
 /* words of yahushua in red */
 /*
-there may be issues with red lettering
+there may be doctrine issues with red lettering 
 .wj {color: rgb(128,0,0);}
 */
 
@@ -290,7 +290,10 @@ html[dir=ltr] .q2 {
 .chapterlabel,
 
 /* no verse numbers */
-.v,
+.v {
+  display: none;
+}
+
 
 /* no main page heading */
 .indextitle,
@@ -302,7 +305,6 @@ html[dir=ltr] .q2 {
 /*
 .b,
 */
-
 
 /* DO NOT ADD OTHER TITLES OR NOTES */
 .mt2, .mt3, .f, .x {
