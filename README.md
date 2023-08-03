@@ -1,7 +1,7 @@
 
 # World English Scripture
 
-Online at [jesusbible.github.io](https://jesusbible.github.io)
+Online at [jesusbible.github.io](https://jesusbible.github.io)  
 Chapter and verse numbers can be enabled and disabled by tapping/clicking anywhere on the page when viewing the text.
 
 A revision of the 2023 World English Bible, which is based on the 1901 ASV, which is based on the 1611 KJV, much of which is based on the 1530 Tyndale version, which is based on the Greek 1516 Textus Receptus and the Hebrew 1008 A.D. Masoretic Text.
