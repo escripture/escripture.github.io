@@ -1278,7 +1278,9 @@ sed -i 's/before Abraham came into existence, I AM/before Abraham came into exis
 
 # jeremiah 22:30
 # Yahweh says, “Record this man as childless, a man who will not prosper in his days; for no more will a man of his offspring prosper, sitting on David’s throne and ruling in Judah.”
-# note that the passage is apparently talking about jechoniah, and that this same jechoniah appears in the matthew chapter 1 geneology.
+# note that the passage is apparently talking about a jechoniah. is this same jechoniah the one who appears in the matthew chapter 1 geneology? this source says no:
+# https://hermeneutics.stackexchange.com/questions/56016/how-can-jesus-inherit-davids-throne-since-hes-a-descendent-of-jehoiakim
+# the jechoniah in matthew is not the cursed jechoniah. the jechoniah in matthew is josiah's son (not grandson), and changed his name from johanan to jechoniah, like how his brothers changed their names.
 
 
 
@@ -1387,7 +1389,7 @@ sed -i 's/but I tell you, don’t swear at all: neither by heaven/but I tell you
 
 
 # ----------------------------------------------------------
-# yeshua's prayer
+# yahushua's prayer
 # see: ESV, Berean Literal Bible, Douay-Rheims, etc.
 
 # "the evil one. For yours is the Kingdom, the power, and the glory forever" -> "evil"
@@ -1686,27 +1688,10 @@ printf .
 # the messiah's name
 
 # the messiah's name has been transliterated many ways:
-# yahshua, yahushua, yeshua, iesou, iesous, iesus, jesus
-
-# a history of the name can be found here:
-# (THIS ANALYSIS IS QUESTIONABLE AND ITS VALUE HERE IS DEPRECATED)
-# yahshua to jesus: evolution of a name, by william finck, 2006
-# https://christogenea.org/essays/yahshua-jesus-evolution-name
-
-# in general, finck's essay shows how the name evolved slowly as a result of
-# the evolution of languages.
-# also of note, even though yahshua may be the most accurate transliteration,
-# christ was likely most commonly known as iesous during his time on earth.
-# also, the story of the tower of babel suggests that varied languages is ok.
+# yahushua, yahshua, yeshua, yehoshua, iesou, iesous, iesus, jesus
 
 # the names joshua, jacob, and joseph, for example, could also use fresh
-# transliteration, so then where should a line be drawn, if anywhere?
-
-# see "the hebrew yeshua vs the greek jesus"
-# by nehemia gordon, pg 48.
-# WHY LOOK HERE? AND WHERE IS THE BOOK AVAILABLE FOR FREE?
-# or even where is that page available for free?
-# (this reference should possibly be omitted)
+# transliterations, so then where should a line be drawn, if anywhere?
 
 # the hebrew gospel of matthew (george howard) has יש״ו in place
 # of the messiah's name. that is actually a curse meaning "may his name
@@ -1718,35 +1703,35 @@ printf .
 # the isr scriptures version transliterates joshua son of nun's name in
 # joshua 1:1 exactly this way: "Yehoshua". to the best of my knowledge,
 # his name is identical to the messiah's name.
-# furthermore, any form starting with "ya" does not seem to be right
-# because the vowel pointing indicates a sheva, not a qamats for example,
-# and there is no need to try to match the apparently pagan form "yahweh".
-# rather, it should be either without vowel, or with an e. however, if
-# without an e, then the y and ho of "yhoshua" would be combined in english,
-# and the form y'hoshua is novel (i don't recall having seen it elsewhere) and
-# is an awkward and difficult transliteration (that does not mean it isn't
-# best, but right now i am only trying to make a necessary correction to an
-# acceptable form, not intoduce un-vetted ideas)
 
-# update: now that i am using the spelling 'yahweh' for the heavenly
-# father, i'm going to use a more accepted spelling for the son in
-# order to match. (i was using the spellings 'Yehovah' and 'Yehoshua'
-# as a matched pair, but now that i am using the spelling 'yahweh',
-# i feel like i might as well go back to a more default spelling of the
-# son's name unless and until i have reason and confidence to use a
-# different spelling.)
+# the strongest transliterations seem to me to be "yahushua" and "yahshua".
 
-# edit "jesus" to "yeshua"
+# articles in support of "yahushua"
+# https://wylh.org/hebrew/proving-shua-in-yahushua.php
+# https://eliyah.com/yahushua-is-the-true-name-of-the-messiah/
+# https://walksetapart.com/2011/06/23/the-truth-the-name-of-yahushua-the-meaning-of-the-name/
+
+# articles in support of "yahshua"
+# https://yrm.org/yahushua-or-yahshua/
+# https://christogenea.org/essays/yahshua-jesus-evolution-name
+# https://www.servantsofyahshua.com/yahshua-or-yahushua,-not-yeshua.html
+
+# perhaps the vav in "יהושע" is silent, but whynot display it?
+# also, i've seen "yehoshua" but never "yehshua"
+
+# so at the moment, i think "yahushua" may be the most respectful.
+
+# edit "jesus" to "yahushua"
 # no instances of "jesus" all-lowercase were found on last check
 # 511x
-sed -i 's/Jesus/Yeshua/g' *.usfm
+sed -i 's/Jesus/Yahushua/g' *.usfm
 
 # 2x
-sed -i 's/JESUS/YESHUA/g' *.usfm
+sed -i 's/JESUS/YAHUSHUA/g' *.usfm
 
 # fix apostrophe issue.
 # 13x
-sed -i 's/Yehoshua’ /Yeshua’s /g' *.usfm
+sed -i 's/Yahushua’ /Yahushua’s /g' *.usfm
 
 # do not edit "christ" to "messiah"
 
