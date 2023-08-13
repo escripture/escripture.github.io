@@ -8,6 +8,8 @@ A revision of the 2023 World English Bible, which is based on the 1901 ASV, whic
 
 In the few revisions made, this version tends to favor the Hebrew 1380 Shem Tov manuscript and Syriac manuscripts for the New Testament, especially due to their lack of Roman and Greek influence. Conversely, the Genesis chronology restoration is based primarily on the Greek Septuagint in order to make up for deficiencies in the Hebrew Masoretic Text.
 
+This version of scripture is PUBLIC DOMAIN, by Allen Ereaux, 2023.
+
 The following is a brief outline to answer the following questions:
 - **WHAT** has been revised?
 - And **WHY** has it been revised?
