@@ -1194,6 +1194,13 @@ sed -i 's/This is my beloved Son, with whom I am well pleased/This is my beloved
 
 
 
+# correct matthew 5:39 to reflect the hebrew from shem tov
+sed -i 's/But I tell you, don’t resist him who is evil; but whoever strikes you on your right cheek, turn to him the other also\./And I say to you not to pay evil in exchange for evil, but if hit on your right cheek, prepare for a hit to your left!/' matthew.usfm
+
+
+
+
+
 # restore "the father" to matthew 19:17
 
 # Still further also He plainly says, "None is good, but My Father, who is in heaven."
