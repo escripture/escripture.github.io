@@ -1779,6 +1779,47 @@ cat << EOF > top-tempfile.html
 <head>
 <title>Book</title>
 <meta charset="utf-8" />
+<style>
+sup {
+  display: none;
+}
+.p, .p1, .q1, .q2, .qs, .sp, .m, .mi, .pi1, .li1, .d, .nb {
+  text-indent: 2em;
+}
+.p1 {
+  text-indent: 0;
+}
+.d {
+  text-indent: 0;
+}
+.li1 {
+  display: list-item;
+  list-style-type: none;
+}
+.sp {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+.pi1 {
+  margin-left: 2em;
+}
+html[dir=ltr] .q1 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+html[dir=ltr] .q2 {
+  text-indent: -1em;
+  margin-left: 2em;
+}
+.q1 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+.q2 {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="../style.css" />
 <link rel="shortcut icon" type="image/png" href="../book.png" />
 <meta name="viewport" content="user-scalable=yes, initial-scale=1, minimum-scale=1, width=device-width" />
@@ -1792,7 +1833,7 @@ EOF
 for f in *.usfm; do
 n="${f%%.*}".html
 cat top-tempfile.html $f > $n
-echo '</div><script src="../main.js"></script></body></html>' >> $n
+echo '</div></div><script src="../main.js"></script></body></html>' >> $n
 done
 
 # clean up temporary file
@@ -1819,14 +1860,23 @@ printf .
 # psalms, chapter, and verse numbering
 
 
-# swap psalm chapter and psalm book order in usfm before converting to html
-# ... (not yet coded)
+# swap psalm chapter and psalm book order in usfm before converting to html?
+# no, usfm awkwardly puts ms1 after chapterlabel, as per usfm docs
+# instead, just fix html (see below)
 
+# convert ms1 (psalm books 1-5) (without fixing position)
+# (ms1 titles will still be after chapterlabel which is wrong for html)
+#sed -i 's/\\ms1 \([A-Za-z]* [0-9]\+\)/<h2 class="ms1">\1<\/h2>/' psalms.html
 
-# convert ms1 (psalm books 1-5)
-sed -i 's/\\ms1 \([A-Za-z]* [0-9]\+\)/<h2 class="ms1">\1<\/h2>/' psalms.html
-# no major section (psalm books 1-5)
-#sed -i '/\\ms1 /d' psalms.html
+# remove all major section labels in psalms (psalm books 1-5)
+sed -i '/\\ms1 /d' psalms.html
+# restore all major section labels, but before psalm number (fixes position)
+sed -i '/^\\c 1$/i <\/div><h2 class="ms1">BOOK 1<\/h2>' psalms.html
+sed -i '/^\\c 42$/i <\/div><h2 class="ms1">BOOK 2<\/h2>' psalms.html
+sed -i '/^\\c 73$/i <\/div><h2 class="ms1">BOOK 3<\/h2>' psalms.html
+sed -i '/^\\c 90$/i <\/div><h2 class="ms1">BOOK 4<\/h2>' psalms.html
+sed -i '/^\\c 107$/i <\/div><h2 class="ms1">BOOK 5<\/h2>' psalms.html
+
 
 # convert psalm number
 sed -i 's/\\c \([0-9]*\)/<h2 class="psalmlabel" id="\1">\1<\/h2>/' psalms.html
@@ -1842,18 +1892,80 @@ sed -i 's/\\c \([0-9]\+\)/<h2 class="chapterlabel" id="\1">\1<\/h2>/' *.html
 #sed -i '/\\c /d' *.html
 
 
+
 # ------------------------------------------------------------------------------
-# basic paragraph (all scripture text will be in various p tags)
+# chapter links
+
+# after booklabel, append opening div for chapnav (chapter links)
+sed -i '/booklabel/a <div class="chapterlabel nav chapnav">' *.html
+
+# after chapnav, close the div
+# this will be done later by the "close divs" section
+#sed -i '/chapnav/a <\/div>' *.html
+
+# add chapter links according to number of chapters
+for f in *.html; do
+# determine the number of chapters
+n=$(grep 'chapterlabel' $f | wc -l)
+# subtract one to account for the new links div that was just made
+((n--))
+# loop through chapter numbers in reverse order
+while [ $n -gt 0 ]; do
+# insert html chapter link corresponding to chapter number
+sed -i "/chapnav/a <a href=\"#$n\">$n</a>" $f
+# decrement chapter number
+((n--))
+done
+done
+
+# rename for psalms
+sed -i 's/chapterlabel/psalmlabel/' psalms.html
+
+# add psalm links according to number of psalms
+# determine the number of psalms
+n=$(grep 'psalmlabel' psalms.html | wc -l)
+# subtract one to account for the new links div that was just made
+((n--))
+# loop through chapter numbers in reverse order
+while [ $n -gt 0 ]; do
+# insert html chapter link corresponding to chapter number
+sed -i "/chapnav/a <a href=\"#$n\">$n</a>" psalms.html
+# decrement chapter number
+((n--))
+done
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# basic paragraph (p tags force newlines when copied, so avoid p tag)
 
 # convert paragraphs, otherwise implied quotes are broken.
-sed -i 's/\\p /<p>/g' *.html
-sed -i 's/\\p$/<p>/g' *.html
+sed -i 's/\\p /<div class="p">/g' *.html
+sed -i 's/\\p$/<div class="p">/g' *.html
 # no paragraphs
 #sed -i 's/\\p //g' *.html
 #sed -i 's/\\p//g' *.html
 
-# set class of first paragraph
-sed -i '0,/<p>/{s/<p>/<p class="p1">/}' *.html
+# set class of first paragraph.
+# this only changes the first paragraph in each book.
+# the normal thing to do is to change the first paragraph of each chapter.
+# but it's really a matter of style.
+# it is normal to have the first paragraph of each chapter unindented or
+# have it formatted with small caps on the first few words.
+# note: chapter divisions in scripture are a later invention superimposed
+# on the text. also, switching between no-chapters and chapters is seamless
+# if chapter 2+ are all formatted the same way.
+sed -i '0,/<div class="p">/{s/<div class="p">/<div class="p1">/}' *.html
+
+
+# fix nesting by removing the first div close
+#sed -i '0,/<\/div><div class="p">/{s/<\/div><div class="p">/<div class="p1">/}' *.html
+
+# will need to remove the first "</div>"
+# \qs* makes close
 
 
 
@@ -1861,53 +1973,53 @@ sed -i '0,/<p>/{s/<p>/<p class="p1">/}' *.html
 # alternate paragraphs
 
 # convert quote 1, for poetry
-sed -i 's/\\q1 /<p class="q1">/g' *.html
-sed -i 's/\\q1/<p class="q1">/g' *.html
+sed -i 's/\\q1 /<div class="q1">/g' *.html
+sed -i 's/\\q1/<div class="q1">/g' *.html
 # no q1
 #sed -i 's/\\q1 //g' *.html
 #sed -i 's/\\q1//g' *.html
 
 # convert quote 2, for poetry
-sed -i 's/\\q2 /<p class="q2">/g' *.html
-sed -i 's/\\q2/<p class="q2">/g' *.html
+sed -i 's/\\q2 /<div class="q2">/g' *.html
+sed -i 's/\\q2/<div class="q2">/g' *.html
 # no q2
 #sed -i 's/\\q2 //g' *.html
 #sed -i 's/\\q2//g' *.html
 
 # convert quote selah, for poetry, usually right-aligned
-sed -i 's/\\qs /<p class="qs">/g' *.html
-sed -i 's/\\qs\*/<\/p>/g' *.html
+sed -i 's/\\qs /<div class="qs">/g' *.html
+sed -i 's/\\qs\*//g' *.html
 # run this last or it will match others
-sed -i 's/\\qs/<p class="qs">/g' *.html
+sed -i 's/\\qs/<div class="qs">/g' *.html
 # no qs
 #sed -i 's/\\qs //g' *.html
 #sed -i 's/\\qs//g' *.html
 #sed -i 's/\\qs\*//g' *.html
 
 # convert speaker, for song of songs
-sed -i 's/\\sp /<p class="sp">/g' *.html
-sed -i 's/\\sp/<p class="sp">/g' *.html
+sed -i 's/\\sp /<div class="sp">/g' *.html
+sed -i 's/\\sp/<div class="sp">/g' *.html
 # no sp
 #sed -i 's/\\sp //g' *.html
 #sed -i 's/\\sp//g' *.html
 
 # convert margin, for non-indented lists
-sed -i 's/\\m /<p class="m">/g' *.html
-sed -i 's/\\m$/<p class="m">/g' *.html
+sed -i 's/\\m /<div class="m">/g' *.html
+sed -i 's/\\m$/<div class="m">/g' *.html
 # no m
 #sed -i 's/\\m //g' *.html
 #sed -i 's/\\m//g' *.html
 
 # convert margin indented, for indented lists
-sed -i 's/\\mi /<p class="mi">/g' *.html
-sed -i 's/\\mi/<p class="mi">/g' *.html
+sed -i 's/\\mi /<div class="mi">/g' *.html
+sed -i 's/\\mi/<div class="mi">/g' *.html
 # no mi
 #sed -i 's/\\mi //g' *.html
 #sed -i 's/\\mi//g' *.html
 
 # convert paragraph indent 1
-sed -i 's/\\pi1 /<p class="pi1">/g' *.html
-sed -i 's/\\pi1/<p class="pi1">/g' *.html
+sed -i 's/\\pi1 /<div class="pi1">/g' *.html
+sed -i 's/\\pi1/<div class="pi1">/g' *.html
 # no pi1
 #sed -i 's/\\pi1 //g' *.html
 #sed -i 's/\\pi1//g' *.html
@@ -1915,29 +2027,35 @@ printf .
 
 
 # convert li1
-sed -i 's/\\li1 /<p class="li1">/g' *.html
-sed -i 's/\\li1/<p class="li1">/g' *.html
+sed -i 's/\\li1 /<div class="li1">/g' *.html
+sed -i 's/\\li1/<div class="li1">/g' *.html
 
 
 # convert director
-sed -i 's/\\d /<p class="d">/g' *.html
-sed -i 's/\\d/<p class="d">/g' *.html
+sed -i 's/\\d /<div class="d">/g' *.html
+sed -i 's/\\d/<div class="d">/g' *.html
 
 # convert nb
-sed -i 's/\\nb /<p class="nb">/g' *.html
-sed -i 's/\\nb/<p class="nb">/g' *.html
+sed -i 's/\\nb /<div class="nb">/g' *.html
+sed -i 's/\\nb/<div class="nb">/g' *.html
 
 
 
 # ------------------------------------------------------------------------------
-# close paragraph tags
+# close p or div tags
 
-# close various paragraph tags
-sed -i 's/<p/<\/p><p/g' *.html
-# clean up unintended first closing paragraph tag
-sed -i '0,/<\/p>/{s/<\/p>//}' *.html
-# add final closing paragraph tag
-sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
+# close various tags
+#sed -i 's/<p/<\/p><p/g' *.html
+sed -i 's/<div/<\/div><div/g' *.html
+
+# clean up unintended first two closing tag
+#sed -i '0,/<\/p>/{s/<\/p>//}' *.html
+sed -i '0,/<\/div>/{s/<\/div>//}' *.html
+sed -i '0,/<\/div>/{s/<\/div>//}' *.html
+
+# add final closing tag (deprecated method. see html closing code above)
+#sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
+#sed -i 's/<\/div><\/body>/<\/div><\/div><\/body>/' *.html
 
 
 
@@ -1945,9 +2063,15 @@ sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
 # span
 
 # convert verse numbers
-sed -i 's/\\v \([0-9]\+\) /<span class="v">\1\&#160;<\/span>/g' *.html
+#sed -i 's/\\v \([0-9]\+\) /<sup class="v" style="display:none">\1\&#160;<\/sup>/g' *.html
+sed -i 's/\\v \([0-9]\+\) /<sup>\1\&#160;<\/sup>/g' *.html
+
+# why execute this line? and why is it commented out?
+# note: changed "span" to "sup" (superscript) after writing this line
+# then replaced span with sup in the line
 # run this before wj, so clearing after span doesn't eliminate necessary spaces
-#sed -i 's/<\/span> \+/<\/span>/g' *.html
+#sed -i 's/<\/sup> \+/<\/sup>/g' *.html
+
 # no verse numbers
 #sed -i 's/\\v [0-9]* //g' *.html
 
@@ -1968,12 +2092,21 @@ sed -i 's/\\bk/<span class="bk">/g' *.html
 
 
 # footnotes
-sed -i 's/\\f /<span class="f">/g' *.html
-sed -i 's/\\f\*/<\/span>/g' *.html
+# remove footnotes
+sed -i 's/\\f.*\\f\*//g' *.html
+
+# save footnotes in a span (needs more work with \fr and \ft)
+#sed -i 's/\\f /<span class="f">/g' *.html
+#sed -i 's/\\f\*/<\/span>/g' *.html
+
 
 # cross-references
-sed -i 's/\\x /<span class="x">/g' *.html
-sed -i 's/\\x\*/<\/span>/g' *.html
+#remove cross-references
+sed -i 's/\\x.*\\x\*//g' *.html
+
+# save cross-references in a span
+#sed -i 's/\\x /<span class="x">/g' *.html
+#sed -i 's/\\x\*/<\/span>/g' *.html
 
 printf .
 
@@ -1987,13 +2120,22 @@ sed -i 's/\\b$/<div class="b"> \&#160; <\/div>/g' *.html
 
 
 # ------------------------------------------------------------------------------
-# fix nesting for p tags
+# fix nesting for p or div tags
 
 # due to chapters
-perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/p>/<\/p><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+#perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/p>/<\/p><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/div>/<\/div><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+
+# remove 5 extra closes due to psalm book labels
+sed -i 's/<\/div><h2 class="psalmlabel" id="1"/<h2 class="psalmlabel" id="1"/' psalms.html
+sed -i 's/<\/div><h2 class="psalmlabel" id="42"/<h2 class="psalmlabel" id="42"/' psalms.html
+sed -i 's/<\/div><h2 class="psalmlabel" id="73"/<h2 class="psalmlabel" id="73"/' psalms.html
+sed -i 's/<\/div><h2 class="psalmlabel" id="90"/<h2 class="psalmlabel" id="90"/' psalms.html
+sed -i 's/<\/div><h2 class="psalmlabel" id="107"/<h2 class="psalmlabel" id="107"/' psalms.html
 
 # due to breaks
-perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/p>/<\/p><div class="b"> \&#160; <\/div>\n/g' *.html
+#perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/p>/<\/p><div class="b"> \&#160; <\/div>\n/g' *.html
+perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/div>/<\/div><div class="b"> \&#160; <\/div>\n/g' *.html
 
 
 
