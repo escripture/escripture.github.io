@@ -34,11 +34,11 @@ html, body {
 
 h1, h2 {
   text-align: center;
+}
 /*
   background-color: tan;
   padding: 0.5em;
 */
-}
 
 
 /*
@@ -114,7 +114,7 @@ div.booklist {
 }
 
 
-ul.vnav {
+ul.nav {
   padding-left: 0;
   list-style-type: none;
   text-align: center;
@@ -126,19 +126,85 @@ li {
 }
 */
 
-.vnav a {
+.booknav a {
   display: block;
+}
+.nav a {
   background-color: #0080ff;
   padding: 0.4em;
   margin: 0.08em;
+}
+.chapnav a {
+  /* switch this to inline-block to get links */
+  display: none;
 /*
+  display: inline-block;
+*/
+  min-width: 32px;
+  text-align: center;
+/*
+  min-height: 32px;
+  background-color: #777777;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  padding: 0.4em;
+  vertical-align: middle;
+  margin-top: 5em;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
 */
 }
+.chapnav {
+  text-align: center;
+}
 
-.vnav a:visited {color: #ffffff;}
-.vnav a:link {color: #ffffff;}
-.vnav a:hover {color: #ffffff;
+
+.nav a:visited {color: #ffffff;}
+.nav a:link {color: #ffffff;}
+.nav a:hover {color: #ffffff;
   background-color: #777777 !important;}
+
+
+
+
+
+
+
+/*
+ul.cnav {
+  padding-left: 0;
+  list-style-type: none;
+  text-align: center;
+}
+*/
+
+/*
+li {
+  background-color: #b85;
+}
+*/
+
+/*
+.cnav a {
+  display: inline-block;
+  background-color: #0080ff;
+  padding: 0.4em;
+  margin: 0.08em;
+}
+
+.cnav a:visited {color: #ffffff;}
+.cnav a:link {color: #ffffff;}
+.cnav a:hover {color: #ffffff;
+  background-color: #777777 !important;}
+*/
+
+
+
+
+
 
 
 
@@ -147,14 +213,14 @@ li {
 /* -------------------------------------------------------------------------- */
 /* scripture */
 
-p {
+.p, .p1, .q1, .q2, .qs, .sp, .m, .mi, .pi1, .li1, .d, .nb {
   line-height: 1.3em;
   text-indent: 2em;
   text-align: justify;
+/*
   display: block;
   margin-top: 0;
   margin-bottom: 0;
-/*
   background-color: #ffc;
   font-size: 1em;
   margin-top: 0.5em;
@@ -191,7 +257,10 @@ p {
 }
 
 /* li: ezra 8, 10, neh7. an indented list */
-.li1 {display: list-item; list-style-type: none; text-indent: 2em;}
+.li1 {
+  display: list-item;
+  list-style-type: none;
+}
 
 /* various, especially Joshua 12. basically a non-indented list? */
 /*
@@ -207,7 +276,9 @@ p {
 }
 
 /* hab and psalms. selah on right */
-.qs {text-align: right;}
+.qs {
+  text-align: right;
+}
 
 /* sp: song of song, for titles lover, beloved, friends */
 .sp {
@@ -224,11 +295,11 @@ there may be doctrine issues with red lettering
 /* pi: only dan, ezr, jer. double-indented. awkward in dan 4 */
 .pi1 {
   margin-left: 2em;
+}
 /*
   text-indent: 2em;
   margin: .5em 0 0 2em;
 */
-}
 
 
 /* psalms, songofsol, daniel 4, etc. */
@@ -250,11 +321,21 @@ html[dir=ltr] .q2 {
   margin-left: 2em;
 }
 
-
+/* psalms books (major sections) only */
+.ms1 {
+  margin-top: 2em;
+}
 
 
 /* verse numbers */
-.v {white-space:nowrap;vertical-align:super;font-size:.6em;line-height:0}
+sup {
+  white-space: nowrap;
+  font-size: .6em;
+  line-height: 0;
+}
+/*
+  vertical-align: super;
+*/
 
 
 
@@ -290,7 +371,9 @@ html[dir=ltr] .q2 {
 .chapterlabel,
 
 /* no verse numbers */
-.v {
+/* this is now already disabled in the html head
+*/
+sup {
   display: none;
 }
 
@@ -299,7 +382,9 @@ html[dir=ltr] .q2 {
 .indextitle,
 
 /* no psalm book titles */
+/*
 .ms1,
+*/
 
 /* no full size line breaks */
 /*

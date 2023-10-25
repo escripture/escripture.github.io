@@ -3,8 +3,12 @@
 
 
 const html = document.querySelector("html");
+//const a = document.querySelector("a");
+//const div = document.querySelector("div");
+//const p = document.querySelector("p");
+//const h1 = document.querySelector("h1");
 const chap = document.getElementsByClassName("chapterlabel");
-const vers = document.getElementsByClassName("v");
+const vers = document.getElementsByTagName("sup");
 
 function toggleChap() {
   if (chap[0].style.display !== "block") {
@@ -29,7 +33,11 @@ function toggleVers() {
     }
   }
 }
-html.addEventListener("click", () => {
+
+
+
+
+function mainToggle(event) {
 
   // tap/click feedback for testing
   /*
@@ -39,6 +47,11 @@ html.addEventListener("click", () => {
     html.style.backgroundColor = "";
   }
   */
+
+  // avoid toggle if clicking chapter link (an <a> tag)
+  if (event.target.localName === "a") {
+    return;
+  }
 
   // catch psalms
   if (chap.length === 0) {
@@ -58,6 +71,21 @@ html.addEventListener("click", () => {
       toggleVers();
     }
   }
+}
 
-});
+/*
+let flip = false;
+function testa(event) {
+  if (flip === false) {
+    console.log(event);
+    console.log(event.target.localName);
+    alert("testa");
+    flip = true;
+  }
+}
+html.addEventListener("click", testa);
+*/
+
+
+html.addEventListener("click", mainToggle);
 
