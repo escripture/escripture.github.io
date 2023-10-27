@@ -6,13 +6,7 @@ Chapter and verse numbers can be enabled and disabled by tapping/clicking anywhe
 
 A revision of the 2023 World English Bible, which is based on the 1901 ASV, which is based on the 1611 KJV, much of which is based on the 1530 Tyndale version, which is based on the Greek 1516 Textus Receptus and the Hebrew 1008 A.D. Masoretic Text.
 
-In the few revisions made, this version tends to favor the Hebrew 1380 Shem Tov manuscript and Syriac manuscripts for the New Testament, especially due to their lack of Roman and Greek influence. Conversely, the Genesis chronology restoration is based primarily on the Greek Septuagint in order to make up for deficiencies in the Hebrew Masoretic Text.
-
-You are welcome to copy and publish this work freely.
-
-Allen Ereaux, 2023.
-
----
+In the few revisions made, this version tends to favor the Hebrew 1380 Shem Tov manuscript and Syriac manuscripts for Matthew, because of their independence from Roman and Greek influence. Conversely, the Genesis chronology restoration is based primarily on the Greek Septuagint in order to make up for deficiencies in the Hebrew Masoretic Text.
 
 The following is a brief outline to answer the following questions:
 - **WHAT** has been revised?
