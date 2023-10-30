@@ -1130,24 +1130,197 @@ sed -i 's/treacherously departs from her husband/treacherously departs from her 
 # ------------------------------------------------------------------------------
 # marry vs take
 # TO DO: review all occurrences and implement
-# marry is a modern word
+# marry is a modern word which obscures the meaning
 
-# marry
+# OVERVIEW
+
+# marr: 48 lines (50 instances?)
+#   27  married
+#   10  marry
+#    6  marriage & marriages
+#    4  marries
+#    2  marrow (will not be changed, obviously)
+#    1  marred (will not be changed, obviously)
+
+# marital: 1 line
+
+
+# CHANGES
+
+# married: 27 lines
+# marital: 1 line (exo 21:10)
+
+# 1ch 2:19
+sed -i 's/Caleb married Ephrath/Caleb took to himself Ephrath/' 1chronicles.usfm
+
+# 2ki 8:18
+sed -i 's/for he married Ahab’s daughter/for he took to himself Ahab’s daughter/' 2kings.usfm
+
+# deu 20:7
+sed -i 's/who has pledged to be married to a woman/who has requested and been granted a woman/' deuteronomy.usfm
+
+# deu 22:23
+sed -i 's/virgin pledged to be married to a man/virgin, who was requested and granted to a man/' deuteronomy.usfm
+
+# deu 22:25
+sed -i 's/lady who is pledged to be married in the field/lady, who was requested and granted, in the field/' deuteronomy.usfm
+
+# deu 22:27
+sed -i 's/the pledged to be married lady cried/the lady who was requested and granted cried/' deuteronomy.usfm
+
+# deu 22:28
+sed -i 's/virgin, who is not pledged to be married, grabs/virgin, who was not requested and granted, grabs/' deuteronomy.usfm
+
+# deu 25:5
+sed -i 's/not be married outside to a stranger/not go outside to a man who is a stranger/' deuteronomy.usfm
+
+# exo 21:8
+sed -i 's/If she doesn’t please her master, who has married her to himself, then/If she is dysfunctional in the eyes of her master, who didn’t join together with her, then/' exodus.usfm
+
+# exo 21:9
+sed -i 's/If he marries her to his son/If he joins her to his son/' exodus.usfm
+
+# exo 21:10
+sed -i 's/her clothing, and her marital rights/her clothing, and her shelter/' exodus.usfm
+
+# exo 22:16
+sed -i 's/virgin who isn’t pledged to be married, and lies/virgin who wasn’t requested and granted, and lies/' exodus.usfm
+
+
+# ezra 10:2
+# ezra 10:10
+# ezra 10:14
+# ezra 10:17
+# ezra 10:18
+sed -i 's/married/taken/' ezra.usfm
+
+
+# gen 11:29
+sed -i 's/Abram and Nahor married women/Abram and Nahor took women/' genesis.usfm
+
+# isa 62:4 footnote
+sed -i 's/Beulah means “married”/Beulah means “owned”/' isaiah.usfm
+
+# lev 19:20
+sed -i 's/slave girl, pledged to be married to another man/slave girl, pierced to another man/' leviticus.usfm
+
+# lev 22:12
+sed -i 's/daughter is married to an outsider/daughter becomes the woman of a man who is an outsider/' leviticus.usfm
+
+# matthew 22:25
+sed -i 's/The first married and died/The first took a woman and died/' matthew.usfm
+
+# nehemiah 13:23
+sed -i 's/married/taken/' nehemiah.usfm
+
+# numbers 12:1
+sed -i 's/woman whom he had married; for he had married a Cushite/woman whom he had taken; for he had taken a Cushite/' numbers.usfm
+
+# numbers 36:3
+sed -i 's/they are married to any of the sons/they are women to any of the sons/' numbers.usfm
+
+# numbers 36:6
+sed -i 's/them be married to whom/them be women to whom/' numbers.usfm
+
+# numbers 36:11
+sed -i 's/Zelophehad, were married to their/Zelophehad, were women to their/' numbers.usfm
+
+# numbers 36:12
+sed -i 's/They were married into/They were women into/' numbers.usfm
+
+# proverbs 30:23
+sed -i 's/unloved woman when she is married/unloved woman when she becomes owned/' proverbs.usfm
+
+
+
+# marry: 10 lines
+
+# 2sa 3:14
+sed -i 's/whom I was given to marry for one/whom I requested and was granted to me for one/' 2samuel.usfm
 
 # gen 19:14
-#sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.usfm
+sed -i 's/who were pledged to marry his daughters/who took his daughters/' genesis.usfm
+
+# NOTE: changing "profane" or "defiled" to pierced
+# it would probably be good to find all instances of the root word and
+# change each of them. also: prostitute to whore.
+# lev 21:7
+sed -i 's/who is a prostitute, or profane\. A priest shall not marry a woman divorced/who is a whore, or pierced\. A priest shall not take a woman divorced/' leviticus.usfm
+
+# lev 21:14
+sed -i 's/shall not marry a widow, or one divorced, or a woman who has been defiled, or a prostitute/shall not take a widow, or one divorced, or a woman who has been pierced, or a whore/' leviticus.usfm
+
+# mat 19:10
+sed -i 's/it is not expedient to marry/it is not expedient to take her/' matthew.usfm
+
+# mat 22:24
+sed -i 's/his brother shall marry his woman/his brother shall take his woman/' matthew.usfm
+
+# mat 22:30
+sed -i 's/they neither marry nor are given in marriage/they neither take nor are taken/' matthew.usfm
+
+# mat 24:38
+sed -i 's/they were eating and drinking, marrying and giving in marriage, until/they were eating, drinking, being fruitful, and multiplying until/' matthew.usfm
+
+# neh 13:27
+sed -i 's/against our Elohim in marrying foreign women/against our Elohim in dwelling with foreign women/' nehemiah.usfm
+
+# num 36:6
+sed -i 's/only they shall marry into the family/only they shall be women into the family/' numbers.usfm
 
 
 
-# marriage
+
+# marriage / marriages
 
 # 1ki 3:1
-#sed -i 's/Solomon made a marriage alliance with Pharaoh/Solomon made himself son in law of Pharaoh/' 1kings.usfm
+sed -i 's/Solomon made a marriage alliance with Pharaoh/Solomon made himself a relative of Pharaoh/' 1kings.usfm
+
+# deu 7:3
+sed -i 's/You shall not make marriages with them/You shall not make yourself a relative of them/' deuteronomy.usfm
+
+# gen 34:9
+sed -i 's/Make marriages with us/Make yourselves relatives of us/' genesis.usfm
+
+# jos 23:12
+sed -i 's/and make marriages with them/and you make yourselves relatives of them/' joshua.usfm
+
+
+# marries
+
+# deu 24:1
+sed -i 's/When a man takes a woman and marries her/When a man takes a woman and owns her/' deuteronomy.usfm
+
+# mat 5:32
+sed -i 's/and whoever marries her when she is put away commits adultery/and whoever takes her when she is put away commits adultery/' matthew.usfm
+
+# mat 19:9
+sed -i 's/and marries another, commits adultery; and he who marries her/and takes another, commits adultery; and he who takes her/' matthew.usfm
 
 
 
 
+# --- unbalanced:
+# one or more changes were made that change the following term:
+# profane -> pierced
+# however, other instances appear in the text and are not changed
+# therefore resulting in an imbalance of translation.
+# this imbalance is outside the scope of this update, but
+# it should probably be addressed in a future update.
+# note: even though it may currently be a bit imbalanced, it is the goal
+# of this project to make improvements whenever they can be made,
+# so it is deemed better to have updated one or more than none.
 
+# another term to reconsider:
+# defiled -> unclean
+
+
+
+
+# other terms to reconsider:
+# wedding & weddings: 17 lines
+# wedlock: 1 line
+# bride: 34 lines
 
 
 
@@ -1448,7 +1621,7 @@ sed -i 's/Moses, because of the hardness of your hearts, allowed you to divorce 
 # "divorces" -> "puts away"
 # "divorced" -> "put away"
 # matthew 19:9
-sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and marries another, commits adultery; and he who marries her when she is put away commits adultery/' matthew.usfm
+sed -i 's/I tell you that whoever divorces his wife, except for sexual immorality, and takes another, commits adultery; and he who takes her when she is divorced commits adultery/I tell you that whoever puts away his wife, except for sexual immorality, and takes another, commits adultery; and he who takes her when she is put away commits adultery/' matthew.usfm
 
 
 
