@@ -1245,7 +1245,7 @@ sed -i 's/who were pledged to marry his daughters/who took his daughters/' genes
 # it would probably be good to find all instances of the root word and
 # change each of them. also: prostitute to whore.
 # lev 21:7
-sed -i 's/who is a prostitute, or profane\. A priest shall not marry a woman divorced/who is a whore, or pierced\. A priest shall not take a woman divorced/' leviticus.usfm
+sed -i 's/not marry a woman who is a prostitute, or profane\. A priest shall not marry a woman divorced/not take a woman who is a whore, or pierced\. A priest shall not take a woman divorced/' leviticus.usfm
 
 # lev 21:14
 sed -i 's/shall not marry a widow, or one divorced, or a woman who has been defiled, or a prostitute/shall not take a widow, or one divorced, or a woman who has been pierced, or a whore/' leviticus.usfm
@@ -1254,7 +1254,7 @@ sed -i 's/shall not marry a widow, or one divorced, or a woman who has been defi
 sed -i 's/it is not expedient to marry/it is not expedient to take her/' matthew.usfm
 
 # mat 22:24
-sed -i 's/his brother shall marry his woman/his brother shall take his woman/' matthew.usfm
+sed -i 's/his brother shall marry his wife/his brother shall take his wife/' matthew.usfm
 
 # mat 22:30
 sed -i 's/they neither marry nor are given in marriage/they neither take nor are taken/' matthew.usfm
@@ -1263,7 +1263,7 @@ sed -i 's/they neither marry nor are given in marriage/they neither take nor are
 sed -i 's/they were eating and drinking, marrying and giving in marriage, until/they were eating, drinking, being fruitful, and multiplying until/' matthew.usfm
 
 # neh 13:27
-sed -i 's/against our Elohim in marrying foreign women/against our Elohim in dwelling with foreign women/' nehemiah.usfm
+sed -i 's/against our God in marrying foreign women/against our God in dwelling with foreign women/' nehemiah.usfm
 
 # num 36:6
 sed -i 's/only they shall marry into the family/only they shall be women into the family/' numbers.usfm
@@ -1289,7 +1289,7 @@ sed -i 's/and make marriages with them/and you make yourselves relatives of them
 # marries
 
 # deu 24:1
-sed -i 's/When a man takes a woman and marries her/When a man takes a woman and owns her/' deuteronomy.usfm
+sed -i 's/When a man takes a wife and marries her/When a man takes a woman and owns her/' deuteronomy.usfm
 
 # mat 5:32
 sed -i 's/and whoever marries her when she is put away commits adultery/and whoever takes her when she is put away commits adultery/' matthew.usfm
