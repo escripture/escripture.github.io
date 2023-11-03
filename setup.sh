@@ -1157,10 +1157,10 @@ sed -i 's/Caleb married Ephrath/Caleb took to himself Ephrath/' 1chronicles.usfm
 sed -i 's/for he married Ahab’s daughter/for he took to himself Ahab’s daughter/' 2kings.usfm
 
 # deu 20:7
-sed -i 's/who has pledged to be married to a woman/who has requested and been granted a woman/' deuteronomy.usfm
+sed -i 's/who has pledged to be married to a wife/who has requested and been granted a wife/' deuteronomy.usfm
 
 # deu 22:23
-sed -i 's/virgin pledged to be married to a man/virgin, who was requested and granted to a man/' deuteronomy.usfm
+sed -i 's/virgin pledged to be married to a husband/virgin, who was requested and granted to a husband/' deuteronomy.usfm
 
 # deu 22:25
 sed -i 's/lady who is pledged to be married in the field/lady, who was requested and granted, in the field/' deuteronomy.usfm
@@ -1196,7 +1196,7 @@ sed -i 's/married/taken/' ezra.usfm
 
 
 # gen 11:29
-sed -i 's/Abram and Nahor married women/Abram and Nahor took women/' genesis.usfm
+sed -i 's/Abram and Nahor married wives/Abram and Nahor took wives/' genesis.usfm
 
 # isa 62:4 footnote
 sed -i 's/Beulah means “married”/Beulah means “owned”/' isaiah.usfm
