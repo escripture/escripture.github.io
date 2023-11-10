@@ -1174,8 +1174,9 @@ sed -i 's/virgin, who is not pledged to be married, grabs/virgin, who was not re
 # deu 25:5
 sed -i 's/not be married outside to a stranger/not go outside to a man who is a stranger/' deuteronomy.usfm
 
+# see jer 47:7, mic 6:9, and mechanical-translation.org
 # exo 21:8
-sed -i 's/If she doesn’t please her master, who has married her to himself, then/If she is dysfunctional in the eyes of her master, who didn’t join together with her, then/' exodus.usfm
+sed -i 's/If she doesn’t please her master, who has married her to himself, then/If she is dysfunctional in the eyes of her master, who didn’t appoint her, then/' exodus.usfm
 
 # exo 21:9
 sed -i 's/If he marries her to his son/If he joins her to his son/' exodus.usfm
