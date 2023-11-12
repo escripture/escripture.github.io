@@ -1936,6 +1936,14 @@ printf .
 
 
 
+# ----------------------------------------------------------
+# covet to desire
+sed -i 's/covetousness/desire/g' *.usfm
+sed -i 's/coveted/desired/g' *.usfm
+sed -i 's/covet/desire/g' *.usfm
+
+
+
 # ------------------------------------------------------------------------------
 # CONVERT USFM TO HTML
 # only usfm markers used in the web version are considered
@@ -2014,6 +2022,8 @@ done
 # clean up temporary file
 rm top-tempfile.html
 
+printf .
+
 # customize book title
 for f in *.html; do
 h=$(grep '\\h ' $f | cut -c 4- | xargs)
@@ -2066,6 +2076,7 @@ sed -i 's/\\c \([0-9]\+\)/<h2 class="chapterlabel" id="\1">\1<\/h2>/' *.html
 # no chapters
 #sed -i '/\\c /d' *.html
 
+printf .
 
 
 # ------------------------------------------------------------------------------
@@ -2077,6 +2088,8 @@ sed -i '/booklabel/a <div class="chapterlabel nav chapnav">' *.html
 # after chapnav, close the div
 # this will be done later by the "close divs" section
 #sed -i '/chapnav/a <\/div>' *.html
+
+printf .
 
 # add chapter links according to number of chapters
 for f in *.html; do
@@ -2092,6 +2105,8 @@ sed -i "/chapnav/a <a href=\"#$n\">$n</a>" $f
 ((n--))
 done
 done
+
+printf .
 
 # rename for psalms
 sed -i 's/chapterlabel/psalmlabel/' psalms.html
@@ -2109,7 +2124,7 @@ sed -i "/chapnav/a <a href=\"#$n\">$n</a>" psalms.html
 ((n--))
 done
 
-
+printf .
 
 
 
@@ -2142,6 +2157,7 @@ sed -i '0,/<div class="p">/{s/<div class="p">/<div class="p1">/}' *.html
 # will need to remove the first "</div>"
 # \qs* makes close
 
+printf .
 
 
 # ------------------------------------------------------------------------------
@@ -2170,6 +2186,8 @@ sed -i 's/\\qs/<div class="qs">/g' *.html
 #sed -i 's/\\qs //g' *.html
 #sed -i 's/\\qs//g' *.html
 #sed -i 's/\\qs\*//g' *.html
+
+printf .
 
 # convert speaker, for song of songs
 sed -i 's/\\sp /<div class="sp">/g' *.html
@@ -2214,6 +2232,7 @@ sed -i 's/\\d/<div class="d">/g' *.html
 sed -i 's/\\nb /<div class="nb">/g' *.html
 sed -i 's/\\nb/<div class="nb">/g' *.html
 
+printf .
 
 
 # ------------------------------------------------------------------------------
@@ -2232,6 +2251,7 @@ sed -i '0,/<\/div>/{s/<\/div>//}' *.html
 #sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
 #sed -i 's/<\/div><\/body>/<\/div><\/div><\/body>/' *.html
 
+printf .
 
 
 # ------------------------------------------------------------------------------
