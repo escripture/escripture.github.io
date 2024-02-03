@@ -2288,11 +2288,13 @@ sed -i 's/\\bk/<span class="bk">/g' *.html
 
 # footnotes
 # remove footnotes
-sed -i 's/\\f.*\\f\*//g' *.html
+# WARNING: this would delete text between footnotes.
+# this code needs to be fixed before any re-implementation
+#sed -i 's/\\f.*\\f\*//g' *.html
 
 # save footnotes in a span (needs more work with \fr and \ft)
-#sed -i 's/\\f /<span class="f">/g' *.html
-#sed -i 's/\\f\*/<\/span>/g' *.html
+sed -i 's/\\f /<span class="f">/g' *.html
+sed -i 's/\\f\*/<\/span>/g' *.html
 
 
 # cross-references
