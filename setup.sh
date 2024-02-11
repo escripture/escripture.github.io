@@ -1482,7 +1482,7 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 # "And the beginning of their Gospel runs:
 # It came to pass in the days of Herod the king of Judaea"
 # this text, however, quotes christ as saying "I am come to do away with sacrifices", which seems to me to be incompatible with a true gospel from christ.
-# still, there do seem to be problems with the geneology: jechoniah is named, which seems incompatible with prophecy, and the geneology disagrees with luke, and there may be an internal issue of counting 14, 14, and 14 generations.
+# still, there do seem to be problems with the geneology: the geneology disagrees with luke, and there may be an internal issue of counting 14, 14, and 14 generations.
 # moreover, there is the issue of a virgin birth account. there is motive to have injected it to prove a trinity doctrine, which has been a theological war at least as early as 325 A.D., which continues to this day.
 # however, there are (are there not?) prophecies from tanakh that specify that one (the messiah) will be a descendent, "of the seed"(need citation) of david, as in, a fleshly descendent, in the male line, not a symbolic descendent. and in one of john's letters he emphasizes yehoshua as having come in the flesh.
 # currently, this version opts for trusting the ebionite account: that there was no matthew chapter 1 when matthew was written, because there is reason to believe it isn't original to the text of matthew, and because of the issues with it.
@@ -1494,11 +1494,10 @@ sed -i 's/Behold, the virgin will conceive, and bear a son, and shall call his n
 
 # instead of removing matthew 1 completely, attempt to restore
 
-# there is a possibility the curse of jechoniah was reversed
-
-# but most importantly:
 # many syriac manuscripts and other witnesses read "joseph begat jesus"
 # as pointed out in recent (~5/2023) videos on youtube.com/jesuswordsonly
+# and noted on "https://www.geni.com/projects/Jesus-Ancestors/134":
+# the Sinaitic Syriac version, which dates from the early 5th century, reads, "Jacob begat Joseph. Joseph, who was betrothed the virgin Mary, begat Jesus." An early manuscript in the Vatican library reads, "Jacob begat Joseph, and Joseph begat Jesus." St. Justin Martyr (c. 100-165) said Jesus was "the son of Joseph and Mary, according to the ordinary course of human generation."
 
 # restore text in world-english-bible style
 sed -i 's/Jacob became the father of Joseph, the husband of Mary, from whom was born Jesus/Jacob became the father of Joseph. This Joseph became the father of Jesus/' matthew.usfm
