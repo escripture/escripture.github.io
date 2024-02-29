@@ -83,5 +83,3 @@ Red lettering adds biased opinion. It is not a characteristic of the manuscripts
 ---
 
 For detailed information, see the setup.sh and index.html source code.
-
-Please send corrections to jesusbible@proton.me
