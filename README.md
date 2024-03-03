@@ -83,3 +83,14 @@ Red lettering adds biased opinion. It is not a characteristic of the manuscripts
 ---
 
 For detailed information, see the setup.sh and index.html source code.
+
+This site is not a declaration of canon, because such a declaration would be a prophecy, and I am 
+
+This page may move in the future. For reliable continued usage, you may download the files. Everything here may be copied freely.
+
+This version has been adapted from the "WEB" version by Allen Ereaux, AKA Emmanuel Abraham Eraut. If this page moves, I may post the new address on one of my other accounts:
+- [gab.com/AllenEreaux](https://gab.com/AllenEreaux)
+- [bitchute.com/AllenEreaux](https://bitchute.com/AllenEreaux)
+- [twitter.com/AllenEreaux](https://twitter.com/AllenEreaux)
+
+Feel free to contact me at [sonicbluesky@proton.me](mailto:sonicbluesky@proton.me). Corrections and concerns are welcome. Alternatively, you may post a public message to me through a media account listed above, or submit an issue here on GitHub.
