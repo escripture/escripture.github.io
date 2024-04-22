@@ -16,7 +16,7 @@ The following is a brief outline to answer the following questions:
 
 1. Base book selection on Yahweh and Yahushua.  
 Yahweh instructs us to listen to his son, the Messiah, Yahushua (Matthew 17:5).
-Yahushua is reliably quoted in Matthew, John, and Revelation. He cites the Law and Prophets (Matthew 5:17-19). He also quotes Psalms, and Yahweh is quoted in Psalm 2. In Ezekiel, Yahweh mentions Job twice, and Yahweh is quoted in the book of Job. Any text presented here must pass the test of Deuteronomy 13. The focus of the collection presented is the sayings of Yahweh and Yahushua.
+Yahushua is reliably quoted in Matthew. He cites the Law and Prophets (Matthew 5:17-19). He also quotes Psalms, and Yahweh is quoted in Psalm 2. In Ezekiel, Yahweh mentions Job twice, and Yahweh is quoted in the book of Job. Any text presented here must pass the test of Deuteronomy 13. The focus of the collection presented is the sayings of Yahweh and Yahushua.
 
 **SPECIFIC EDITS**  
 These edits pertain only to specific verses.
