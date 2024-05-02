@@ -136,9 +136,10 @@ li {
 }
 .chapnav a {
   /* switch this to inline-block to get links */
-  display: none;
-/*
+  /* switch to none to disable links */
   display: inline-block;
+/*
+  display: none;
 */
   min-width: 32px;
   text-align: center;
