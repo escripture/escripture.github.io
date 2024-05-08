@@ -237,14 +237,14 @@ printf .
 # it gives a half-height blank line above it, depending on css
 #sed -i '/\\nb/d' *.usfm
 
-# strip footnotes and cross-references
-#perl -i -pe 's/\\f .*?\\f\*//g' *.usfm
-#perl -i -pe 's/\\x .*?\\x\*//g' *.usfm
-#printf .
+# remove footnotes and cross-references
+# must use perl for the non-greedy match, to keep text between footnotes
+perl -pi -e 's|\\f.+?\\f\*||g' *.usfm
+perl -pi -e 's|\\x.+?\\x\*||g' *.usfm
 
 # strip wj markers
-#sed -i 's/\\wj //g' *.usfm
-#sed -i 's/\\wj\*//g' *.usfm
+sed -i 's/\\wj //g' *.usfm
+sed -i 's/\\wj\*//g' *.usfm
 #printf .
 
 
@@ -2285,20 +2285,20 @@ sed -i 's/\\bk\*/<\/span>/g' *.html
 sed -i 's/\\bk/<span class="bk">/g' *.html
 
 
-# footnotes
+
 # remove footnotes
-# WARNING: this would delete text between footnotes.
-# this code needs to be fixed before any re-implementation
-#sed -i 's/\\f.*\\f\*//g' *.html
+# footnotes are currently removed from usfm, making this irrelevant
+# must use perl for the non-greedy match, to keep text between footnotes
+#perl -pi -e 's|\\f.+?\\f\*||g' *.html
 
+# if footnotes are not removed, then this can be used
 # save footnotes in a span (needs more work with \fr and \ft)
-sed -i 's/\\f /<span class="f">/g' *.html
-sed -i 's/\\f\*/<\/span>/g' *.html
+#sed -i 's/\\f /<span class="f">/g' *.html
+#sed -i 's/\\f\*/<\/span>/g' *.html
 
-
-# cross-references
-#remove cross-references
-sed -i 's/\\x.*\\x\*//g' *.html
+# remove cross-references
+# cross-references are currently removed from usfm, making this irrelevant
+#perl -pi -e 's|\\x.+?\\x\*||g' *.html
 
 # save cross-references in a span
 #sed -i 's/\\x /<span class="x">/g' *.html
