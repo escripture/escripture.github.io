@@ -1965,7 +1965,9 @@ cat << EOF > top-tempfile.html
 sup {
   display: none;
 }
-.p, .p1, .q1, .q2, .qs, .sp, .m, .mi, .pi1, .li1, .d, .nb {
+p {
+  margin-top: 0;
+  margin-bottom: 0;
   text-indent: 2em;
 }
 .p1 {
@@ -2015,7 +2017,7 @@ EOF
 for f in *.usfm; do
 n="${f%%.*}".html
 cat top-tempfile.html $f > $n
-echo '</div></div><script src="../main.js"></script></body></html>' >> $n
+echo '</p></div><script src="../main.js"></script></body></html>' >> $n
 done
 
 # clean up temporary file
@@ -2055,11 +2057,19 @@ printf .
 # remove all major section labels in psalms (psalm books 1-5)
 sed -i '/\\ms1 /d' psalms.html
 # restore all major section labels, but before psalm number (fixes position)
-sed -i '/^\\c 1$/i <\/div><h2 class="ms1">BOOK 1<\/h2>' psalms.html
-sed -i '/^\\c 42$/i <\/div><h2 class="ms1">BOOK 2<\/h2>' psalms.html
-sed -i '/^\\c 73$/i <\/div><h2 class="ms1">BOOK 3<\/h2>' psalms.html
-sed -i '/^\\c 90$/i <\/div><h2 class="ms1">BOOK 4<\/h2>' psalms.html
-sed -i '/^\\c 107$/i <\/div><h2 class="ms1">BOOK 5<\/h2>' psalms.html
+#sed -i '/^\\c 1$/i <\/div><h2 class="ms1">BOOK 1<\/h2>' psalms.html
+#sed -i '/^\\c 42$/i <\/div><h2 class="ms1">BOOK 2<\/h2>' psalms.html
+#sed -i '/^\\c 73$/i <\/div><h2 class="ms1">BOOK 3<\/h2>' psalms.html
+#sed -i '/^\\c 90$/i <\/div><h2 class="ms1">BOOK 4<\/h2>' psalms.html
+#sed -i '/^\\c 107$/i <\/div><h2 class="ms1">BOOK 5<\/h2>' psalms.html
+
+sed -i '/^\\c 1$/i <\/p><h2 class="ms1">BOOK 1<\/h2>' psalms.html
+sed -i '/^\\c 42$/i <\/p><h2 class="ms1">BOOK 2<\/h2>' psalms.html
+sed -i '/^\\c 73$/i <\/p><h2 class="ms1">BOOK 3<\/h2>' psalms.html
+sed -i '/^\\c 90$/i <\/p><h2 class="ms1">BOOK 4<\/h2>' psalms.html
+sed -i '/^\\c 107$/i <\/p><h2 class="ms1">BOOK 5<\/h2>' psalms.html
+
+
 
 
 # convert psalm number
@@ -2085,8 +2095,7 @@ printf .
 sed -i '/booklabel/a <div class="chapterlabel nav chapnav">' *.html
 
 # after chapnav, close the div
-# this will be done later by the "close divs" section
-#sed -i '/chapnav/a <\/div>' *.html
+sed -i '/chapnav/a <\/div>' *.html
 
 printf .
 
@@ -2129,14 +2138,20 @@ printf .
 
 
 # ------------------------------------------------------------------------------
-# basic paragraph (p tags force newlines when copied, so avoid p tag)
+# basic paragraph       (p tags force newlines when copied, so avoid p tag)
+# revised 2024-05-08
+# basic paragraph (no, div tags force newlines when copied, so avoid div tag)
 
 # convert paragraphs, otherwise implied quotes are broken.
-sed -i 's/\\p /<div class="p">/g' *.html
-sed -i 's/\\p$/<div class="p">/g' *.html
+#sed -i 's/\\p /<div class="p">/g' *.html
+#sed -i 's/\\p$/<div class="p">/g' *.html
+sed -i 's/\\p /<p>/g' *.html
+sed -i 's/\\p$/<p>/g' *.html
+
 # no paragraphs
 #sed -i 's/\\p //g' *.html
 #sed -i 's/\\p//g' *.html
+
 
 # set class of first paragraph.
 # this only changes the first paragraph in each book.
@@ -2147,7 +2162,8 @@ sed -i 's/\\p$/<div class="p">/g' *.html
 # note: chapter divisions in scripture are a later invention superimposed
 # on the text. also, switching between no-chapters and chapters is seamless
 # if chapter 2+ are all formatted the same way.
-sed -i '0,/<div class="p">/{s/<div class="p">/<div class="p1">/}' *.html
+#sed -i '0,/<div class="p">/{s/<div class="p">/<div class="p1">/}' *.html
+sed -i '0,/<p>/{s/<p>/<p class="p1">/}' *.html
 
 
 # fix nesting by removing the first div close
@@ -2163,24 +2179,24 @@ printf .
 # alternate paragraphs
 
 # convert quote 1, for poetry
-sed -i 's/\\q1 /<div class="q1">/g' *.html
-sed -i 's/\\q1/<div class="q1">/g' *.html
+sed -i 's/\\q1 /<p class="q1">/g' *.html
+sed -i 's/\\q1/<p class="q1">/g' *.html
 # no q1
 #sed -i 's/\\q1 //g' *.html
 #sed -i 's/\\q1//g' *.html
 
 # convert quote 2, for poetry
-sed -i 's/\\q2 /<div class="q2">/g' *.html
-sed -i 's/\\q2/<div class="q2">/g' *.html
+sed -i 's/\\q2 /<p class="q2">/g' *.html
+sed -i 's/\\q2/<p class="q2">/g' *.html
 # no q2
 #sed -i 's/\\q2 //g' *.html
 #sed -i 's/\\q2//g' *.html
 
 # convert quote selah, for poetry, usually right-aligned
-sed -i 's/\\qs /<div class="qs">/g' *.html
+sed -i 's/\\qs /<p class="qs">/g' *.html
 sed -i 's/\\qs\*//g' *.html
 # run this last or it will match others
-sed -i 's/\\qs/<div class="qs">/g' *.html
+sed -i 's/\\qs/<p class="qs">/g' *.html
 # no qs
 #sed -i 's/\\qs //g' *.html
 #sed -i 's/\\qs//g' *.html
@@ -2189,29 +2205,29 @@ sed -i 's/\\qs/<div class="qs">/g' *.html
 printf .
 
 # convert speaker, for song of songs
-sed -i 's/\\sp /<div class="sp">/g' *.html
-sed -i 's/\\sp/<div class="sp">/g' *.html
+sed -i 's/\\sp /<p class="sp">/g' *.html
+sed -i 's/\\sp/<p class="sp">/g' *.html
 # no sp
 #sed -i 's/\\sp //g' *.html
 #sed -i 's/\\sp//g' *.html
 
 # convert margin, for non-indented lists
-sed -i 's/\\m /<div class="m">/g' *.html
-sed -i 's/\\m$/<div class="m">/g' *.html
+sed -i 's/\\m /<p class="m">/g' *.html
+sed -i 's/\\m$/<p class="m">/g' *.html
 # no m
 #sed -i 's/\\m //g' *.html
 #sed -i 's/\\m//g' *.html
 
 # convert margin indented, for indented lists
-sed -i 's/\\mi /<div class="mi">/g' *.html
-sed -i 's/\\mi/<div class="mi">/g' *.html
+sed -i 's/\\mi /<p class="mi">/g' *.html
+sed -i 's/\\mi/<p class="mi">/g' *.html
 # no mi
 #sed -i 's/\\mi //g' *.html
 #sed -i 's/\\mi//g' *.html
 
 # convert paragraph indent 1
-sed -i 's/\\pi1 /<div class="pi1">/g' *.html
-sed -i 's/\\pi1/<div class="pi1">/g' *.html
+sed -i 's/\\pi1 /<p class="pi1">/g' *.html
+sed -i 's/\\pi1/<p class="pi1">/g' *.html
 # no pi1
 #sed -i 's/\\pi1 //g' *.html
 #sed -i 's/\\pi1//g' *.html
@@ -2219,17 +2235,17 @@ printf .
 
 
 # convert li1
-sed -i 's/\\li1 /<div class="li1">/g' *.html
-sed -i 's/\\li1/<div class="li1">/g' *.html
+sed -i 's/\\li1 /<p class="li1">/g' *.html
+sed -i 's/\\li1/<p class="li1">/g' *.html
 
 
 # convert director
-sed -i 's/\\d /<div class="d">/g' *.html
-sed -i 's/\\d/<div class="d">/g' *.html
+sed -i 's/\\d /<p class="d">/g' *.html
+sed -i 's/\\d/<p class="d">/g' *.html
 
 # convert nb
-sed -i 's/\\nb /<div class="nb">/g' *.html
-sed -i 's/\\nb/<div class="nb">/g' *.html
+sed -i 's/\\nb /<p class="nb">/g' *.html
+sed -i 's/\\nb/<p class="nb">/g' *.html
 
 printf .
 
@@ -2239,12 +2255,12 @@ printf .
 
 # close various tags
 #sed -i 's/<p/<\/p><p/g' *.html
-sed -i 's/<div/<\/div><div/g' *.html
+sed -i 's|<p|</p><p|g' *.html
+#sed -i 's/<div/<\/div><div/g' *.html
 
-# clean up unintended first two closing tag
-#sed -i '0,/<\/p>/{s/<\/p>//}' *.html
-sed -i '0,/<\/div>/{s/<\/div>//}' *.html
-sed -i '0,/<\/div>/{s/<\/div>//}' *.html
+# clean up unintended premature closing tag
+sed -i '0,/<\/p>/{s|</p>||}' *.html
+#sed -i '0,/<\/div>/{s/<\/div>//}' *.html
 
 # add final closing tag (deprecated method. see html closing code above)
 #sed -i 's/<\/div><\/body>/<\/p><\/div><\/body>/' *.html
@@ -2272,10 +2288,10 @@ sed -i 's/\\v \([0-9]\+\) /<sup>\1\&#160;<\/sup>/g' *.html
 
 
 # convert wj, for having red-letter text
-sed -i 's/\\wj /<span class="wj">/g' *.html
-sed -i 's/\\wj\*/<\/span>/g' *.html
+#sed -i 's/\\wj /<span class="wj">/g' *.html
+#sed -i 's/\\wj\*/<\/span>/g' *.html
 # run this last or it will match others
-sed -i 's/\\wj/<span class="wj">/g' *.html
+#sed -i 's/\\wj/<span class="wj">/g' *.html
 
 
 # bk style num21:14
@@ -2310,8 +2326,11 @@ printf .
 # ------------------------------------------------------------------------------
 # breaks
 
-sed -i 's/\\b /<div class="b"> \&#160; <\/div>/g' *.html
-sed -i 's/\\b$/<div class="b"> \&#160; <\/div>/g' *.html
+#sed -i 's/\\b /<p class="b"> \&#160; <\/p>/g' *.html
+sed -i 's|\\b |<p class="b"> \&#160; </p>|g' *.html
+
+#sed -i 's/\\b$/<p class="b"> \&#160; <\/p>/g' *.html
+sed -i 's|\\b$|<p class="b"> \&#160; </p>|g' *.html
 
 
 
@@ -2319,19 +2338,27 @@ sed -i 's/\\b$/<div class="b"> \&#160; <\/div>/g' *.html
 # fix nesting for p or div tags
 
 # due to chapters
-#perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/p>/<\/p><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
-perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/div>/<\/div><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/p>/<\/p><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
+#perl -i -p0e 's/<h2 class="([a-z]*)" id="([0-9]*)">[0-9]*<\/h2>\n<\/div>/<\/div><h2 class="\1" id="\2">\2<\/h2>\n/g' *.html
 
 # remove 5 extra closes due to psalm book labels
-sed -i 's/<\/div><h2 class="psalmlabel" id="1"/<h2 class="psalmlabel" id="1"/' psalms.html
-sed -i 's/<\/div><h2 class="psalmlabel" id="42"/<h2 class="psalmlabel" id="42"/' psalms.html
-sed -i 's/<\/div><h2 class="psalmlabel" id="73"/<h2 class="psalmlabel" id="73"/' psalms.html
-sed -i 's/<\/div><h2 class="psalmlabel" id="90"/<h2 class="psalmlabel" id="90"/' psalms.html
-sed -i 's/<\/div><h2 class="psalmlabel" id="107"/<h2 class="psalmlabel" id="107"/' psalms.html
+sed -i 's|</p><h2 class="psalmlabel" id="1"|<h2 class="psalmlabel" id="1"|' psalms.html
+sed -i 's|</p><h2 class="psalmlabel" id="42"|<h2 class="psalmlabel" id="42"|' psalms.html
+sed -i 's|</p><h2 class="psalmlabel" id="73"|<h2 class="psalmlabel" id="73"|' psalms.html
+sed -i 's|</p><h2 class="psalmlabel" id="90"|<h2 class="psalmlabel" id="90"|' psalms.html
+sed -i 's|</p><h2 class="psalmlabel" id="107"|<h2 class="psalmlabel" id="107"|' psalms.html
+
+#sed -i 's/<\/div><h2 class="psalmlabel" id="1"/<h2 class="psalmlabel" id="1"/' psalms.html
+#sed -i 's/<\/div><h2 class="psalmlabel" id="42"/<h2 class="psalmlabel" id="42"/' psalms.html
+#sed -i 's/<\/div><h2 class="psalmlabel" id="73"/<h2 class="psalmlabel" id="73"/' psalms.html
+#sed -i 's/<\/div><h2 class="psalmlabel" id="90"/<h2 class="psalmlabel" id="90"/' psalms.html
+#sed -i 's/<\/div><h2 class="psalmlabel" id="107"/<h2 class="psalmlabel" id="107"/' psalms.html
+
 
 # due to breaks
-#perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/p>/<\/p><div class="b"> \&#160; <\/div>\n/g' *.html
-perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/div>/<\/div><div class="b"> \&#160; <\/div>\n/g' *.html
+#perl -i -p0e 's|<div class="b"> \&#160; </div>\n</p>|</p><div class="b"> \&#160; </div>\n|g' *.html
+perl -i -p0e 's|<p class="b"> \&#160; </p>\n</p>|</p><p class="b"> \&#160; </p>\n|g' *.html
+#perl -i -p0e 's/<div class="b"> \&#160; <\/div>\n<\/div>/<\/div><div class="b"> \&#160; <\/div>\n/g' *.html
 
 
 

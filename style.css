@@ -214,14 +214,14 @@ li {
 /* -------------------------------------------------------------------------- */
 /* scripture */
 
-.p, .p1, .q1, .q2, .qs, .sp, .m, .mi, .pi1, .li1, .d, .nb {
+p {
   line-height: 1.3em;
   text-indent: 2em;
   text-align: justify;
-/*
-  display: block;
   margin-top: 0;
   margin-bottom: 0;
+/*
+  display: block;
   background-color: #ffc;
   font-size: 1em;
   margin-top: 0.5em;
