@@ -1797,6 +1797,14 @@ printf .
 # 4x
 #sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
 
+# update to best known transliteration
+# this transliteration is more compatible with the transliteration of yahushua's
+# name, and is derived from a straightforward, natural, and consistent way to
+# pronounce hebrew characters, rather than forcing an inflection that is similar
+# to the vowels of 'adonai'.
+sed -i 's/Yahweh/Yahuah/g' *.usfm
+sed -i 's/YAHWEH/YAHUAH/g' *.usfm
+
 
 
 
