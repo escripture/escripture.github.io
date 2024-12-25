@@ -14,9 +14,9 @@ The following is a brief outline to answer the following questions:
 
 ---
 
-1. Base book selection on Yahweh and Yahushua.  
-Yahweh instructs us to listen to his son, the Messiah, Yahushua (Matthew 17:5).
-Yahushua is reliably quoted in Matthew. He cites the Law and Prophets (Matthew 5:17-19). He also quotes Psalms, and Yahweh is quoted in Psalm 2. In Ezekiel, Yahweh mentions Job twice, and Yahweh is quoted in the book of Job. Any text presented here must pass the test of Deuteronomy 13. The focus of the collection presented is the sayings of Yahweh and Yahushua.
+1. Base book selection on Yahuah and Yahushua.  
+Yahuah instructs us to listen to his son, the Messiah, Yahushua (Matthew 17:5).
+Yahushua is reliably quoted in Matthew. He cites the Law and Prophets (Matthew 5:17-19). He also quotes Psalms, and Yahuah is quoted in Psalm 2. In Ezekiel, Yahuah mentions Job twice, and Yahuah is quoted in the book of Job. Any text presented here must pass the test of Deuteronomy 13. The focus of the collection presented is the sayings of Yahuah and Yahushua.
 
 **SPECIFIC EDITS**  
 These edits pertain only to specific verses.
@@ -45,8 +45,8 @@ Prefer the Syriac manuscripts and Nestle-Aland and United Bible Societies readin
 9. Clarify the word "divorce" to "put away" when applicable.  
 Prefer a Torah-compatible translation found in The Scriptures 1998 by Institute for Scripture Research, and other translations including the KJV.
 
-10. Restore "Power" to "Yahweh" in Matthew 26:64.  
-It seems more likely than not that Yahushua spoke Yahweh's name, especially given that he says he makes the heavenly father's name known, and in understanding the context of the passage, especially in contrast with the Septuagint translation of Leviticus 24:16. The Scriptures 1998 by ISR restores his name very liberally. Of all places to restore it, this seems most justified. The reaction Yahushua experienced doesn't really make sense unless he spoke Yahweh's name.
+10. Restore "Power" to "Yahuah" in Matthew 26:64.  
+It seems more likely than not that Yahushua spoke Yahuah's name, especially given that he says he makes the heavenly father's name known, and in understanding the context of the passage, especially in contrast with the Septuagint translation of Leviticus 24:16. The Scriptures 1998 by ISR restores his name very liberally. Of all places to restore it, this seems most justified. The reaction Yahushua experienced doesn't really make sense unless he spoke Yahuah's name.
 
 
 **BULK EDITS**  
