@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+./1 && echo 1 done
+./setup.sh
+./3 && echo 3 done

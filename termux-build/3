@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+rm -f /storage/emulated/0/Documents/escripture/book/*
+rm -f /storage/emulated/0/Documents/escripture/usfm/*
+
+cp *.html /storage/emulated/0/Documents/escripture/book/
+cp *.usfm /storage/emulated/0/Documents/escripture/usfm/
+
