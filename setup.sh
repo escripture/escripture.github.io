@@ -35,14 +35,14 @@ set -e
 
 #   ENVIRONMENT:
 #     a linux bash shell with GNU coreutils:
-#       GNU bash 5.2.2
+#       GNU bash 5.2.26
 #       UnZip 6.00
-#       perl v5.36.0
-#       sed 4.8
-#       grep 3.8
-#       cut 9.1
+#       perl 5.38.2
+#       sed 4.9
+#       grep 3.11
+#       cut 9.4
 #       xargs 4.9.0
-#       cat 9.1
+#       cat 9.4
 #     an http server (optional)
 
 # INSTRUCTIONS
@@ -1776,34 +1776,70 @@ printf .
 
 
 
+# ----------------------------------------------------------
+# correct planet and star names
+# do not name false idols (ex 23:13)
+
+# kesil means "fool" and may refer to what we know as the 4th planet,
+#   which is the red planet.
+# it may be called "fool" because it was perceived to have encountered
+# the 2nd planet; the 4th planet having 15% the size of earth, and
+# the 2nd planet having 86% the size of earth.
+# see: velikovsky, worlds in collision, part 2 chapter 1.
+# transliterate like "hebrew names version".
+
+# for both kima and kesil, see amos 5:8, job 9:9, job 38:31
+
+# transliterate instead of translating
+sed -i 's/Orion/Kesil/g' *.usfm
+
+
+# kima may be the 6th planet (the planet with big rings)
+
+# transliterate instead of translating
+sed -i 's/the Pleiades/Kima/g' *.usfm
+
+
+
+# unfinished correcting planet and star names...
+
+# isaiah 9:2
+#sed -i 's//Naga/g' *.usfm
+
+
+
+
 
 # ----------------------------------------------------------
 # our heavenly father's name
 
-
+# deprecated notes:
+#
 # despite book(s) by nehemia gordon (yehovah vowels: sheva cholem qamats),
 # see:
 # https://nazareneisrael.org/book/nazarene-scripture-studies-vol-4/about-the-pronunciation-yehovah/
 # https://eliyah.com/why-the-heavenly-fathers-name-is-pronounced-yahweh/
-
+#
 # compare with "The Pronunciation of the Name" by Nehemiah Gordon:
 # www.elyosoy.com/uploads/4/3/2/8/4328985/yhwh_2_nehemia_gordon.pdf
 
-# do not change
+# current notes:
+#
+# the transliteration "yehovah" seems to be using nikud from adonai.
+# the transliteration "yahweh" seems to be using nikud from elohim.
+#
+# when the name "judah" is spoken in hebrew, it sounds like "yahudah".
+# "judah" is spelled "יהודה".
+# the spelling of "judah" is identical to the heavenly father's name except
+#   that there is a "d" sound from the hebrew character dalet.
+# the heavenly father's name is spelled "יהוה".
+# therefore, transliterating "יהוה" as "yahuah" is rational.
+
+
 # 6885x
-#sed -i 's/Yahweh/Yehovah/g' *.usfm
-
-# do not change
-# 4x
-#sed -i 's/YAHWEH/YEHOVAH/g' *.usfm
-
-# update to best known transliteration
-# the transliteration 'yahuah' and the pronunciation it indicates is a more
-# straightforward, natural, and consistent way to transliterate and pronounce
-# the tetragrammaton than 'yahweh'. the hebrew name often translated as judah
-# can be more accurately translated as yahudah, and the only difference between
-# this name and the tetragrammaton is the insertion of a dalet (d character).
 sed -i 's/Yahweh/Yahuah/g' *.usfm
+
+# 4x
 sed -i 's/YAHWEH/YAHUAH/g' *.usfm
 
 
