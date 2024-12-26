@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+rm -f *.usfm
+rm -f *.html
+rm -f copr.htm gentiumplus.css keys.asc signature.txt.asc
+rm -f setup.sh
+
+cp /storage/emulated/0/Documents/escripture/setup.sh .
+cp /storage/emulated/0/Documents/escripture/eng-web_usfm.zip .
+
+chmod +x setup.sh
